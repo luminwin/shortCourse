@@ -520,6 +520,46 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
 <center>
 <p><img data-src="pic/minimal_depth.png" style="width:70.0%"></p>
 </center></section>
+<section id="minimal-depth-illustration-using-peakvo2" class="slide level2 smaller">
+<h2>Minimal depth illustration using peakVO2</h2>
+<div class="sourceCode" id="cb7" data-code-line-numbers="1|2-3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>md <span class="ot">&lt;-</span> <span class="fu">max.subtree</span>(o)<span class="sc">$</span>order[, <span class="dv">1</span>]</span>
+<span id="cb7-2"><a href=""></a><span class="fu">barplot</span>(<span class="fu">sort</span>(md), </span>
+<span id="cb7-3"><a href=""></a>        <span class="at">las=</span><span class="dv">2</span>, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"cadetblue3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment fade-left">
+<center>
+<img data-src="pic/peakMinimalDepth.png" style="width:60.0%">
+</center>
+</div>
+</section>
+<section id="minimal-depth-illustration-using-peakvo2-1" class="slide level2 smaller">
+<h2>Minimal depth illustration using peakVO2</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>md <span class="ot">&lt;-</span> <span class="fu">max.subtree</span>(o)<span class="sc">$</span>order[, <span class="dv">1</span>]</span>
+<span id="cb8-2"><a href=""></a><span class="fu">barplot</span>(<span class="fu">sort</span>(md), </span>
+<span id="cb8-3"><a href=""></a>        <span class="at">las=</span><span class="dv">2</span>, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"cadetblue3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<br><br>
+<center>
+<img data-src="pic/peakMinimalDepth.png" style="width:90.0%">
+</center>
+</div><div class="column fragment fade-left" style="width:50%;">
+<div class="sourceCode" id="cb9" data-code-line-numbers="1-4|5-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="do">## guide random feature selection with number of times variable splits</span></span>
+<span id="cb9-2"><a href=""></a>xvar.used <span class="ot">&lt;-</span> <span class="fu">predict</span>(o, <span class="at">nodedepth =</span> <span class="dv">6</span>, <span class="at">var.used=</span><span class="st">"all.trees"</span>, <span class="at">mtry =</span> <span class="cn">Inf</span>, </span>
+<span id="cb9-3"><a href=""></a>                <span class="at">nsplit =</span> <span class="dv">100</span>)<span class="sc">$</span>var.used</span>
+<span id="cb9-4"><a href=""></a>os <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2, <span class="at">xvar.wt =</span> xvar.used)</span>
+<span id="cb9-5"><a href=""></a>mds <span class="ot">&lt;-</span> <span class="fu">max.subtree</span>(os)<span class="sc">$</span>order[, <span class="dv">1</span>]</span>
+<span id="cb9-6"><a href=""></a><span class="fu">barplot</span>(<span class="fu">sort</span>(mds), </span>
+<span id="cb9-7"><a href=""></a>        <span class="at">las=</span><span class="dv">2</span>, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"cadetblue3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment fade-left">
+<center>
+<img data-src="pic/peakMinimalDepths.png" style="width:90.0%">
+</center>
+</div>
+</div></div>
+<div class="footer">
+
+</div>
+</section>
 <section id="varpro" class="slide level2">
 <h2>VarPro</h2>
 <p>Permutation VIMP creates “artificial” data which can impact performance in correlated settings</p>
@@ -546,115 +586,250 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
 </section>
 <section id="varpro-canonical-illustration" class="slide level2 smaller">
 <h2>VarPro canonical illustration</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="do">## load peakVO2</span></span>
-<span id="cb7-2"><a href=""></a><span class="fu">data</span>(peakVO2, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
-<span id="cb7-3"><a href=""></a>     </span>
-<span id="cb7-4"><a href=""></a><span class="do">## varpro canonical call</span></span>
-<span id="cb7-5"><a href=""></a>o <span class="ot">&lt;-</span><span class="fu">varpro</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2)</span>
-<span id="cb7-6"><a href=""></a><span class="fu">importance</span>(o)</span>
-<span id="cb7-7"><a href=""></a></span>
-<span id="cb7-8"><a href=""></a><span class="do">## cv.varpro canonical call</span></span>
-<span id="cb7-9"><a href=""></a>o.cv <span class="ot">&lt;-</span> <span class="fu">cv.varpro</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2)</span>
-<span id="cb7-10"><a href=""></a>o.cv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>[figure illustrating difference between varpro and vimp on peak]</p>
+<div class="sourceCode" id="cb10" data-code-line-numbers="1-2|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="do">## varpro canonical call</span></span>
+<span id="cb10-2"><a href=""></a>o <span class="ot">&lt;-</span><span class="fu">varpro</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2)</span>
+<span id="cb10-3"><a href=""></a><span class="fu">importance</span>(o)</span>
+<span id="cb10-4"><a href=""></a></span>
+<span id="cb10-5"><a href=""></a><span class="do">## cv.varpro canonical call</span></span>
+<span id="cb10-6"><a href=""></a>o.cv <span class="ot">&lt;-</span> <span class="fu">cv.varpro</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2)</span>
+<span id="cb10-7"><a href=""></a>o.cv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="sc">&gt;</span> <span class="fu">importance</span>(o)</span>
+<span id="cb11-2"><a href=""></a>                            mean          std          z    zcenter selected</span>
+<span id="cb11-3"><a href=""></a>bun                 <span class="fl">0.4978149504</span> <span class="fl">0.0337152554</span> <span class="fl">14.7652730</span> <span class="fl">12.7652730</span>        <span class="dv">1</span></span>
+<span id="cb11-4"><a href=""></a>interval            <span class="fl">0.3185356007</span> <span class="fl">0.0295842524</span> <span class="fl">10.7670661</span>  <span class="fl">8.7670661</span>        <span class="dv">1</span></span>
+<span id="cb11-5"><a href=""></a>peak.vo2            <span class="fl">0.4312874502</span> <span class="fl">0.0402880827</span> <span class="fl">10.7050875</span>  <span class="fl">8.7050875</span>        <span class="dv">1</span></span>
+<span id="cb11-6"><a href=""></a>male                <span class="fl">0.3505938059</span> <span class="fl">0.0538524448</span>  <span class="fl">6.5102672</span>  <span class="fl">4.5102672</span>        <span class="dv">1</span></span>
+<span id="cb11-7"><a href=""></a>age                 <span class="fl">0.2446044542</span> <span class="fl">0.0396020571</span>  <span class="fl">6.1765593</span>  <span class="fl">4.1765593</span>        <span class="dv">1</span></span>
+<span id="cb11-8"><a href=""></a>betablok            <span class="fl">0.2686558074</span> <span class="fl">0.0479230810</span>  <span class="fl">5.6059794</span>  <span class="fl">3.6059794</span>        <span class="dv">1</span></span>
+<span id="cb11-9"><a href=""></a>sodium              <span class="fl">0.2528347809</span> <span class="fl">0.0512493678</span>  <span class="fl">4.9334224</span>  <span class="fl">2.9334224</span>        <span class="dv">1</span></span>
+<span id="cb11-10"><a href=""></a>crcl                <span class="fl">0.1797879324</span> <span class="fl">0.0437915811</span>  <span class="fl">4.1055365</span>  <span class="fl">2.1055365</span>        <span class="dv">1</span></span>
+<span id="cb11-11"><a href=""></a>lvef.metabl         <span class="fl">0.2381646158</span> <span class="fl">0.0611984740</span>  <span class="fl">3.8916757</span>  <span class="fl">1.8916757</span>        <span class="dv">1</span></span>
+<span id="cb11-12"><a href=""></a>hgb                 <span class="fl">0.1725410259</span> <span class="fl">0.0542089828</span>  <span class="fl">3.1828862</span>  <span class="fl">1.1828862</span>        <span class="dv">1</span></span>
+<span id="cb11-13"><a href=""></a>resting.systolic.bp <span class="fl">0.1968886781</span> <span class="fl">0.0678923150</span>  <span class="fl">2.9000142</span>  <span class="fl">0.9000142</span>        <span class="dv">1</span></span>
+<span id="cb11-14"><a href=""></a>resting.hr          <span class="fl">0.1597187409</span> <span class="fl">0.0691719891</span>  <span class="fl">2.3090089</span>  <span class="fl">0.3090089</span>        <span class="dv">1</span></span>
+<span id="cb11-15"><a href=""></a>digoxin             <span class="fl">0.0775483548</span> <span class="fl">0.1211743434</span>  <span class="fl">0.6399734</span> <span class="sc">-</span><span class="fl">1.3600266</span>        <span class="dv">0</span></span>
+<span id="cb11-16"><a href=""></a>peak.rer            <span class="fl">0.0398680722</span> <span class="fl">0.0692507796</span>  <span class="fl">0.5757058</span> <span class="sc">-</span><span class="fl">1.4242942</span>        <span class="dv">0</span></span>
+<span id="cb11-17"><a href=""></a>glucose             <span class="fl">0.0290473617</span> <span class="fl">0.0652009690</span>  <span class="fl">0.4455051</span> <span class="sc">-</span><span class="fl">1.5544949</span>        <span class="dv">0</span></span>
+<span id="cb11-18"><a href=""></a>diuretic.thiazide   <span class="fl">0.0002443196</span> <span class="fl">0.0007146353</span>  <span class="fl">0.3418801</span> <span class="sc">-</span><span class="fl">1.6581199</span>        <span class="dv">0</span></span>
+<span id="cb11-19"><a href=""></a>aspirin             <span class="fl">0.0000000000</span> <span class="fl">0.0000000000</span>        <span class="cn">NaN</span>        <span class="cn">NaN</span>        <span class="dv">0</span></span>
+<span id="cb11-20"><a href=""></a>bmi                 <span class="fl">0.0000000000</span> <span class="fl">0.0000000000</span>        <span class="cn">NaN</span>        <span class="cn">NaN</span>        <span class="dv">0</span></span>
+<span id="cb11-21"><a href=""></a>cad                 <span class="fl">0.0000000000</span> <span class="fl">0.0000000000</span>        <span class="cn">NaN</span>        <span class="cn">NaN</span>        <span class="dv">0</span></span>
+<span id="cb11-22"><a href=""></a>insulin             <span class="fl">0.0000000000</span> <span class="fl">0.0000000000</span>        <span class="cn">NaN</span>        <span class="cn">NaN</span>        <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="footer">
+
+</div>
+</section>
+<section id="varpro-canonical-illustration-1" class="slide level2 smaller">
+<h2>VarPro canonical illustration</h2>
+<div class="sourceCode" id="cb12" data-code-line-numbers="1-2|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="do">## cv.varpro canonical call</span></span>
+<span id="cb12-2"><a href=""></a>o.cv <span class="ot">&lt;-</span> <span class="fu">cv.varpro</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2)</span>
+<span id="cb12-3"><a href=""></a>o.cv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13" data-code-line-numbers="2-14|16-27|29-44|46-61"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="sc">&gt;</span> o.cv</span>
+<span id="cb13-2"><a href=""></a><span class="sc">$</span>imp</span>
+<span id="cb13-3"><a href=""></a>      variable         z</span>
+<span id="cb13-4"><a href=""></a><span class="dv">1</span>          bun <span class="fl">12.765690</span></span>
+<span id="cb13-5"><a href=""></a><span class="dv">2</span>     interval  <span class="fl">9.084990</span></span>
+<span id="cb13-6"><a href=""></a><span class="dv">3</span>     peak.vo2  <span class="fl">8.284743</span></span>
+<span id="cb13-7"><a href=""></a><span class="dv">4</span>         male  <span class="fl">5.918617</span></span>
+<span id="cb13-8"><a href=""></a><span class="dv">5</span>          age  <span class="fl">5.537937</span></span>
+<span id="cb13-9"><a href=""></a><span class="dv">6</span>     betablok  <span class="fl">3.600902</span></span>
+<span id="cb13-10"><a href=""></a><span class="dv">7</span>       sodium  <span class="fl">3.408508</span></span>
+<span id="cb13-11"><a href=""></a><span class="dv">8</span>  lvef.metabl  <span class="fl">2.776717</span></span>
+<span id="cb13-12"><a href=""></a><span class="dv">9</span>   resting.hr  <span class="fl">2.590353</span></span>
+<span id="cb13-13"><a href=""></a><span class="dv">10</span>        crcl  <span class="fl">2.476236</span></span>
+<span id="cb13-14"><a href=""></a><span class="dv">11</span>     digoxin  <span class="fl">1.289895</span></span>
+<span id="cb13-15"><a href=""></a></span>
+<span id="cb13-16"><a href=""></a><span class="sc">$</span>imp.conserve</span>
+<span id="cb13-17"><a href=""></a>      variable         z</span>
+<span id="cb13-18"><a href=""></a><span class="dv">1</span>          bun <span class="fl">12.765690</span></span>
+<span id="cb13-19"><a href=""></a><span class="dv">2</span>     interval  <span class="fl">9.084990</span></span>
+<span id="cb13-20"><a href=""></a><span class="dv">3</span>     peak.vo2  <span class="fl">8.284743</span></span>
+<span id="cb13-21"><a href=""></a><span class="dv">4</span>         male  <span class="fl">5.918617</span></span>
+<span id="cb13-22"><a href=""></a><span class="dv">5</span>          age  <span class="fl">5.537937</span></span>
+<span id="cb13-23"><a href=""></a><span class="dv">6</span>     betablok  <span class="fl">3.600902</span></span>
+<span id="cb13-24"><a href=""></a><span class="dv">7</span>       sodium  <span class="fl">3.408508</span></span>
+<span id="cb13-25"><a href=""></a><span class="dv">8</span>  lvef.metabl  <span class="fl">2.776717</span></span>
+<span id="cb13-26"><a href=""></a><span class="dv">9</span>   resting.hr  <span class="fl">2.590353</span></span>
+<span id="cb13-27"><a href=""></a><span class="dv">10</span>        crcl  <span class="fl">2.476236</span></span>
+<span id="cb13-28"><a href=""></a></span>
+<span id="cb13-29"><a href=""></a><span class="sc">$</span>imp.liberal</span>
+<span id="cb13-30"><a href=""></a>              variable          z</span>
+<span id="cb13-31"><a href=""></a><span class="dv">1</span>                  bun <span class="fl">12.7656902</span></span>
+<span id="cb13-32"><a href=""></a><span class="dv">2</span>             interval  <span class="fl">9.0849901</span></span>
+<span id="cb13-33"><a href=""></a><span class="dv">3</span>             peak.vo2  <span class="fl">8.2847426</span></span>
+<span id="cb13-34"><a href=""></a><span class="dv">4</span>                 male  <span class="fl">5.9186167</span></span>
+<span id="cb13-35"><a href=""></a><span class="dv">5</span>                  age  <span class="fl">5.5379366</span></span>
+<span id="cb13-36"><a href=""></a><span class="dv">6</span>             betablok  <span class="fl">3.6009023</span></span>
+<span id="cb13-37"><a href=""></a><span class="dv">7</span>               sodium  <span class="fl">3.4085085</span></span>
+<span id="cb13-38"><a href=""></a><span class="dv">8</span>          lvef.metabl  <span class="fl">2.7767175</span></span>
+<span id="cb13-39"><a href=""></a><span class="dv">9</span>           resting.hr  <span class="fl">2.5903526</span></span>
+<span id="cb13-40"><a href=""></a><span class="dv">10</span>                crcl  <span class="fl">2.4762361</span></span>
+<span id="cb13-41"><a href=""></a><span class="dv">11</span>             digoxin  <span class="fl">1.2898949</span></span>
+<span id="cb13-42"><a href=""></a><span class="dv">12</span> resting.systolic.bp  <span class="fl">1.2290245</span></span>
+<span id="cb13-43"><a href=""></a><span class="dv">13</span>                 hgb  <span class="fl">0.7475712</span></span>
+<span id="cb13-44"><a href=""></a><span class="dv">14</span>   diuretic.thiazide  <span class="fl">0.4964589</span></span>
+<span id="cb13-45"><a href=""></a></span>
+<span id="cb13-46"><a href=""></a><span class="sc">$</span>err</span>
+<span id="cb13-47"><a href=""></a>          zcut nvar       err          sd</span>
+<span id="cb13-48"><a href=""></a>[<span class="dv">1</span>,] <span class="fl">0.1000000</span>   <span class="dv">14</span> <span class="fl">0.3120663</span> <span class="fl">0.007186951</span></span>
+<span id="cb13-49"><a href=""></a>[<span class="dv">2</span>,] <span class="fl">0.5265306</span>   <span class="dv">13</span> <span class="fl">0.3137940</span> <span class="fl">0.004717065</span></span>
+<span id="cb13-50"><a href=""></a>[<span class="dv">3</span>,] <span class="fl">0.7591837</span>   <span class="dv">12</span> <span class="fl">0.3141295</span> <span class="fl">0.004068593</span></span>
+<span id="cb13-51"><a href=""></a>[<span class="dv">4</span>,] <span class="fl">1.2632653</span>   <span class="dv">11</span> <span class="fl">0.3099739</span> <span class="fl">0.003270832</span></span>
+<span id="cb13-52"><a href=""></a>[<span class="dv">5</span>,] <span class="fl">1.3020408</span>   <span class="dv">10</span> <span class="fl">0.3123732</span> <span class="fl">0.004680203</span></span>
+<span id="cb13-53"><a href=""></a></span>
+<span id="cb13-54"><a href=""></a><span class="sc">$</span>zcut</span>
+<span id="cb13-55"><a href=""></a>[<span class="dv">1</span>] <span class="fl">1.263265</span></span>
+<span id="cb13-56"><a href=""></a></span>
+<span id="cb13-57"><a href=""></a><span class="sc">$</span>zcut.conserve</span>
+<span id="cb13-58"><a href=""></a>[<span class="dv">1</span>] <span class="fl">1.302041</span></span>
+<span id="cb13-59"><a href=""></a></span>
+<span id="cb13-60"><a href=""></a><span class="sc">$</span>zcut.liberal</span>
+<span id="cb13-61"><a href=""></a>[<span class="dv">1</span>] <span class="fl">0.1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="footer">
+
+</div>
+</section>
+<section id="varpro-canonical-illustration-2" class="slide level2 smaller">
+<h2>VarPro canonical illustration</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h4 id="vimp">VIMP</h4>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2, <span class="at">importance=</span><span class="st">"permute"</span>)</span>
+<span id="cb14-2"><a href=""></a>oo <span class="ot">&lt;-</span> <span class="fu">subsample</span>(o)</span>
+<span id="cb14-3"><a href=""></a><span class="fu">plot.vimp.ci</span>(oo, <span class="at">alpha=</span>.<span class="dv">05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<center>
+<img data-src="pic/peakVIMP.png" style="width:100.0%">
+</center>
+</div><div class="column fragment fade-left" style="width:50%;">
+<!-- -->
+<h4 id="varpro-1">VarPro</h4>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a>o.cv <span class="ot">&lt;-</span> <span class="fu">cv.varpro</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2)</span>
+<span id="cb15-2"><a href=""></a><span class="fu">barplot</span>(o.cv<span class="sc">$</span>imp.liberal<span class="sc">$</span>z, <span class="at">names.arg=</span>o.cv<span class="sc">$</span>imp.liberal<span class="sc">$</span>variable,</span>
+<span id="cb15-3"><a href=""></a>        <span class="at">las=</span><span class="dv">2</span>, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"coral2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<center>
+<img data-src="pic/peakVarPro.png" style="width:80.0%">
+</center>
+</div></div>
+</section>
+<section id="varpro-canonical-illustration-3" class="slide level2 smaller">
+<h2>VarPro canonical illustration</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h4 id="vimp-1">VIMP</h4>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2, <span class="at">importance=</span><span class="st">"permute"</span>)</span>
+<span id="cb16-2"><a href=""></a>oo <span class="ot">&lt;-</span> <span class="fu">subsample</span>(o)</span>
+<span id="cb16-3"><a href=""></a><span class="fu">plot.vimp.ci</span>(oo, <span class="at">alpha=</span>.<span class="dv">05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<br>
+<center>
+<img data-src="pic/peakVIMPzoom.png" style="width:100.0%">
+</center>
+</div><div class="column" style="width:50%;">
+<h4 id="varpro-2">VarPro</h4>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>o.cv <span class="ot">&lt;-</span> <span class="fu">cv.varpro</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2)</span>
+<span id="cb17-2"><a href=""></a><span class="fu">barplot</span>(o.cv<span class="sc">$</span>imp.liberal<span class="sc">$</span>z, <span class="at">names.arg=</span>o.cv<span class="sc">$</span>imp.liberal<span class="sc">$</span>variable,</span>
+<span id="cb17-3"><a href=""></a>        <span class="at">las=</span><span class="dv">2</span>, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"coral2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<center>
+<img data-src="pic/peakVarPro.png" style="width:80.0%">
+</center>
+</div></div>
 </section>
 <section id="varpro-examples" class="slide level2 smaller">
 <h2>VarPro examples</h2>
-<div class="sourceCode" id="cb8" data-code-line-numbers="1-5|6-29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="do">## van de Vijver Microarray Breast Cancer</span></span>
-<span id="cb8-2"><a href=""></a><span class="do">## high dimensional survival example using different split-weights</span></span>
-<span id="cb8-3"><a href=""></a><span class="do">## illustrates guided trees </span></span>
-<span id="cb8-4"><a href=""></a></span>
-<span id="cb8-5"><a href=""></a><span class="fu">data</span>(vdv, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
-<span id="cb8-6"><a href=""></a>f <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">Surv</span>(Time, Censoring)<span class="sc">~</span>.)</span>
-<span id="cb8-7"><a href=""></a>     </span>
-<span id="cb8-8"><a href=""></a><span class="do">## lasso only</span></span>
-<span id="cb8-9"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>))</span>
-<span id="cb8-10"><a href=""></a></span>
-<span id="cb8-11"><a href=""></a><span class="do">## lasso and vimp</span></span>
-<span id="cb8-12"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>))</span>
-<span id="cb8-13"><a href=""></a></span>
-<span id="cb8-14"><a href=""></a><span class="do">## lasso, vimp and shallow trees</span></span>
-<span id="cb8-15"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>))</span>
-<span id="cb8-16"><a href=""></a></span>
-<span id="cb8-17"><a href=""></a><span class="do">## store the original vdv 70 gene signature in object nms</span></span>
-<span id="cb8-18"><a href=""></a><span class="do">## compare methods using 25 runs:</span></span>
-<span id="cb8-19"><a href=""></a>rO <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, <span class="cf">function</span>(b) {</span>
-<span id="cb8-20"><a href=""></a>  <span class="fu">cat</span>(<span class="st">"replication:"</span>, b, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb8-21"><a href=""></a>  o1 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>)</span>
-<span id="cb8-22"><a href=""></a>  o2 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>)</span>
-<span id="cb8-23"><a href=""></a>  o3 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>)</span>
-<span id="cb8-24"><a href=""></a>  o4 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>, <span class="at">sparse =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb8-25"><a href=""></a>  <span class="fu">list</span>(<span class="st">"lasso"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o1)<span class="sc">$</span>variable),</span>
-<span id="cb8-26"><a href=""></a>       <span class="st">"lasso.vimp"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o2)<span class="sc">$</span>variable),</span>
-<span id="cb8-27"><a href=""></a>       <span class="st">"lasso.vimp.tree"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o3)<span class="sc">$</span>variable),</span>
-<span id="cb8-28"><a href=""></a>       <span class="st">"lasso.vimp.sparseoff"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o4)<span class="sc">$</span>variable))</span>
-<span id="cb8-29"><a href=""></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18" data-code-line-numbers="1-5|6-29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a><span class="do">## van de Vijver Microarray Breast Cancer</span></span>
+<span id="cb18-2"><a href=""></a><span class="do">## high dimensional survival example using different split-weights</span></span>
+<span id="cb18-3"><a href=""></a><span class="do">## illustrates guided trees </span></span>
+<span id="cb18-4"><a href=""></a></span>
+<span id="cb18-5"><a href=""></a><span class="fu">data</span>(vdv, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
+<span id="cb18-6"><a href=""></a>f <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">Surv</span>(Time, Censoring)<span class="sc">~</span>.)</span>
+<span id="cb18-7"><a href=""></a>     </span>
+<span id="cb18-8"><a href=""></a><span class="do">## lasso only</span></span>
+<span id="cb18-9"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>))</span>
+<span id="cb18-10"><a href=""></a></span>
+<span id="cb18-11"><a href=""></a><span class="do">## lasso and vimp</span></span>
+<span id="cb18-12"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>))</span>
+<span id="cb18-13"><a href=""></a></span>
+<span id="cb18-14"><a href=""></a><span class="do">## lasso, vimp and shallow trees</span></span>
+<span id="cb18-15"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>))</span>
+<span id="cb18-16"><a href=""></a></span>
+<span id="cb18-17"><a href=""></a><span class="do">## store the original vdv 70 gene signature in object nms</span></span>
+<span id="cb18-18"><a href=""></a><span class="do">## compare methods using 25 runs:</span></span>
+<span id="cb18-19"><a href=""></a>rO <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, <span class="cf">function</span>(b) {</span>
+<span id="cb18-20"><a href=""></a>  <span class="fu">cat</span>(<span class="st">"replication:"</span>, b, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb18-21"><a href=""></a>  o1 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>)</span>
+<span id="cb18-22"><a href=""></a>  o2 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>)</span>
+<span id="cb18-23"><a href=""></a>  o3 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>)</span>
+<span id="cb18-24"><a href=""></a>  o4 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>, <span class="at">sparse =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb18-25"><a href=""></a>  <span class="fu">list</span>(<span class="st">"lasso"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o1)<span class="sc">$</span>variable),</span>
+<span id="cb18-26"><a href=""></a>       <span class="st">"lasso.vimp"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o2)<span class="sc">$</span>variable),</span>
+<span id="cb18-27"><a href=""></a>       <span class="st">"lasso.vimp.tree"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o3)<span class="sc">$</span>variable),</span>
+<span id="cb18-28"><a href=""></a>       <span class="st">"lasso.vimp.sparseoff"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o4)<span class="sc">$</span>variable))</span>
+<span id="cb18-29"><a href=""></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="varpro-examples-1" class="slide level2 smaller">
 <h2>VarPro examples</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">data</span>(vdv, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
-<span id="cb9-2"><a href=""></a>f <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">Surv</span>(Time, Censoring)<span class="sc">~</span>.)</span>
-<span id="cb9-3"><a href=""></a>     </span>
-<span id="cb9-4"><a href=""></a><span class="do">## lasso only</span></span>
-<span id="cb9-5"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>))</span>
-<span id="cb9-6"><a href=""></a></span>
-<span id="cb9-7"><a href=""></a><span class="do">## lasso and vimp</span></span>
-<span id="cb9-8"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>))</span>
-<span id="cb9-9"><a href=""></a></span>
-<span id="cb9-10"><a href=""></a><span class="do">## lasso, vimp and shallow trees</span></span>
-<span id="cb9-11"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>))</span>
-<span id="cb9-12"><a href=""></a></span>
-<span id="cb9-13"><a href=""></a><span class="do">## store the original vdv 70 gene signature in object nms</span></span>
-<span id="cb9-14"><a href=""></a><span class="do">## compare methods using 25 runs:</span></span>
-<span id="cb9-15"><a href=""></a>rO <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, <span class="cf">function</span>(b) {</span>
-<span id="cb9-16"><a href=""></a>  <span class="fu">cat</span>(<span class="st">"replication:"</span>, b, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb9-17"><a href=""></a>  o1 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>)</span>
-<span id="cb9-18"><a href=""></a>  o2 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>)</span>
-<span id="cb9-19"><a href=""></a>  o3 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>)</span>
-<span id="cb9-20"><a href=""></a>  o4 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>, <span class="at">sparse =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb9-21"><a href=""></a>  <span class="fu">list</span>(<span class="st">"lasso"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o1)<span class="sc">$</span>variable),</span>
-<span id="cb9-22"><a href=""></a>       <span class="st">"lasso.vimp"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o2)<span class="sc">$</span>variable),</span>
-<span id="cb9-23"><a href=""></a>       <span class="st">"lasso.vimp.tree"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o3)<span class="sc">$</span>variable),</span>
-<span id="cb9-24"><a href=""></a>       <span class="st">"lasso.vimp.sparseoff"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o4)<span class="sc">$</span>variable))</span>
-<span id="cb9-25"><a href=""></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a><span class="fu">data</span>(vdv, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
+<span id="cb19-2"><a href=""></a>f <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">Surv</span>(Time, Censoring)<span class="sc">~</span>.)</span>
+<span id="cb19-3"><a href=""></a>     </span>
+<span id="cb19-4"><a href=""></a><span class="do">## lasso only</span></span>
+<span id="cb19-5"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>))</span>
+<span id="cb19-6"><a href=""></a></span>
+<span id="cb19-7"><a href=""></a><span class="do">## lasso and vimp</span></span>
+<span id="cb19-8"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>))</span>
+<span id="cb19-9"><a href=""></a></span>
+<span id="cb19-10"><a href=""></a><span class="do">## lasso, vimp and shallow trees</span></span>
+<span id="cb19-11"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>))</span>
+<span id="cb19-12"><a href=""></a></span>
+<span id="cb19-13"><a href=""></a><span class="do">## store the original vdv 70 gene signature in object nms</span></span>
+<span id="cb19-14"><a href=""></a><span class="do">## compare methods using 25 runs:</span></span>
+<span id="cb19-15"><a href=""></a>rO <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, <span class="cf">function</span>(b) {</span>
+<span id="cb19-16"><a href=""></a>  <span class="fu">cat</span>(<span class="st">"replication:"</span>, b, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb19-17"><a href=""></a>  o1 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>)</span>
+<span id="cb19-18"><a href=""></a>  o2 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>)</span>
+<span id="cb19-19"><a href=""></a>  o3 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>)</span>
+<span id="cb19-20"><a href=""></a>  o4 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>, <span class="at">sparse =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb19-21"><a href=""></a>  <span class="fu">list</span>(<span class="st">"lasso"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o1)<span class="sc">$</span>variable),</span>
+<span id="cb19-22"><a href=""></a>       <span class="st">"lasso.vimp"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o2)<span class="sc">$</span>variable),</span>
+<span id="cb19-23"><a href=""></a>       <span class="st">"lasso.vimp.tree"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o3)<span class="sc">$</span>variable),</span>
+<span id="cb19-24"><a href=""></a>       <span class="st">"lasso.vimp.sparseoff"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o4)<span class="sc">$</span>variable))</span>
+<span id="cb19-25"><a href=""></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment fade-left" style="width:50%;">
-<div class="sourceCode" id="cb10" data-code-line-numbers="1-23|25-35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="sc">$</span>lasso</span>
-<span id="cb10-2"><a href=""></a>[<span class="dv">1</span>] <span class="st">"AF201951"</span>       <span class="st">"AL080059"</span>      </span>
-<span id="cb10-3"><a href=""></a>[<span class="dv">3</span>] <span class="st">"Contig25991"</span>    <span class="st">"Contig28552_RC"</span></span>
-<span id="cb10-4"><a href=""></a>[<span class="dv">5</span>] <span class="st">"NM_000436"</span>      <span class="st">"NM_003748"</span>     </span>
-<span id="cb10-5"><a href=""></a>[<span class="dv">7</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006681"</span>     </span>
-<span id="cb10-6"><a href=""></a>[<span class="dv">9</span>] <span class="st">"NM_020974"</span>     </span>
-<span id="cb10-7"><a href=""></a></span>
-<span id="cb10-8"><a href=""></a><span class="sc">$</span>lasso.vimp</span>
-<span id="cb10-9"><a href=""></a> [<span class="dv">1</span>] <span class="st">"AL137718"</span>       <span class="st">"Contig25991"</span>   </span>
-<span id="cb10-10"><a href=""></a> [<span class="dv">3</span>] <span class="st">"Contig28552_RC"</span> <span class="st">"Contig51464_RC"</span></span>
-<span id="cb10-11"><a href=""></a> [<span class="dv">5</span>] <span class="st">"Contig55377_RC"</span> <span class="st">"NM_000436"</span>     </span>
-<span id="cb10-12"><a href=""></a> [<span class="dv">7</span>] <span class="st">"NM_003239"</span>      <span class="st">"NM_003748"</span>     </span>
-<span id="cb10-13"><a href=""></a> [<span class="dv">9</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006681"</span>     </span>
-<span id="cb10-14"><a href=""></a>[<span class="dv">11</span>] <span class="st">"NM_016448"</span>      <span class="st">"NM_020974"</span>     </span>
-<span id="cb10-15"><a href=""></a></span>
-<span id="cb10-16"><a href=""></a><span class="sc">$</span>lasso.vimp.tree</span>
-<span id="cb10-17"><a href=""></a> [<span class="dv">1</span>] <span class="st">"AA555029_RC"</span>    <span class="st">"AF201951"</span>      </span>
-<span id="cb10-18"><a href=""></a> [<span class="dv">3</span>] <span class="st">"AL080059"</span>       <span class="st">"Contig25991"</span>   </span>
-<span id="cb10-19"><a href=""></a> [<span class="dv">5</span>] <span class="st">"Contig28552_RC"</span> <span class="st">"Contig55377_RC"</span></span>
-<span id="cb10-20"><a href=""></a> [<span class="dv">7</span>] <span class="st">"NM_000436"</span>      <span class="st">"NM_003748"</span>     </span>
-<span id="cb10-21"><a href=""></a> [<span class="dv">9</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006117"</span>     </span>
-<span id="cb10-22"><a href=""></a>[<span class="dv">11</span>] <span class="st">"NM_006681"</span>      <span class="st">"NM_016448"</span>     </span>
-<span id="cb10-23"><a href=""></a>[<span class="dv">13</span>] <span class="st">"NM_020974"</span>     </span>
-<span id="cb10-24"><a href=""></a></span>
-<span id="cb10-25"><a href=""></a><span class="sc">$</span>lasso.vimp.sparseoff</span>
-<span id="cb10-26"><a href=""></a> [<span class="dv">1</span>] <span class="st">"AF201951"</span>       <span class="st">"AF257175"</span>      </span>
-<span id="cb10-27"><a href=""></a> [<span class="dv">3</span>] <span class="st">"AL080059"</span>       <span class="st">"AL137718"</span>      </span>
-<span id="cb10-28"><a href=""></a> [<span class="dv">5</span>] <span class="st">"Contig25991"</span>    <span class="st">"Contig28552_RC"</span></span>
-<span id="cb10-29"><a href=""></a> [<span class="dv">7</span>] <span class="st">"Contig40831_RC"</span> <span class="st">"Contig48328_RC"</span></span>
-<span id="cb10-30"><a href=""></a> [<span class="dv">9</span>] <span class="st">"Contig51464_RC"</span> <span class="st">"Contig55377_RC"</span></span>
-<span id="cb10-31"><a href=""></a>[<span class="dv">11</span>] <span class="st">"Contig63102_RC"</span> <span class="st">"NM_002916"</span>     </span>
-<span id="cb10-32"><a href=""></a>[<span class="dv">13</span>] <span class="st">"NM_003239"</span>      <span class="st">"NM_003748"</span>     </span>
-<span id="cb10-33"><a href=""></a>[<span class="dv">15</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006117"</span>     </span>
-<span id="cb10-34"><a href=""></a>[<span class="dv">17</span>] <span class="st">"NM_006681"</span>      <span class="st">"NM_016448"</span>     </span>
-<span id="cb10-35"><a href=""></a>[<span class="dv">19</span>] <span class="st">"NM_020974"</span>     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20" data-code-line-numbers="1-23|25-35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a><span class="sc">$</span>lasso</span>
+<span id="cb20-2"><a href=""></a>[<span class="dv">1</span>] <span class="st">"AF201951"</span>       <span class="st">"AL080059"</span>      </span>
+<span id="cb20-3"><a href=""></a>[<span class="dv">3</span>] <span class="st">"Contig25991"</span>    <span class="st">"Contig28552_RC"</span></span>
+<span id="cb20-4"><a href=""></a>[<span class="dv">5</span>] <span class="st">"NM_000436"</span>      <span class="st">"NM_003748"</span>     </span>
+<span id="cb20-5"><a href=""></a>[<span class="dv">7</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006681"</span>     </span>
+<span id="cb20-6"><a href=""></a>[<span class="dv">9</span>] <span class="st">"NM_020974"</span>     </span>
+<span id="cb20-7"><a href=""></a></span>
+<span id="cb20-8"><a href=""></a><span class="sc">$</span>lasso.vimp</span>
+<span id="cb20-9"><a href=""></a> [<span class="dv">1</span>] <span class="st">"AL137718"</span>       <span class="st">"Contig25991"</span>   </span>
+<span id="cb20-10"><a href=""></a> [<span class="dv">3</span>] <span class="st">"Contig28552_RC"</span> <span class="st">"Contig51464_RC"</span></span>
+<span id="cb20-11"><a href=""></a> [<span class="dv">5</span>] <span class="st">"Contig55377_RC"</span> <span class="st">"NM_000436"</span>     </span>
+<span id="cb20-12"><a href=""></a> [<span class="dv">7</span>] <span class="st">"NM_003239"</span>      <span class="st">"NM_003748"</span>     </span>
+<span id="cb20-13"><a href=""></a> [<span class="dv">9</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006681"</span>     </span>
+<span id="cb20-14"><a href=""></a>[<span class="dv">11</span>] <span class="st">"NM_016448"</span>      <span class="st">"NM_020974"</span>     </span>
+<span id="cb20-15"><a href=""></a></span>
+<span id="cb20-16"><a href=""></a><span class="sc">$</span>lasso.vimp.tree</span>
+<span id="cb20-17"><a href=""></a> [<span class="dv">1</span>] <span class="st">"AA555029_RC"</span>    <span class="st">"AF201951"</span>      </span>
+<span id="cb20-18"><a href=""></a> [<span class="dv">3</span>] <span class="st">"AL080059"</span>       <span class="st">"Contig25991"</span>   </span>
+<span id="cb20-19"><a href=""></a> [<span class="dv">5</span>] <span class="st">"Contig28552_RC"</span> <span class="st">"Contig55377_RC"</span></span>
+<span id="cb20-20"><a href=""></a> [<span class="dv">7</span>] <span class="st">"NM_000436"</span>      <span class="st">"NM_003748"</span>     </span>
+<span id="cb20-21"><a href=""></a> [<span class="dv">9</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006117"</span>     </span>
+<span id="cb20-22"><a href=""></a>[<span class="dv">11</span>] <span class="st">"NM_006681"</span>      <span class="st">"NM_016448"</span>     </span>
+<span id="cb20-23"><a href=""></a>[<span class="dv">13</span>] <span class="st">"NM_020974"</span>     </span>
+<span id="cb20-24"><a href=""></a></span>
+<span id="cb20-25"><a href=""></a><span class="sc">$</span>lasso.vimp.sparseoff</span>
+<span id="cb20-26"><a href=""></a> [<span class="dv">1</span>] <span class="st">"AF201951"</span>       <span class="st">"AF257175"</span>      </span>
+<span id="cb20-27"><a href=""></a> [<span class="dv">3</span>] <span class="st">"AL080059"</span>       <span class="st">"AL137718"</span>      </span>
+<span id="cb20-28"><a href=""></a> [<span class="dv">5</span>] <span class="st">"Contig25991"</span>    <span class="st">"Contig28552_RC"</span></span>
+<span id="cb20-29"><a href=""></a> [<span class="dv">7</span>] <span class="st">"Contig40831_RC"</span> <span class="st">"Contig48328_RC"</span></span>
+<span id="cb20-30"><a href=""></a> [<span class="dv">9</span>] <span class="st">"Contig51464_RC"</span> <span class="st">"Contig55377_RC"</span></span>
+<span id="cb20-31"><a href=""></a>[<span class="dv">11</span>] <span class="st">"Contig63102_RC"</span> <span class="st">"NM_002916"</span>     </span>
+<span id="cb20-32"><a href=""></a>[<span class="dv">13</span>] <span class="st">"NM_003239"</span>      <span class="st">"NM_003748"</span>     </span>
+<span id="cb20-33"><a href=""></a>[<span class="dv">15</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006117"</span>     </span>
+<span id="cb20-34"><a href=""></a>[<span class="dv">17</span>] <span class="st">"NM_006681"</span>      <span class="st">"NM_016448"</span>     </span>
+<span id="cb20-35"><a href=""></a>[<span class="dv">19</span>] <span class="st">"NM_020974"</span>     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 <div class="quarto-auto-generated-content">
 <p><img src="images/rfsrc.svg" class="slide-logo"></p>
