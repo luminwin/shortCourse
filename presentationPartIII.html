@@ -94,7 +94,26 @@
     code span.va { color: #5ccfe6; } /* Variable */
     code span.vs { color: #bae67e; } /* VerbatimString */
     code span.wa { color: #f28779; } /* Warning */
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
 <link rel="stylesheet" href="presentationPartIII_files/libs/revealjs/dist/theme/quarto.css">
 <link rel="stylesheet" href="styles.css">
 <link href="presentationPartIII_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -542,28 +561,28 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
 <p>Permutation VIMP creates “artificial” data which can impact performance in correlated settings</p>
 </section><section id="varpro-1" class="slide level2 small"><h2>VarPro</h2>
 <p>Permutation VIMP creates “artificial” data which can impact performance in correlated settings</p>
-<h4 id="consider-a-patient-in-the-dataset">Consider a patient in the dataset</h4>
+<h4 id="consider-a-patient-in-the-peakvo2-dataset">Consider a patient in the peakVO2 dataset</h4>
 <div class="columns">
 <div class="column" style="width:80%;">
 <div class="cell">
 <div class="cell-output-display">
-<div id="rtkgoicvzu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rtkgoicvzu table {
+<div id="ruhpvlyqzu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ruhpvlyqzu table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rtkgoicvzu thead, #rtkgoicvzu tbody, #rtkgoicvzu tfoot, #rtkgoicvzu tr, #rtkgoicvzu td, #rtkgoicvzu th {
+#ruhpvlyqzu thead, #ruhpvlyqzu tbody, #ruhpvlyqzu tfoot, #ruhpvlyqzu tr, #ruhpvlyqzu td, #ruhpvlyqzu th {
   border-style: none;
 }
 
-#rtkgoicvzu p {
+#ruhpvlyqzu p {
   margin: 0;
   padding: 0;
 }
 
-#rtkgoicvzu .gt_table {
+#ruhpvlyqzu .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -589,12 +608,12 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-left-color: #D3D3D3;
 }
 
-#rtkgoicvzu .gt_caption {
+#ruhpvlyqzu .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rtkgoicvzu .gt_title {
+#ruhpvlyqzu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -606,7 +625,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-width: 0;
 }
 
-#rtkgoicvzu .gt_subtitle {
+#ruhpvlyqzu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -618,7 +637,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-top-width: 0;
 }
 
-#rtkgoicvzu .gt_heading {
+#ruhpvlyqzu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -630,13 +649,13 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#rtkgoicvzu .gt_bottom_border {
+#ruhpvlyqzu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rtkgoicvzu .gt_col_headings {
+#ruhpvlyqzu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -651,7 +670,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#rtkgoicvzu .gt_col_heading {
+#ruhpvlyqzu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -671,7 +690,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   overflow-x: hidden;
 }
 
-#rtkgoicvzu .gt_column_spanner_outer {
+#ruhpvlyqzu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -683,15 +702,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 4px;
 }
 
-#rtkgoicvzu .gt_column_spanner_outer:first-child {
+#ruhpvlyqzu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rtkgoicvzu .gt_column_spanner_outer:last-child {
+#ruhpvlyqzu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rtkgoicvzu .gt_column_spanner {
+#ruhpvlyqzu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -703,11 +722,11 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   width: 100%;
 }
 
-#rtkgoicvzu .gt_spanner_row {
+#ruhpvlyqzu .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rtkgoicvzu .gt_group_heading {
+#ruhpvlyqzu .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -733,7 +752,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   text-align: left;
 }
 
-#rtkgoicvzu .gt_empty_group_heading {
+#ruhpvlyqzu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -748,15 +767,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   vertical-align: middle;
 }
 
-#rtkgoicvzu .gt_from_md > :first-child {
+#ruhpvlyqzu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rtkgoicvzu .gt_from_md > :last-child {
+#ruhpvlyqzu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rtkgoicvzu .gt_row {
+#ruhpvlyqzu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -775,7 +794,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   overflow-x: hidden;
 }
 
-#rtkgoicvzu .gt_stub {
+#ruhpvlyqzu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -788,7 +807,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#rtkgoicvzu .gt_stub_row_group {
+#ruhpvlyqzu .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -802,15 +821,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   vertical-align: top;
 }
 
-#rtkgoicvzu .gt_row_group_first td {
+#ruhpvlyqzu .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rtkgoicvzu .gt_row_group_first th {
+#ruhpvlyqzu .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rtkgoicvzu .gt_summary_row {
+#ruhpvlyqzu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -820,16 +839,16 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#rtkgoicvzu .gt_first_summary_row {
+#ruhpvlyqzu .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rtkgoicvzu .gt_first_summary_row.thick {
+#ruhpvlyqzu .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rtkgoicvzu .gt_last_summary_row {
+#ruhpvlyqzu .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -839,7 +858,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-color: #D3D3D3;
 }
 
-#rtkgoicvzu .gt_grand_summary_row {
+#ruhpvlyqzu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -849,7 +868,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#rtkgoicvzu .gt_first_grand_summary_row {
+#ruhpvlyqzu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -859,7 +878,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-top-color: #D3D3D3;
 }
 
-#rtkgoicvzu .gt_last_grand_summary_row_top {
+#ruhpvlyqzu .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -869,11 +888,11 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-color: #D3D3D3;
 }
 
-#rtkgoicvzu .gt_striped {
+#ruhpvlyqzu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rtkgoicvzu .gt_table_body {
+#ruhpvlyqzu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -882,7 +901,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-color: #D3D3D3;
 }
 
-#rtkgoicvzu .gt_footnotes {
+#ruhpvlyqzu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -896,7 +915,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#rtkgoicvzu .gt_footnote {
+#ruhpvlyqzu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -905,7 +924,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#rtkgoicvzu .gt_sourcenotes {
+#ruhpvlyqzu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -919,7 +938,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#rtkgoicvzu .gt_sourcenote {
+#ruhpvlyqzu .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -927,63 +946,63 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#rtkgoicvzu .gt_left {
+#ruhpvlyqzu .gt_left {
   text-align: left;
 }
 
-#rtkgoicvzu .gt_center {
+#ruhpvlyqzu .gt_center {
   text-align: center;
 }
 
-#rtkgoicvzu .gt_right {
+#ruhpvlyqzu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rtkgoicvzu .gt_font_normal {
+#ruhpvlyqzu .gt_font_normal {
   font-weight: normal;
 }
 
-#rtkgoicvzu .gt_font_bold {
+#ruhpvlyqzu .gt_font_bold {
   font-weight: bold;
 }
 
-#rtkgoicvzu .gt_font_italic {
+#ruhpvlyqzu .gt_font_italic {
   font-style: italic;
 }
 
-#rtkgoicvzu .gt_super {
+#ruhpvlyqzu .gt_super {
   font-size: 65%;
 }
 
-#rtkgoicvzu .gt_footnote_marks {
+#ruhpvlyqzu .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rtkgoicvzu .gt_asterisk {
+#ruhpvlyqzu .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rtkgoicvzu .gt_indent_1 {
+#ruhpvlyqzu .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rtkgoicvzu .gt_indent_2 {
+#ruhpvlyqzu .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rtkgoicvzu .gt_indent_3 {
+#ruhpvlyqzu .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rtkgoicvzu .gt_indent_4 {
+#ruhpvlyqzu .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rtkgoicvzu .gt_indent_5 {
+#ruhpvlyqzu .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1081,23 +1100,23 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
 </div><div class="column" style="width:20%;">
 <div class="cell">
 <div class="cell-output-display">
-<div id="slsoayvmpj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#slsoayvmpj table {
+<div id="xsjeikvhsh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xsjeikvhsh table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#slsoayvmpj thead, #slsoayvmpj tbody, #slsoayvmpj tfoot, #slsoayvmpj tr, #slsoayvmpj td, #slsoayvmpj th {
+#xsjeikvhsh thead, #xsjeikvhsh tbody, #xsjeikvhsh tfoot, #xsjeikvhsh tr, #xsjeikvhsh td, #xsjeikvhsh th {
   border-style: none;
 }
 
-#slsoayvmpj p {
+#xsjeikvhsh p {
   margin: 0;
   padding: 0;
 }
 
-#slsoayvmpj .gt_table {
+#xsjeikvhsh .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1123,12 +1142,12 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-left-color: #D3D3D3;
 }
 
-#slsoayvmpj .gt_caption {
+#xsjeikvhsh .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#slsoayvmpj .gt_title {
+#xsjeikvhsh .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1140,7 +1159,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-width: 0;
 }
 
-#slsoayvmpj .gt_subtitle {
+#xsjeikvhsh .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1152,7 +1171,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-top-width: 0;
 }
 
-#slsoayvmpj .gt_heading {
+#xsjeikvhsh .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1164,13 +1183,13 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#slsoayvmpj .gt_bottom_border {
+#xsjeikvhsh .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#slsoayvmpj .gt_col_headings {
+#xsjeikvhsh .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1185,7 +1204,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#slsoayvmpj .gt_col_heading {
+#xsjeikvhsh .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1205,7 +1224,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   overflow-x: hidden;
 }
 
-#slsoayvmpj .gt_column_spanner_outer {
+#xsjeikvhsh .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1217,15 +1236,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 4px;
 }
 
-#slsoayvmpj .gt_column_spanner_outer:first-child {
+#xsjeikvhsh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#slsoayvmpj .gt_column_spanner_outer:last-child {
+#xsjeikvhsh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#slsoayvmpj .gt_column_spanner {
+#xsjeikvhsh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1237,11 +1256,11 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   width: 100%;
 }
 
-#slsoayvmpj .gt_spanner_row {
+#xsjeikvhsh .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#slsoayvmpj .gt_group_heading {
+#xsjeikvhsh .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1267,7 +1286,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   text-align: left;
 }
 
-#slsoayvmpj .gt_empty_group_heading {
+#xsjeikvhsh .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1282,15 +1301,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   vertical-align: middle;
 }
 
-#slsoayvmpj .gt_from_md > :first-child {
+#xsjeikvhsh .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#slsoayvmpj .gt_from_md > :last-child {
+#xsjeikvhsh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#slsoayvmpj .gt_row {
+#xsjeikvhsh .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1309,7 +1328,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   overflow-x: hidden;
 }
 
-#slsoayvmpj .gt_stub {
+#xsjeikvhsh .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1322,7 +1341,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#slsoayvmpj .gt_stub_row_group {
+#xsjeikvhsh .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1336,15 +1355,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   vertical-align: top;
 }
 
-#slsoayvmpj .gt_row_group_first td {
+#xsjeikvhsh .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#slsoayvmpj .gt_row_group_first th {
+#xsjeikvhsh .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#slsoayvmpj .gt_summary_row {
+#xsjeikvhsh .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1354,16 +1373,16 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#slsoayvmpj .gt_first_summary_row {
+#xsjeikvhsh .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#slsoayvmpj .gt_first_summary_row.thick {
+#xsjeikvhsh .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#slsoayvmpj .gt_last_summary_row {
+#xsjeikvhsh .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1373,7 +1392,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-color: #D3D3D3;
 }
 
-#slsoayvmpj .gt_grand_summary_row {
+#xsjeikvhsh .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1383,7 +1402,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#slsoayvmpj .gt_first_grand_summary_row {
+#xsjeikvhsh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1393,7 +1412,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-top-color: #D3D3D3;
 }
 
-#slsoayvmpj .gt_last_grand_summary_row_top {
+#xsjeikvhsh .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1403,11 +1422,11 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-color: #D3D3D3;
 }
 
-#slsoayvmpj .gt_striped {
+#xsjeikvhsh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#slsoayvmpj .gt_table_body {
+#xsjeikvhsh .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1416,7 +1435,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-color: #D3D3D3;
 }
 
-#slsoayvmpj .gt_footnotes {
+#xsjeikvhsh .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1430,7 +1449,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#slsoayvmpj .gt_footnote {
+#xsjeikvhsh .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1439,7 +1458,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#slsoayvmpj .gt_sourcenotes {
+#xsjeikvhsh .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1453,7 +1472,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#slsoayvmpj .gt_sourcenote {
+#xsjeikvhsh .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1461,63 +1480,63 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#slsoayvmpj .gt_left {
+#xsjeikvhsh .gt_left {
   text-align: left;
 }
 
-#slsoayvmpj .gt_center {
+#xsjeikvhsh .gt_center {
   text-align: center;
 }
 
-#slsoayvmpj .gt_right {
+#xsjeikvhsh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#slsoayvmpj .gt_font_normal {
+#xsjeikvhsh .gt_font_normal {
   font-weight: normal;
 }
 
-#slsoayvmpj .gt_font_bold {
+#xsjeikvhsh .gt_font_bold {
   font-weight: bold;
 }
 
-#slsoayvmpj .gt_font_italic {
+#xsjeikvhsh .gt_font_italic {
   font-style: italic;
 }
 
-#slsoayvmpj .gt_super {
+#xsjeikvhsh .gt_super {
   font-size: 65%;
 }
 
-#slsoayvmpj .gt_footnote_marks {
+#xsjeikvhsh .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#slsoayvmpj .gt_asterisk {
+#xsjeikvhsh .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#slsoayvmpj .gt_indent_1 {
+#xsjeikvhsh .gt_indent_1 {
   text-indent: 5px;
 }
 
-#slsoayvmpj .gt_indent_2 {
+#xsjeikvhsh .gt_indent_2 {
   text-indent: 10px;
 }
 
-#slsoayvmpj .gt_indent_3 {
+#xsjeikvhsh .gt_indent_3 {
   text-indent: 15px;
 }
 
-#slsoayvmpj .gt_indent_4 {
+#xsjeikvhsh .gt_indent_4 {
   text-indent: 20px;
 }
 
-#slsoayvmpj .gt_indent_5 {
+#xsjeikvhsh .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1539,28 +1558,28 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
 </div></div>
 <div class="fragment">
 <!-- -->
-<h4 id="suppose-peak-is-permuted-for-calculating-vimp">Suppose peak is permuted for calculating VIMP</h4>
+<h4 id="suppose-peak.vo2-is-permuted-for-calculating-vimp">Suppose peak.vo2 is permuted for calculating VIMP</h4>
 <div class="columns">
 <div class="column" style="width:80%;">
 <div class="cell">
 <div class="cell-output-display">
-<div id="fklpzadnil" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fklpzadnil table {
+<div id="gtrdjqvgaf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#gtrdjqvgaf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fklpzadnil thead, #fklpzadnil tbody, #fklpzadnil tfoot, #fklpzadnil tr, #fklpzadnil td, #fklpzadnil th {
+#gtrdjqvgaf thead, #gtrdjqvgaf tbody, #gtrdjqvgaf tfoot, #gtrdjqvgaf tr, #gtrdjqvgaf td, #gtrdjqvgaf th {
   border-style: none;
 }
 
-#fklpzadnil p {
+#gtrdjqvgaf p {
   margin: 0;
   padding: 0;
 }
 
-#fklpzadnil .gt_table {
+#gtrdjqvgaf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1586,12 +1605,12 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-left-color: #D3D3D3;
 }
 
-#fklpzadnil .gt_caption {
+#gtrdjqvgaf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fklpzadnil .gt_title {
+#gtrdjqvgaf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1603,7 +1622,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-width: 0;
 }
 
-#fklpzadnil .gt_subtitle {
+#gtrdjqvgaf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1615,7 +1634,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-top-width: 0;
 }
 
-#fklpzadnil .gt_heading {
+#gtrdjqvgaf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1627,13 +1646,13 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#fklpzadnil .gt_bottom_border {
+#gtrdjqvgaf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fklpzadnil .gt_col_headings {
+#gtrdjqvgaf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1648,7 +1667,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#fklpzadnil .gt_col_heading {
+#gtrdjqvgaf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1668,7 +1687,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   overflow-x: hidden;
 }
 
-#fklpzadnil .gt_column_spanner_outer {
+#gtrdjqvgaf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1680,15 +1699,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 4px;
 }
 
-#fklpzadnil .gt_column_spanner_outer:first-child {
+#gtrdjqvgaf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fklpzadnil .gt_column_spanner_outer:last-child {
+#gtrdjqvgaf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fklpzadnil .gt_column_spanner {
+#gtrdjqvgaf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1700,11 +1719,11 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   width: 100%;
 }
 
-#fklpzadnil .gt_spanner_row {
+#gtrdjqvgaf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fklpzadnil .gt_group_heading {
+#gtrdjqvgaf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1730,7 +1749,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   text-align: left;
 }
 
-#fklpzadnil .gt_empty_group_heading {
+#gtrdjqvgaf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1745,15 +1764,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   vertical-align: middle;
 }
 
-#fklpzadnil .gt_from_md > :first-child {
+#gtrdjqvgaf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fklpzadnil .gt_from_md > :last-child {
+#gtrdjqvgaf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fklpzadnil .gt_row {
+#gtrdjqvgaf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1772,7 +1791,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   overflow-x: hidden;
 }
 
-#fklpzadnil .gt_stub {
+#gtrdjqvgaf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1785,7 +1804,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#fklpzadnil .gt_stub_row_group {
+#gtrdjqvgaf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1799,15 +1818,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   vertical-align: top;
 }
 
-#fklpzadnil .gt_row_group_first td {
+#gtrdjqvgaf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fklpzadnil .gt_row_group_first th {
+#gtrdjqvgaf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fklpzadnil .gt_summary_row {
+#gtrdjqvgaf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1817,16 +1836,16 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#fklpzadnil .gt_first_summary_row {
+#gtrdjqvgaf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fklpzadnil .gt_first_summary_row.thick {
+#gtrdjqvgaf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fklpzadnil .gt_last_summary_row {
+#gtrdjqvgaf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1836,7 +1855,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-color: #D3D3D3;
 }
 
-#fklpzadnil .gt_grand_summary_row {
+#gtrdjqvgaf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1846,7 +1865,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#fklpzadnil .gt_first_grand_summary_row {
+#gtrdjqvgaf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1856,7 +1875,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-top-color: #D3D3D3;
 }
 
-#fklpzadnil .gt_last_grand_summary_row_top {
+#gtrdjqvgaf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1866,11 +1885,11 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-color: #D3D3D3;
 }
 
-#fklpzadnil .gt_striped {
+#gtrdjqvgaf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fklpzadnil .gt_table_body {
+#gtrdjqvgaf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1879,7 +1898,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-color: #D3D3D3;
 }
 
-#fklpzadnil .gt_footnotes {
+#gtrdjqvgaf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1893,7 +1912,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#fklpzadnil .gt_footnote {
+#gtrdjqvgaf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1902,7 +1921,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#fklpzadnil .gt_sourcenotes {
+#gtrdjqvgaf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1916,7 +1935,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#fklpzadnil .gt_sourcenote {
+#gtrdjqvgaf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1924,63 +1943,63 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#fklpzadnil .gt_left {
+#gtrdjqvgaf .gt_left {
   text-align: left;
 }
 
-#fklpzadnil .gt_center {
+#gtrdjqvgaf .gt_center {
   text-align: center;
 }
 
-#fklpzadnil .gt_right {
+#gtrdjqvgaf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fklpzadnil .gt_font_normal {
+#gtrdjqvgaf .gt_font_normal {
   font-weight: normal;
 }
 
-#fklpzadnil .gt_font_bold {
+#gtrdjqvgaf .gt_font_bold {
   font-weight: bold;
 }
 
-#fklpzadnil .gt_font_italic {
+#gtrdjqvgaf .gt_font_italic {
   font-style: italic;
 }
 
-#fklpzadnil .gt_super {
+#gtrdjqvgaf .gt_super {
   font-size: 65%;
 }
 
-#fklpzadnil .gt_footnote_marks {
+#gtrdjqvgaf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fklpzadnil .gt_asterisk {
+#gtrdjqvgaf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fklpzadnil .gt_indent_1 {
+#gtrdjqvgaf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fklpzadnil .gt_indent_2 {
+#gtrdjqvgaf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fklpzadnil .gt_indent_3 {
+#gtrdjqvgaf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fklpzadnil .gt_indent_4 {
+#gtrdjqvgaf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fklpzadnil .gt_indent_5 {
+#gtrdjqvgaf .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2078,23 +2097,23 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
 </div><div class="column" style="width:20%;">
 <div class="cell">
 <div class="cell-output-display">
-<div id="xusohnfbnq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xusohnfbnq table {
+<div id="tjsarozfkc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tjsarozfkc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xusohnfbnq thead, #xusohnfbnq tbody, #xusohnfbnq tfoot, #xusohnfbnq tr, #xusohnfbnq td, #xusohnfbnq th {
+#tjsarozfkc thead, #tjsarozfkc tbody, #tjsarozfkc tfoot, #tjsarozfkc tr, #tjsarozfkc td, #tjsarozfkc th {
   border-style: none;
 }
 
-#xusohnfbnq p {
+#tjsarozfkc p {
   margin: 0;
   padding: 0;
 }
 
-#xusohnfbnq .gt_table {
+#tjsarozfkc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2120,12 +2139,12 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-left-color: #D3D3D3;
 }
 
-#xusohnfbnq .gt_caption {
+#tjsarozfkc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xusohnfbnq .gt_title {
+#tjsarozfkc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2137,7 +2156,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-width: 0;
 }
 
-#xusohnfbnq .gt_subtitle {
+#tjsarozfkc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2149,7 +2168,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-top-width: 0;
 }
 
-#xusohnfbnq .gt_heading {
+#tjsarozfkc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2161,13 +2180,13 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#xusohnfbnq .gt_bottom_border {
+#tjsarozfkc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xusohnfbnq .gt_col_headings {
+#tjsarozfkc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2182,7 +2201,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#xusohnfbnq .gt_col_heading {
+#tjsarozfkc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2202,7 +2221,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   overflow-x: hidden;
 }
 
-#xusohnfbnq .gt_column_spanner_outer {
+#tjsarozfkc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2214,15 +2233,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 4px;
 }
 
-#xusohnfbnq .gt_column_spanner_outer:first-child {
+#tjsarozfkc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xusohnfbnq .gt_column_spanner_outer:last-child {
+#tjsarozfkc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xusohnfbnq .gt_column_spanner {
+#tjsarozfkc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2234,11 +2253,11 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   width: 100%;
 }
 
-#xusohnfbnq .gt_spanner_row {
+#tjsarozfkc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xusohnfbnq .gt_group_heading {
+#tjsarozfkc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2264,7 +2283,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   text-align: left;
 }
 
-#xusohnfbnq .gt_empty_group_heading {
+#tjsarozfkc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2279,15 +2298,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   vertical-align: middle;
 }
 
-#xusohnfbnq .gt_from_md > :first-child {
+#tjsarozfkc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xusohnfbnq .gt_from_md > :last-child {
+#tjsarozfkc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xusohnfbnq .gt_row {
+#tjsarozfkc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2306,7 +2325,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   overflow-x: hidden;
 }
 
-#xusohnfbnq .gt_stub {
+#tjsarozfkc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2319,7 +2338,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#xusohnfbnq .gt_stub_row_group {
+#tjsarozfkc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2333,15 +2352,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   vertical-align: top;
 }
 
-#xusohnfbnq .gt_row_group_first td {
+#tjsarozfkc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xusohnfbnq .gt_row_group_first th {
+#tjsarozfkc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xusohnfbnq .gt_summary_row {
+#tjsarozfkc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2351,16 +2370,16 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#xusohnfbnq .gt_first_summary_row {
+#tjsarozfkc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xusohnfbnq .gt_first_summary_row.thick {
+#tjsarozfkc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xusohnfbnq .gt_last_summary_row {
+#tjsarozfkc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2370,7 +2389,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-color: #D3D3D3;
 }
 
-#xusohnfbnq .gt_grand_summary_row {
+#tjsarozfkc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2380,7 +2399,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#xusohnfbnq .gt_first_grand_summary_row {
+#tjsarozfkc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2390,7 +2409,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-top-color: #D3D3D3;
 }
 
-#xusohnfbnq .gt_last_grand_summary_row_top {
+#tjsarozfkc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2400,11 +2419,11 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-color: #D3D3D3;
 }
 
-#xusohnfbnq .gt_striped {
+#tjsarozfkc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xusohnfbnq .gt_table_body {
+#tjsarozfkc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2413,7 +2432,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-color: #D3D3D3;
 }
 
-#xusohnfbnq .gt_footnotes {
+#tjsarozfkc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2427,7 +2446,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#xusohnfbnq .gt_footnote {
+#tjsarozfkc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2436,7 +2455,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#xusohnfbnq .gt_sourcenotes {
+#tjsarozfkc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2450,7 +2469,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#xusohnfbnq .gt_sourcenote {
+#tjsarozfkc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2458,63 +2477,63 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#xusohnfbnq .gt_left {
+#tjsarozfkc .gt_left {
   text-align: left;
 }
 
-#xusohnfbnq .gt_center {
+#tjsarozfkc .gt_center {
   text-align: center;
 }
 
-#xusohnfbnq .gt_right {
+#tjsarozfkc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xusohnfbnq .gt_font_normal {
+#tjsarozfkc .gt_font_normal {
   font-weight: normal;
 }
 
-#xusohnfbnq .gt_font_bold {
+#tjsarozfkc .gt_font_bold {
   font-weight: bold;
 }
 
-#xusohnfbnq .gt_font_italic {
+#tjsarozfkc .gt_font_italic {
   font-style: italic;
 }
 
-#xusohnfbnq .gt_super {
+#tjsarozfkc .gt_super {
   font-size: 65%;
 }
 
-#xusohnfbnq .gt_footnote_marks {
+#tjsarozfkc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xusohnfbnq .gt_asterisk {
+#tjsarozfkc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xusohnfbnq .gt_indent_1 {
+#tjsarozfkc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xusohnfbnq .gt_indent_2 {
+#tjsarozfkc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xusohnfbnq .gt_indent_3 {
+#tjsarozfkc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xusohnfbnq .gt_indent_4 {
+#tjsarozfkc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xusohnfbnq .gt_indent_5 {
+#tjsarozfkc .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2571,7 +2590,11 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
 <p>Cons:</p>
 <ol type="1">
 <li>Importance value does not have an intuitive interpretation</li>
-</ol></section><section id="varpro-canonical-illustration" class="slide level2 smaller"><h2>VarPro canonical illustration</h2>
+</ol></section><section id="general-call-to-varpro" class="slide level2"><h2>General call to varpro</h2>
+<div class="fragment fade-left">
+<p><img data-src="pic/varpro.png" style="width:100.0%"></p>
+</div>
+</section><section id="varpro-canonical-illustration" class="slide level2 smaller"><h2>VarPro canonical illustration</h2>
 <div class="sourceCode" id="cb11" data-code-line-numbers="1-2|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="do">## varpro canonical call</span></span>
 <span id="cb11-2"><a href=""></a>o <span class="ot">&lt;-</span><span class="fu">varpro</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2)</span>
 <span id="cb11-3"><a href=""></a><span class="fu">importance</span>(o)</span>
@@ -2711,105 +2734,801 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
 <img data-src="pic/peakVarPro.png" style="width:80.0%">
 </center>
 </div></div>
-</section><section id="varpro-examples" class="slide level2 smaller"><h2>VarPro examples</h2>
-<div class="sourceCode" id="cb19" data-code-line-numbers="1-5|6-29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a><span class="do">## van de Vijver Microarray Breast Cancer</span></span>
-<span id="cb19-2"><a href=""></a><span class="do">## high dimensional survival example using different split-weights</span></span>
-<span id="cb19-3"><a href=""></a><span class="do">## illustrates guided trees </span></span>
-<span id="cb19-4"><a href=""></a></span>
-<span id="cb19-5"><a href=""></a><span class="fu">data</span>(vdv, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
-<span id="cb19-6"><a href=""></a>f <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">Surv</span>(Time, Censoring)<span class="sc">~</span>.)</span>
-<span id="cb19-7"><a href=""></a>     </span>
-<span id="cb19-8"><a href=""></a><span class="do">## lasso only</span></span>
-<span id="cb19-9"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>))</span>
-<span id="cb19-10"><a href=""></a></span>
-<span id="cb19-11"><a href=""></a><span class="do">## lasso and vimp</span></span>
-<span id="cb19-12"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>))</span>
-<span id="cb19-13"><a href=""></a></span>
-<span id="cb19-14"><a href=""></a><span class="do">## lasso, vimp and shallow trees</span></span>
-<span id="cb19-15"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>))</span>
-<span id="cb19-16"><a href=""></a></span>
-<span id="cb19-17"><a href=""></a><span class="do">## store the original vdv 70 gene signature in object nms</span></span>
-<span id="cb19-18"><a href=""></a><span class="do">## compare methods using 25 runs:</span></span>
-<span id="cb19-19"><a href=""></a>rO <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, <span class="cf">function</span>(b) {</span>
-<span id="cb19-20"><a href=""></a>  <span class="fu">cat</span>(<span class="st">"replication:"</span>, b, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb19-21"><a href=""></a>  o1 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>)</span>
-<span id="cb19-22"><a href=""></a>  o2 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>)</span>
-<span id="cb19-23"><a href=""></a>  o3 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>)</span>
-<span id="cb19-24"><a href=""></a>  o4 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>, <span class="at">sparse =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb19-25"><a href=""></a>  <span class="fu">list</span>(<span class="st">"lasso"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o1)<span class="sc">$</span>variable),</span>
-<span id="cb19-26"><a href=""></a>       <span class="st">"lasso.vimp"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o2)<span class="sc">$</span>variable),</span>
-<span id="cb19-27"><a href=""></a>       <span class="st">"lasso.vimp.tree"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o3)<span class="sc">$</span>variable),</span>
-<span id="cb19-28"><a href=""></a>       <span class="st">"lasso.vimp.sparseoff"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o4)<span class="sc">$</span>variable))</span>
-<span id="cb19-29"><a href=""></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section><section id="varpro-examples-1" class="slide level2 smaller"><h2>VarPro examples</h2>
+</section><section id="varpro-high-dimensional-example" class="slide level2 smaller"><h2>VarPro high-dimensional example</h2>
+<h4 id="van-de-vijver-microarray-breast-cance">van de Vijver Microarray Breast Cance</h4>
+<p>Gene expression profiling for predicting clinical outcome of breast cancer <span class="citation" data-cites="van2002gene">[<a href="#/references" role="doc-biblioref" onclick="">1</a>]</span>. Microarray breast cancer data set of 4707 expression values on 78 patients with survival information</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="ddhhbfimrz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ddhhbfimrz table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ddhhbfimrz thead, #ddhhbfimrz tbody, #ddhhbfimrz tfoot, #ddhhbfimrz tr, #ddhhbfimrz td, #ddhhbfimrz th {
+  border-style: none;
+}
+
+#ddhhbfimrz p {
+  margin: 0;
+  padding: 0;
+}
+
+#ddhhbfimrz .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ddhhbfimrz .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ddhhbfimrz .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ddhhbfimrz .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ddhhbfimrz .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ddhhbfimrz .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ddhhbfimrz .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ddhhbfimrz .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ddhhbfimrz .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ddhhbfimrz .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ddhhbfimrz .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ddhhbfimrz .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ddhhbfimrz .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ddhhbfimrz .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ddhhbfimrz .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ddhhbfimrz .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ddhhbfimrz .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ddhhbfimrz .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ddhhbfimrz .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ddhhbfimrz .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ddhhbfimrz .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ddhhbfimrz .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ddhhbfimrz .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ddhhbfimrz .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ddhhbfimrz .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ddhhbfimrz .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ddhhbfimrz .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ddhhbfimrz .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ddhhbfimrz .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ddhhbfimrz .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ddhhbfimrz .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ddhhbfimrz .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ddhhbfimrz .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ddhhbfimrz .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ddhhbfimrz .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ddhhbfimrz .gt_left {
+  text-align: left;
+}
+
+#ddhhbfimrz .gt_center {
+  text-align: center;
+}
+
+#ddhhbfimrz .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ddhhbfimrz .gt_font_normal {
+  font-weight: normal;
+}
+
+#ddhhbfimrz .gt_font_bold {
+  font-weight: bold;
+}
+
+#ddhhbfimrz .gt_font_italic {
+  font-style: italic;
+}
+
+#ddhhbfimrz .gt_super {
+  font-size: 65%;
+}
+
+#ddhhbfimrz .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ddhhbfimrz .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ddhhbfimrz .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ddhhbfimrz .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ddhhbfimrz .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ddhhbfimrz .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ddhhbfimrz .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead><tr class="header gt_col_headings">
+<th id="Time" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Time</th>
+<th id="Censoring" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Censoring</th>
+<th id="AA555029_RC" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AA555029_RC</th>
+<th id="AA598803_RC" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AA598803_RC</th>
+<th id="AB002301" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB002301</th>
+<th id="AB002308" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB002308</th>
+<th id="AB002331" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB002331</th>
+<th id="AB002351" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB002351</th>
+<th id="AB002445" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB002445</th>
+<th id="AB002448" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB002448</th>
+<th id="AB004064" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB004064</th>
+<th id="AB004857" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB004857</th>
+<th id="AB006625" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB006625</th>
+<th id="AB006628" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB006628</th>
+<th id="AB006746" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB006746</th>
+<th id="AB007458" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB007458</th>
+<th id="AB007855" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB007855</th>
+<th id="AB007857" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB007857</th>
+<th id="AB007883" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB007883</th>
+<th id="AB007888" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB007888</th>
+</tr></thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="Time">12.53</td>
+<td class="gt_row gt_right" headers="Censoring">0</td>
+<td class="gt_row gt_right" headers="AA555029_RC">-0.5049331</td>
+<td class="gt_row gt_right" headers="AA598803_RC">-0.2425008</td>
+<td class="gt_row gt_right" headers="AB002301">-0.199315682</td>
+<td class="gt_row gt_right" headers="AB002308">0.90024251</td>
+<td class="gt_row gt_right" headers="AB002331">0.6311663</td>
+<td class="gt_row gt_right" headers="AB002351">-0.6012690</td>
+<td class="gt_row gt_right" headers="AB002445">0.44181645</td>
+<td class="gt_row gt_right" headers="AB002448">-0.26575425</td>
+<td class="gt_row gt_right" headers="AB004064">-2.80370736</td>
+<td class="gt_row gt_right" headers="AB004857">0.13287713</td>
+<td class="gt_row gt_right" headers="AB006625">-1.1427432</td>
+<td class="gt_row gt_right" headers="AB006628">-0.52818656</td>
+<td class="gt_row gt_right" headers="AB006746">-0.97000301</td>
+<td class="gt_row gt_right" headers="AB007458">0.32222703</td>
+<td class="gt_row gt_right" headers="AB007855">0.41856295</td>
+<td class="gt_row gt_right" headers="AB007857">1.1294556</td>
+<td class="gt_row gt_right" headers="AB007883">0.4218849</td>
+<td class="gt_row gt_right" headers="AB007888">-0.16941833</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Time">6.44</td>
+<td class="gt_row gt_right" headers="Censoring">0</td>
+<td class="gt_row gt_right" headers="AA555029_RC">-0.5879813</td>
+<td class="gt_row gt_right" headers="AA598803_RC">0.4384945</td>
+<td class="gt_row gt_right" headers="AB002301">-0.621200562</td>
+<td class="gt_row gt_right" headers="AB002308">0.09301399</td>
+<td class="gt_row gt_right" headers="AB002331">0.9500715</td>
+<td class="gt_row gt_right" headers="AB002351">-1.4849019</td>
+<td class="gt_row gt_right" headers="AB002445">0.21924725</td>
+<td class="gt_row gt_right" headers="AB002448">0.14616483</td>
+<td class="gt_row gt_right" headers="AB004064">0.08637013</td>
+<td class="gt_row gt_right" headers="AB004857">0.59130323</td>
+<td class="gt_row gt_right" headers="AB006625">1.1859283</td>
+<td class="gt_row gt_right" headers="AB006628">-0.70424873</td>
+<td class="gt_row gt_right" headers="AB006746">-0.62120056</td>
+<td class="gt_row gt_right" headers="AB007458">0.33883667</td>
+<td class="gt_row gt_right" headers="AB007855">0.05979471</td>
+<td class="gt_row gt_right" headers="AB007857">0.1129456</td>
+<td class="gt_row gt_right" headers="AB007883">0.4484603</td>
+<td class="gt_row gt_right" headers="AB007888">-0.05979471</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Time">10.66</td>
+<td class="gt_row gt_right" headers="Censoring">0</td>
+<td class="gt_row gt_right" headers="AA555029_RC">-0.3521244</td>
+<td class="gt_row gt_right" headers="AA598803_RC">-0.2258911</td>
+<td class="gt_row gt_right" headers="AB002301">0.006643856</td>
+<td class="gt_row gt_right" headers="AB002308">0.13952097</td>
+<td class="gt_row gt_right" headers="AB002331">-0.7275022</td>
+<td class="gt_row gt_right" headers="AB002351">-1.0430855</td>
+<td class="gt_row gt_right" headers="AB002445">-0.27572003</td>
+<td class="gt_row gt_right" headers="AB002448">-0.49496728</td>
+<td class="gt_row gt_right" headers="AB004064">0.56140584</td>
+<td class="gt_row gt_right" headers="AB004857">0.71089262</td>
+<td class="gt_row gt_right" headers="AB006625">1.2424011</td>
+<td class="gt_row gt_right" headers="AB006628">-0.77068734</td>
+<td class="gt_row gt_right" headers="AB006746">1.12613368</td>
+<td class="gt_row gt_right" headers="AB007458">-0.38534367</td>
+<td class="gt_row gt_right" headers="AB007855">-0.23253496</td>
+<td class="gt_row gt_right" headers="AB007857">-0.6079128</td>
+<td class="gt_row gt_right" headers="AB007883">-0.6909611</td>
+<td class="gt_row gt_right" headers="AB007888">-1.13609946</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Time">13.00</td>
+<td class="gt_row gt_right" headers="Censoring">0</td>
+<td class="gt_row gt_right" headers="AA555029_RC">-0.4750357</td>
+<td class="gt_row gt_right" headers="AA598803_RC">0.5016111</td>
+<td class="gt_row gt_right" headers="AB002301">-0.671029449</td>
+<td class="gt_row gt_right" headers="AB002308">0.76404345</td>
+<td class="gt_row gt_right" headers="AB002331">-0.9234960</td>
+<td class="gt_row gt_right" headers="AB002351">-1.9267184</td>
+<td class="gt_row gt_right" headers="AB002445">-0.01993157</td>
+<td class="gt_row gt_right" headers="AB002448">0.09301399</td>
+<td class="gt_row gt_right" headers="AB004064">0.41524100</td>
+<td class="gt_row gt_right" headers="AB004857">0.24250075</td>
+<td class="gt_row gt_right" headers="AB006625">-0.9002425</td>
+<td class="gt_row gt_right" headers="AB006628">0.07972627</td>
+<td class="gt_row gt_right" headers="AB006746">-0.43517259</td>
+<td class="gt_row gt_right" headers="AB007458">0.05315085</td>
+<td class="gt_row gt_right" headers="AB007855">-1.56795001</td>
+<td class="gt_row gt_right" headers="AB007857">-0.9102083</td>
+<td class="gt_row gt_right" headers="AB007883">-0.2823639</td>
+<td class="gt_row gt_right" headers="AB007888">-0.12623326</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Time">11.98</td>
+<td class="gt_row gt_right" headers="Censoring">0</td>
+<td class="gt_row gt_right" headers="AA555029_RC">-0.1660964</td>
+<td class="gt_row gt_right" headers="AA598803_RC">0.1361991</td>
+<td class="gt_row gt_right" headers="AB002301">0.989934564</td>
+<td class="gt_row gt_right" headers="AB002308">0.62452251</td>
+<td class="gt_row gt_right" headers="AB002331">0.9168522</td>
+<td class="gt_row gt_right" headers="AB002351">-1.4550045</td>
+<td class="gt_row gt_right" headers="AB002445">0.07972627</td>
+<td class="gt_row gt_right" headers="AB002448">0.77733117</td>
+<td class="gt_row gt_right" headers="AB004064">0.19267184</td>
+<td class="gt_row gt_right" headers="AB004857">-0.37205595</td>
+<td class="gt_row gt_right" headers="AB006625">-0.9700030</td>
+<td class="gt_row gt_right" headers="AB006628">-0.41856295</td>
+<td class="gt_row gt_right" headers="AB006746">-0.07640435</td>
+<td class="gt_row gt_right" headers="AB007458">-0.20263761</td>
+<td class="gt_row gt_right" headers="AB007855">0.54147428</td>
+<td class="gt_row gt_right" headers="AB007857">-0.1926718</td>
+<td class="gt_row gt_right" headers="AB007883">0.4584261</td>
+<td class="gt_row gt_right" headers="AB007888">0.71089262</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Time">11.16</td>
+<td class="gt_row gt_right" headers="Censoring">0</td>
+<td class="gt_row gt_right" headers="AA555029_RC">-0.8935987</td>
+<td class="gt_row gt_right" headers="AA598803_RC">-0.1361991</td>
+<td class="gt_row gt_right" headers="AB002301">0.438494503</td>
+<td class="gt_row gt_right" headers="AB002308">0.56140584</td>
+<td class="gt_row gt_right" headers="AB002331">-0.4551041</td>
+<td class="gt_row gt_right" headers="AB002351">-1.5679500</td>
+<td class="gt_row gt_right" headers="AB002445">-0.42852873</td>
+<td class="gt_row gt_right" headers="AB002448">0.28568581</td>
+<td class="gt_row gt_right" headers="AB004064">-0.25911039</td>
+<td class="gt_row gt_right" headers="AB004857">0.47835764</td>
+<td class="gt_row gt_right" headers="AB006625">2.2356577</td>
+<td class="gt_row gt_right" headers="AB006628">-0.59130323</td>
+<td class="gt_row gt_right" headers="AB006746">-0.83712590</td>
+<td class="gt_row gt_right" headers="AB007458">0.48500150</td>
+<td class="gt_row gt_right" headers="AB007855">-0.03321928</td>
+<td class="gt_row gt_right" headers="AB007857">1.2457230</td>
+<td class="gt_row gt_right" headers="AB007883">-0.1195894</td>
+<td class="gt_row gt_right" headers="AB007888">-0.27239811</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Time">10.14</td>
+<td class="gt_row gt_right" headers="Censoring">0</td>
+<td class="gt_row gt_right" headers="AA555029_RC">-0.4916454</td>
+<td class="gt_row gt_right" headers="AA598803_RC">-0.5746936</td>
+<td class="gt_row gt_right" headers="AB002301">-0.289007753</td>
+<td class="gt_row gt_right" headers="AB002308">0.16941833</td>
+<td class="gt_row gt_right" headers="AB002331">0.9135302</td>
+<td class="gt_row gt_right" headers="AB002351">-0.1129456</td>
+<td class="gt_row gt_right" headers="AB002445">0.20928147</td>
+<td class="gt_row gt_right" headers="AB002448">-0.47171378</td>
+<td class="gt_row gt_right" headers="AB004064">0.52818656</td>
+<td class="gt_row gt_right" headers="AB004857">0.03321928</td>
+<td class="gt_row gt_right" headers="AB006625">-0.8138724</td>
+<td class="gt_row gt_right" headers="AB006628">-0.68431717</td>
+<td class="gt_row gt_right" headers="AB006746">-0.52486461</td>
+<td class="gt_row gt_right" headers="AB007458">0.07640435</td>
+<td class="gt_row gt_right" headers="AB007855">0.69096106</td>
+<td class="gt_row gt_right" headers="AB007857">1.3686343</td>
+<td class="gt_row gt_right" headers="AB007883">-0.1959938</td>
+<td class="gt_row gt_right" headers="AB007888">-0.19599375</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Time">8.80</td>
+<td class="gt_row gt_right" headers="Censoring">0</td>
+<td class="gt_row gt_right" headers="AA555029_RC">-0.4650699</td>
+<td class="gt_row gt_right" headers="AA598803_RC">-0.2956516</td>
+<td class="gt_row gt_right" headers="AB002301">-0.385343671</td>
+<td class="gt_row gt_right" headers="AB002308">-0.26907617</td>
+<td class="gt_row gt_right" headers="AB002331">-0.3587682</td>
+<td class="gt_row gt_right" headers="AB002351">-1.4815799</td>
+<td class="gt_row gt_right" headers="AB002445">-0.97664684</td>
+<td class="gt_row gt_right" headers="AB002448">-0.87366706</td>
+<td class="gt_row gt_right" headers="AB004064">0.60126901</td>
+<td class="gt_row gt_right" headers="AB004857">-0.42188486</td>
+<td class="gt_row gt_right" headers="AB006625">-1.6543202</td>
+<td class="gt_row gt_right" headers="AB006628">-0.57137161</td>
+<td class="gt_row gt_right" headers="AB006746">1.12613368</td>
+<td class="gt_row gt_right" headers="AB007458">-0.57137161</td>
+<td class="gt_row gt_right" headers="AB007855">-0.98661262</td>
+<td class="gt_row gt_right" headers="AB007857">-1.3088397</td>
+<td class="gt_row gt_right" headers="AB007883">-1.0497292</td>
+<td class="gt_row gt_right" headers="AB007888">-0.52486461</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb19" data-code-line-numbers="1|2-3"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a><span class="fu">data</span>(vdv, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)  </span>
+<span id="cb19-2"><a href=""></a><span class="fu">dim</span>(vdv)  </span>
+<span id="cb19-3"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">78</span>  <span class="dv">4707</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section><section id="varpro-high-dimensional-example-1" class="slide level2 smaller"><h2>VarPro high-dimensional example</h2>
+<div class="sourceCode" id="cb20" data-code-line-numbers="1-5|6-29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a><span class="do">## van de Vijver Microarray Breast Cancer</span></span>
+<span id="cb20-2"><a href=""></a><span class="do">## high dimensional survival example using different split-weights</span></span>
+<span id="cb20-3"><a href=""></a><span class="do">## illustrates guided trees </span></span>
+<span id="cb20-4"><a href=""></a></span>
+<span id="cb20-5"><a href=""></a><span class="fu">data</span>(vdv, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
+<span id="cb20-6"><a href=""></a>f <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">Surv</span>(Time, Censoring)<span class="sc">~</span>.)</span>
+<span id="cb20-7"><a href=""></a>     </span>
+<span id="cb20-8"><a href=""></a><span class="do">## lasso only</span></span>
+<span id="cb20-9"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>))</span>
+<span id="cb20-10"><a href=""></a></span>
+<span id="cb20-11"><a href=""></a><span class="do">## lasso and vimp</span></span>
+<span id="cb20-12"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>))</span>
+<span id="cb20-13"><a href=""></a></span>
+<span id="cb20-14"><a href=""></a><span class="do">## lasso, vimp and shallow trees</span></span>
+<span id="cb20-15"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>))</span>
+<span id="cb20-16"><a href=""></a></span>
+<span id="cb20-17"><a href=""></a><span class="do">## store the original vdv 70 gene signature in object nms</span></span>
+<span id="cb20-18"><a href=""></a><span class="do">## compare methods using 25 runs:</span></span>
+<span id="cb20-19"><a href=""></a>rO <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, <span class="cf">function</span>(b) {</span>
+<span id="cb20-20"><a href=""></a>  <span class="fu">cat</span>(<span class="st">"replication:"</span>, b, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb20-21"><a href=""></a>  o1 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>)</span>
+<span id="cb20-22"><a href=""></a>  o2 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>)</span>
+<span id="cb20-23"><a href=""></a>  o3 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>)</span>
+<span id="cb20-24"><a href=""></a>  o4 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>, <span class="at">sparse =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb20-25"><a href=""></a>  <span class="fu">list</span>(<span class="st">"lasso"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o1)<span class="sc">$</span>variable),</span>
+<span id="cb20-26"><a href=""></a>       <span class="st">"lasso.vimp"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o2)<span class="sc">$</span>variable),</span>
+<span id="cb20-27"><a href=""></a>       <span class="st">"lasso.vimp.tree"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o3)<span class="sc">$</span>variable),</span>
+<span id="cb20-28"><a href=""></a>       <span class="st">"lasso.vimp.sparseoff"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o4)<span class="sc">$</span>variable))</span>
+<span id="cb20-29"><a href=""></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section><section id="varpro-high-dimensional-example-2" class="slide level2 smaller"><h2>VarPro high-dimensional example</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a><span class="fu">data</span>(vdv, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
-<span id="cb20-2"><a href=""></a>f <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">Surv</span>(Time, Censoring)<span class="sc">~</span>.)</span>
-<span id="cb20-3"><a href=""></a>     </span>
-<span id="cb20-4"><a href=""></a><span class="do">## lasso only</span></span>
-<span id="cb20-5"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>))</span>
-<span id="cb20-6"><a href=""></a></span>
-<span id="cb20-7"><a href=""></a><span class="do">## lasso and vimp</span></span>
-<span id="cb20-8"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>))</span>
-<span id="cb20-9"><a href=""></a></span>
-<span id="cb20-10"><a href=""></a><span class="do">## lasso, vimp and shallow trees</span></span>
-<span id="cb20-11"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>))</span>
-<span id="cb20-12"><a href=""></a></span>
-<span id="cb20-13"><a href=""></a><span class="do">## store the original vdv 70 gene signature in object nms</span></span>
-<span id="cb20-14"><a href=""></a><span class="do">## compare methods using 25 runs:</span></span>
-<span id="cb20-15"><a href=""></a>rO <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, <span class="cf">function</span>(b) {</span>
-<span id="cb20-16"><a href=""></a>  <span class="fu">cat</span>(<span class="st">"replication:"</span>, b, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb20-17"><a href=""></a>  o1 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>)</span>
-<span id="cb20-18"><a href=""></a>  o2 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>)</span>
-<span id="cb20-19"><a href=""></a>  o3 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>)</span>
-<span id="cb20-20"><a href=""></a>  o4 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>, <span class="at">sparse =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb20-21"><a href=""></a>  <span class="fu">list</span>(<span class="st">"lasso"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o1)<span class="sc">$</span>variable),</span>
-<span id="cb20-22"><a href=""></a>       <span class="st">"lasso.vimp"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o2)<span class="sc">$</span>variable),</span>
-<span id="cb20-23"><a href=""></a>       <span class="st">"lasso.vimp.tree"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o3)<span class="sc">$</span>variable),</span>
-<span id="cb20-24"><a href=""></a>       <span class="st">"lasso.vimp.sparseoff"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o4)<span class="sc">$</span>variable))</span>
-<span id="cb20-25"><a href=""></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr style="margin: 23px; visibility:hidden;">
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a><span class="fu">data</span>(vdv, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
+<span id="cb21-2"><a href=""></a>f <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">Surv</span>(Time, Censoring)<span class="sc">~</span>.)</span>
+<span id="cb21-3"><a href=""></a>     </span>
+<span id="cb21-4"><a href=""></a><span class="do">## lasso only</span></span>
+<span id="cb21-5"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>))</span>
+<span id="cb21-6"><a href=""></a></span>
+<span id="cb21-7"><a href=""></a><span class="do">## lasso and vimp</span></span>
+<span id="cb21-8"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>))</span>
+<span id="cb21-9"><a href=""></a></span>
+<span id="cb21-10"><a href=""></a><span class="do">## lasso, vimp and shallow trees</span></span>
+<span id="cb21-11"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>))</span>
+<span id="cb21-12"><a href=""></a></span>
+<span id="cb21-13"><a href=""></a><span class="do">## store the original vdv 70 gene signature in object nms</span></span>
+<span id="cb21-14"><a href=""></a><span class="do">## compare methods using 25 runs:</span></span>
+<span id="cb21-15"><a href=""></a>rO <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, <span class="cf">function</span>(b) {</span>
+<span id="cb21-16"><a href=""></a>  <span class="fu">cat</span>(<span class="st">"replication:"</span>, b, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb21-17"><a href=""></a>  o1 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>)</span>
+<span id="cb21-18"><a href=""></a>  o2 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>)</span>
+<span id="cb21-19"><a href=""></a>  o3 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>)</span>
+<span id="cb21-20"><a href=""></a>  o4 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>, <span class="at">sparse =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb21-21"><a href=""></a>  <span class="fu">list</span>(<span class="st">"lasso"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o1)<span class="sc">$</span>variable),</span>
+<span id="cb21-22"><a href=""></a>       <span class="st">"lasso.vimp"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o2)<span class="sc">$</span>variable),</span>
+<span id="cb21-23"><a href=""></a>       <span class="st">"lasso.vimp.tree"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o3)<span class="sc">$</span>variable),</span>
+<span id="cb21-24"><a href=""></a>       <span class="st">"lasso.vimp.sparseoff"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o4)<span class="sc">$</span>variable))</span>
+<span id="cb21-25"><a href=""></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment fade-left" style="width:50%;">
-<div class="sourceCode" id="cb21" data-code-line-numbers="1-23|25-35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a><span class="sc">$</span>lasso</span>
-<span id="cb21-2"><a href=""></a>[<span class="dv">1</span>] <span class="st">"AF201951"</span>       <span class="st">"AL080059"</span>      </span>
-<span id="cb21-3"><a href=""></a>[<span class="dv">3</span>] <span class="st">"Contig25991"</span>    <span class="st">"Contig28552_RC"</span></span>
-<span id="cb21-4"><a href=""></a>[<span class="dv">5</span>] <span class="st">"NM_000436"</span>      <span class="st">"NM_003748"</span>     </span>
-<span id="cb21-5"><a href=""></a>[<span class="dv">7</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006681"</span>     </span>
-<span id="cb21-6"><a href=""></a>[<span class="dv">9</span>] <span class="st">"NM_020974"</span>     </span>
-<span id="cb21-7"><a href=""></a></span>
-<span id="cb21-8"><a href=""></a><span class="sc">$</span>lasso.vimp</span>
-<span id="cb21-9"><a href=""></a> [<span class="dv">1</span>] <span class="st">"AL137718"</span>       <span class="st">"Contig25991"</span>   </span>
-<span id="cb21-10"><a href=""></a> [<span class="dv">3</span>] <span class="st">"Contig28552_RC"</span> <span class="st">"Contig51464_RC"</span></span>
-<span id="cb21-11"><a href=""></a> [<span class="dv">5</span>] <span class="st">"Contig55377_RC"</span> <span class="st">"NM_000436"</span>     </span>
-<span id="cb21-12"><a href=""></a> [<span class="dv">7</span>] <span class="st">"NM_003239"</span>      <span class="st">"NM_003748"</span>     </span>
-<span id="cb21-13"><a href=""></a> [<span class="dv">9</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006681"</span>     </span>
-<span id="cb21-14"><a href=""></a>[<span class="dv">11</span>] <span class="st">"NM_016448"</span>      <span class="st">"NM_020974"</span>     </span>
-<span id="cb21-15"><a href=""></a></span>
-<span id="cb21-16"><a href=""></a><span class="sc">$</span>lasso.vimp.tree</span>
-<span id="cb21-17"><a href=""></a> [<span class="dv">1</span>] <span class="st">"AA555029_RC"</span>    <span class="st">"AF201951"</span>      </span>
-<span id="cb21-18"><a href=""></a> [<span class="dv">3</span>] <span class="st">"AL080059"</span>       <span class="st">"Contig25991"</span>   </span>
-<span id="cb21-19"><a href=""></a> [<span class="dv">5</span>] <span class="st">"Contig28552_RC"</span> <span class="st">"Contig55377_RC"</span></span>
-<span id="cb21-20"><a href=""></a> [<span class="dv">7</span>] <span class="st">"NM_000436"</span>      <span class="st">"NM_003748"</span>     </span>
-<span id="cb21-21"><a href=""></a> [<span class="dv">9</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006117"</span>     </span>
-<span id="cb21-22"><a href=""></a>[<span class="dv">11</span>] <span class="st">"NM_006681"</span>      <span class="st">"NM_016448"</span>     </span>
-<span id="cb21-23"><a href=""></a>[<span class="dv">13</span>] <span class="st">"NM_020974"</span>     </span>
-<span id="cb21-24"><a href=""></a></span>
-<span id="cb21-25"><a href=""></a><span class="sc">$</span>lasso.vimp.sparseoff</span>
-<span id="cb21-26"><a href=""></a> [<span class="dv">1</span>] <span class="st">"AF201951"</span>       <span class="st">"AF257175"</span>      </span>
-<span id="cb21-27"><a href=""></a> [<span class="dv">3</span>] <span class="st">"AL080059"</span>       <span class="st">"AL137718"</span>      </span>
-<span id="cb21-28"><a href=""></a> [<span class="dv">5</span>] <span class="st">"Contig25991"</span>    <span class="st">"Contig28552_RC"</span></span>
-<span id="cb21-29"><a href=""></a> [<span class="dv">7</span>] <span class="st">"Contig40831_RC"</span> <span class="st">"Contig48328_RC"</span></span>
-<span id="cb21-30"><a href=""></a> [<span class="dv">9</span>] <span class="st">"Contig51464_RC"</span> <span class="st">"Contig55377_RC"</span></span>
-<span id="cb21-31"><a href=""></a>[<span class="dv">11</span>] <span class="st">"Contig63102_RC"</span> <span class="st">"NM_002916"</span>     </span>
-<span id="cb21-32"><a href=""></a>[<span class="dv">13</span>] <span class="st">"NM_003239"</span>      <span class="st">"NM_003748"</span>     </span>
-<span id="cb21-33"><a href=""></a>[<span class="dv">15</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006117"</span>     </span>
-<span id="cb21-34"><a href=""></a>[<span class="dv">17</span>] <span class="st">"NM_006681"</span>      <span class="st">"NM_016448"</span>     </span>
-<span id="cb21-35"><a href=""></a>[<span class="dv">19</span>] <span class="st">"NM_020974"</span>     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!-- -->
+<h4 id="intersection-with-vdv-70-gene-signature">Intersection with VDV 70 gene signature</h4>
+<div class="sourceCode" id="cb22" data-code-line-numbers="1-23|25-35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="sc">$</span>lasso</span>
+<span id="cb22-2"><a href=""></a>[<span class="dv">1</span>] <span class="st">"AF201951"</span>       <span class="st">"AL080059"</span>      </span>
+<span id="cb22-3"><a href=""></a>[<span class="dv">3</span>] <span class="st">"Contig25991"</span>    <span class="st">"Contig28552_RC"</span></span>
+<span id="cb22-4"><a href=""></a>[<span class="dv">5</span>] <span class="st">"NM_000436"</span>      <span class="st">"NM_003748"</span>     </span>
+<span id="cb22-5"><a href=""></a>[<span class="dv">7</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006681"</span>     </span>
+<span id="cb22-6"><a href=""></a>[<span class="dv">9</span>] <span class="st">"NM_020974"</span>     </span>
+<span id="cb22-7"><a href=""></a></span>
+<span id="cb22-8"><a href=""></a><span class="sc">$</span>lasso.vimp</span>
+<span id="cb22-9"><a href=""></a> [<span class="dv">1</span>] <span class="st">"AL137718"</span>       <span class="st">"Contig25991"</span>   </span>
+<span id="cb22-10"><a href=""></a> [<span class="dv">3</span>] <span class="st">"Contig28552_RC"</span> <span class="st">"Contig51464_RC"</span></span>
+<span id="cb22-11"><a href=""></a> [<span class="dv">5</span>] <span class="st">"Contig55377_RC"</span> <span class="st">"NM_000436"</span>     </span>
+<span id="cb22-12"><a href=""></a> [<span class="dv">7</span>] <span class="st">"NM_003239"</span>      <span class="st">"NM_003748"</span>     </span>
+<span id="cb22-13"><a href=""></a> [<span class="dv">9</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006681"</span>     </span>
+<span id="cb22-14"><a href=""></a>[<span class="dv">11</span>] <span class="st">"NM_016448"</span>      <span class="st">"NM_020974"</span>     </span>
+<span id="cb22-15"><a href=""></a></span>
+<span id="cb22-16"><a href=""></a><span class="sc">$</span>lasso.vimp.tree</span>
+<span id="cb22-17"><a href=""></a> [<span class="dv">1</span>] <span class="st">"AA555029_RC"</span>    <span class="st">"AF201951"</span>      </span>
+<span id="cb22-18"><a href=""></a> [<span class="dv">3</span>] <span class="st">"AL080059"</span>       <span class="st">"Contig25991"</span>   </span>
+<span id="cb22-19"><a href=""></a> [<span class="dv">5</span>] <span class="st">"Contig28552_RC"</span> <span class="st">"Contig55377_RC"</span></span>
+<span id="cb22-20"><a href=""></a> [<span class="dv">7</span>] <span class="st">"NM_000436"</span>      <span class="st">"NM_003748"</span>     </span>
+<span id="cb22-21"><a href=""></a> [<span class="dv">9</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006117"</span>     </span>
+<span id="cb22-22"><a href=""></a>[<span class="dv">11</span>] <span class="st">"NM_006681"</span>      <span class="st">"NM_016448"</span>     </span>
+<span id="cb22-23"><a href=""></a>[<span class="dv">13</span>] <span class="st">"NM_020974"</span>     </span>
+<span id="cb22-24"><a href=""></a></span>
+<span id="cb22-25"><a href=""></a><span class="sc">$</span>lasso.vimp.sparseoff</span>
+<span id="cb22-26"><a href=""></a> [<span class="dv">1</span>] <span class="st">"AF201951"</span>       <span class="st">"AF257175"</span>      </span>
+<span id="cb22-27"><a href=""></a> [<span class="dv">3</span>] <span class="st">"AL080059"</span>       <span class="st">"AL137718"</span>      </span>
+<span id="cb22-28"><a href=""></a> [<span class="dv">5</span>] <span class="st">"Contig25991"</span>    <span class="st">"Contig28552_RC"</span></span>
+<span id="cb22-29"><a href=""></a> [<span class="dv">7</span>] <span class="st">"Contig40831_RC"</span> <span class="st">"Contig48328_RC"</span></span>
+<span id="cb22-30"><a href=""></a> [<span class="dv">9</span>] <span class="st">"Contig51464_RC"</span> <span class="st">"Contig55377_RC"</span></span>
+<span id="cb22-31"><a href=""></a>[<span class="dv">11</span>] <span class="st">"Contig63102_RC"</span> <span class="st">"NM_002916"</span>     </span>
+<span id="cb22-32"><a href=""></a>[<span class="dv">13</span>] <span class="st">"NM_003239"</span>      <span class="st">"NM_003748"</span>     </span>
+<span id="cb22-33"><a href=""></a>[<span class="dv">15</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006117"</span>     </span>
+<span id="cb22-34"><a href=""></a>[<span class="dv">17</span>] <span class="st">"NM_006681"</span>      <span class="st">"NM_016448"</span>     </span>
+<span id="cb22-35"><a href=""></a>[<span class="dv">19</span>] <span class="st">"NM_020974"</span>     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
+</section><section id="outline" class="slide level2 smaller" data-background-color="azure"><h2>Outline</h2>
+<div class="columns">
+<div class="column" style="width:47.5%;">
+<h4 id="part-i-training"><a href="https://luminwin.github.io/shortCourse/presentationPartI.html">Part I: Training</a></h4>
+<ol type="1">
+<li>Quick start</li>
+<li>Data structures allowed</li>
+<li>Training (grow) with examples <br>(regression, classification, survival)</li>
+</ol>
+<h4 id="part-ii-inference-and-prediction"><a href="https://luminwin.github.io/shortCourse/presentationPartII.html">Part II: Inference and Prediction</a></h4>
+<ol type="1">
+<li>Inference (OOB)</li>
+<li>Prediction Error</li>
+<li>Prediction</li>
+<li>Restore</li>
+<li>Partial Plots</li>
+</ol>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:47.5%;">
+<h4 id="part-iii-variable-selection"><a href="https://luminwin.github.io/shortCourse/presentationPartIII.html">Part III: Variable Selection</a></h4>
+<ol type="1">
+<li>VIMP</li>
+<li>Subsampling (Confidence Intervals)</li>
+<li>Minimal Depth</li>
+<li>VarPro</li>
+</ol>
+<h4 id="part-iv-advanced-examples"><a href="https://luminwin.github.io/shortCourse/presentationPartIV.html">Part IV: Advanced Examples</a></h4>
+<ol type="1">
+<li>Class Imbalanced Data</li>
+<li>Competing Risks</li>
+<li>Multivariate Forests</li>
+</ol>
+</div></div>
+</section><section id="references" class="slide level2 smaller scrollable"><h2>References</h2>
 <div class="quarto-auto-generated-content">
 <p><img src="images/rfsrc.svg" class="slide-logo"></p>
 <div class="footer footer-default">
 <p><a href="https://randomforestsrc.org" class="uri">https://randomforestsrc.org</a></p>
+</div>
+</div>
+<div id="refs" class="references csl-bib-body" role="list">
+<div id="ref-van2002gene" class="csl-entry" role="listitem">
+1. Van’t Veer LJ, Dai H, Van De Vijver MJ, He YD, Hart AA, Mao M, et al. Gene expression profiling predicts clinical outcome of breast cancer. Nature. 2002;415:530–6.
 </div>
 </div>
 </section>
