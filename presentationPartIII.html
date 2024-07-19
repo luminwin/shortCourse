@@ -480,9 +480,26 @@ Hemant Ishwaran and Min Lu <br> University of Miami
 <span id="cb5-2"><a href=""></a>obj &lt;- rfsrc(Species~., data=iris)</span>
 <span id="cb5-3"><a href=""></a>vimp(iris.obj, obj.xvar.names[1:2], importance="permute", joint=TRUE)$importance</span>
 <span id="cb5-4"><a href=""></a>vimp(iris.obj, obj.xvar.names[3:4], importance="permute", joint=TRUE)$importance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section><section id="general-call-to-vimp" class="slide level2"><h2>General call to vimp</h2>
+</section><section id="general-call-to-vimp" class="slide level2 smaller"><h2>General call to vimp</h2>
 <div class="fragment fade-left">
 <p><img data-src="pic/vimp.png" style="width:100.0%"></p>
+</div>
+<div class="fragment fade-left">
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="do">## VIMP for all variables </span></span>
+<span id="cb6-2"><a href=""></a>iris.obj <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(Species <span class="sc">~</span> ., <span class="at">data =</span> iris)</span>
+<span id="cb6-3"><a href=""></a><span class="fu">print</span>(<span class="fu">vimp</span>(iris.obj)<span class="sc">$</span>importance)</span>
+<span id="cb6-4"><a href=""></a><span class="sc">&gt;</span>                     all     setosa versicolor   virginica</span>
+<span id="cb6-5"><a href=""></a><span class="sc">&gt;</span> Sepal.Length <span class="fl">0.06857263</span> <span class="fl">0.09785815</span> <span class="fl">0.42079003</span> <span class="fl">0.034794007</span></span>
+<span id="cb6-6"><a href=""></a><span class="sc">&gt;</span> Sepal.Width  <span class="fl">0.02520082</span> <span class="fl">0.11525515</span> <span class="fl">0.08481039</span> <span class="fl">0.003261938</span></span>
+<span id="cb6-7"><a href=""></a><span class="sc">&gt;</span> Petal.Length <span class="fl">0.55673198</span> <span class="fl">1.44395131</span> <span class="fl">1.80602645</span> <span class="fl">1.241711139</span></span>
+<span id="cb6-8"><a href=""></a><span class="sc">&gt;</span> Petal.Width  <span class="fl">0.60811332</span> <span class="fl">1.75601006</span> <span class="fl">2.00391736</span> <span class="fl">1.144940306</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr style="margin: 2px; visibility:hidden;">
+<div class="fragment fade-left">
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="do">## joint VIMP </span></span>
+<span id="cb7-2"><a href=""></a><span class="fu">print</span>(<span class="fu">vimp</span>(iris.obj, <span class="fu">c</span>(<span class="st">"Petal.Length"</span>, <span class="st">"Petal.Width"</span>), <span class="at">joint =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>importance)</span>
+<span id="cb7-3"><a href=""></a><span class="sc">&gt;</span>             all   setosa versicolor virginica</span>
+<span id="cb7-4"><a href=""></a><span class="sc">&gt;</span> joint <span class="fl">0.9336724</span> <span class="fl">2.593241</span>   <span class="fl">2.447541</span>  <span class="fl">2.489946</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="vimp-illustration-using-peakvo2" class="slide level2 smaller"><h2>VIMP illustration using peakVO2</h2>
 <p>We have <span class="math inline">\(n=2231\)</span> cardiovascular patients with systolic heart failure and all underwent cardiopulmonary stress testing. The outcome is all cause mortality (mean follow-up of 5 years, 742 patients died). Baseline characteristics and exercise stress test results were recorded (<span class="math inline">\(p=39\)</span>).</p>
@@ -507,11 +524,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
 <p>CI are obtained using normal approximations <span class="math display">\[
 \texttt{vimp} \pm z_{\alpha/2} \hat{\sigma}
 \]</span> where <span class="math inline">\(\hat{\sigma}\)</span> is the subsampled standard error estimator</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="do">## example using peakVO2</span></span>
-<span id="cb6-2"><a href=""></a><span class="fu">data</span>(peakVO2, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
-<span id="cb6-3"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2, <span class="at">importance=</span><span class="st">"permute"</span>)</span>
-<span id="cb6-4"><a href=""></a>oo <span class="ot">&lt;-</span> <span class="fu">subsample</span>(o)</span>
-<span id="cb6-5"><a href=""></a><span class="fu">plot.vimp.ci</span>(oo, <span class="at">alpha=</span>.<span class="dv">05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="do">## example using peakVO2</span></span>
+<span id="cb8-2"><a href=""></a><span class="fu">data</span>(peakVO2, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
+<span id="cb8-3"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2, <span class="at">importance=</span><span class="st">"permute"</span>)</span>
+<span id="cb8-4"><a href=""></a>oo <span class="ot">&lt;-</span> <span class="fu">subsample</span>(o)</span>
+<span id="cb8-5"><a href=""></a><span class="fu">plot.vimp.ci</span>(oo, <span class="at">alpha=</span>.<span class="dv">05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section><section id="general-call-to-subsample" class="slide level2"><h2>General call to subsample</h2>
+<div class="fragment fade-left">
+<p><img data-src="pic/subsample.png" style="width:100.0%"></p>
+</div>
 </section><section id="minimal-depth" class="slide level2 smaller"><h2>Minimal depth</h2>
 <p>Measures importance of a variable by how close it splits to the root</p>
 <p>Pros:</p>
@@ -526,14 +547,14 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
 </ol></section><section id="minimal-depth-1" class="slide level2"><h2>Minimal depth</h2>
 <center>
 <p><img data-src="pic/minimal_depth.png" style="width:70.0%"></p>
-</center></section><section id="general-call-to-plot.variable" class="slide level2"><h2>General call to plot.variable</h2>
+</center></section><section id="general-call-to-max.subtree" class="slide level2"><h2>General call to max.subtree</h2>
 <div class="fragment fade-left">
 <p><img data-src="pic/maxSubtree.png" style="width:100.0%"></p>
 </div>
 </section><section id="minimal-depth-illustration-using-peakvo2" class="slide level2 smaller"><h2>Minimal depth illustration using peakVO2</h2>
-<div class="sourceCode" id="cb7" data-code-line-numbers="1|2-3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>md <span class="ot">&lt;-</span> <span class="fu">max.subtree</span>(o)<span class="sc">$</span>order[, <span class="dv">1</span>]</span>
-<span id="cb7-2"><a href=""></a><span class="fu">barplot</span>(<span class="fu">sort</span>(md), </span>
-<span id="cb7-3"><a href=""></a>        <span class="at">las=</span><span class="dv">2</span>, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"cadetblue3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9" data-code-line-numbers="1|2-3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>md <span class="ot">&lt;-</span> <span class="fu">max.subtree</span>(o)<span class="sc">$</span>order[, <span class="dv">1</span>]</span>
+<span id="cb9-2"><a href=""></a><span class="fu">barplot</span>(<span class="fu">sort</span>(md), </span>
+<span id="cb9-3"><a href=""></a>        <span class="at">las=</span><span class="dv">2</span>, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"cadetblue3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment fade-left">
 <center>
 <img data-src="pic/peakMinimalDepth.png" style="width:60.0%">
@@ -542,20 +563,20 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
 </section><section id="minimal-depth-illustration-using-peakvo2-1" class="slide level2 smaller"><h2>Minimal depth illustration using peakVO2</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>md <span class="ot">&lt;-</span> <span class="fu">max.subtree</span>(o)<span class="sc">$</span>order[, <span class="dv">1</span>]</span>
-<span id="cb8-2"><a href=""></a><span class="fu">barplot</span>(<span class="fu">sort</span>(md), </span>
-<span id="cb8-3"><a href=""></a>        <span class="at">las=</span><span class="dv">2</span>, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"cadetblue3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>md <span class="ot">&lt;-</span> <span class="fu">max.subtree</span>(o)<span class="sc">$</span>order[, <span class="dv">1</span>]</span>
+<span id="cb10-2"><a href=""></a><span class="fu">barplot</span>(<span class="fu">sort</span>(md), </span>
+<span id="cb10-3"><a href=""></a>        <span class="at">las=</span><span class="dv">2</span>, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"cadetblue3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <br><br><center>
 <img data-src="pic/peakMinimalDepth.png" style="width:90.0%">
 </center>
 </div><div class="column fragment fade-left" style="width:50%;">
-<div class="sourceCode" id="cb9" data-code-line-numbers="1-4|5-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="do">## guide random feature selection with number of times variable splits</span></span>
-<span id="cb9-2"><a href=""></a>xvar.used <span class="ot">&lt;-</span> <span class="fu">predict</span>(o, <span class="at">nodedepth =</span> <span class="dv">6</span>, <span class="at">var.used=</span><span class="st">"all.trees"</span>, <span class="at">mtry =</span> <span class="cn">Inf</span>, </span>
-<span id="cb9-3"><a href=""></a>                <span class="at">nsplit =</span> <span class="dv">100</span>)<span class="sc">$</span>var.used</span>
-<span id="cb9-4"><a href=""></a>os <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2, <span class="at">xvar.wt =</span> xvar.used)</span>
-<span id="cb9-5"><a href=""></a>mds <span class="ot">&lt;-</span> <span class="fu">max.subtree</span>(os)<span class="sc">$</span>order[, <span class="dv">1</span>]</span>
-<span id="cb9-6"><a href=""></a><span class="fu">barplot</span>(<span class="fu">sort</span>(mds), </span>
-<span id="cb9-7"><a href=""></a>        <span class="at">las=</span><span class="dv">2</span>, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"cadetblue3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11" data-code-line-numbers="1-4|5-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="do">## guide random feature selection with number of times variable splits</span></span>
+<span id="cb11-2"><a href=""></a>xvar.used <span class="ot">&lt;-</span> <span class="fu">predict</span>(o, <span class="at">nodedepth =</span> <span class="dv">6</span>, <span class="at">var.used=</span><span class="st">"all.trees"</span>, <span class="at">mtry =</span> <span class="cn">Inf</span>, </span>
+<span id="cb11-3"><a href=""></a>                <span class="at">nsplit =</span> <span class="dv">100</span>)<span class="sc">$</span>var.used</span>
+<span id="cb11-4"><a href=""></a>os <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2, <span class="at">xvar.wt =</span> xvar.used)</span>
+<span id="cb11-5"><a href=""></a>mds <span class="ot">&lt;-</span> <span class="fu">max.subtree</span>(os)<span class="sc">$</span>order[, <span class="dv">1</span>]</span>
+<span id="cb11-6"><a href=""></a><span class="fu">barplot</span>(<span class="fu">sort</span>(mds), </span>
+<span id="cb11-7"><a href=""></a>        <span class="at">las=</span><span class="dv">2</span>, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"cadetblue3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment fade-left">
 <center>
 <img data-src="pic/peakMinimalDepths.png" style="width:90.0%">
@@ -574,23 +595,23 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
 <div class="column" style="width:80%;">
 <div class="cell">
 <div class="cell-output-display">
-<div id="vmlsuauqvv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vmlsuauqvv table {
+<div id="kjsmgbpced" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kjsmgbpced table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vmlsuauqvv thead, #vmlsuauqvv tbody, #vmlsuauqvv tfoot, #vmlsuauqvv tr, #vmlsuauqvv td, #vmlsuauqvv th {
+#kjsmgbpced thead, #kjsmgbpced tbody, #kjsmgbpced tfoot, #kjsmgbpced tr, #kjsmgbpced td, #kjsmgbpced th {
   border-style: none;
 }
 
-#vmlsuauqvv p {
+#kjsmgbpced p {
   margin: 0;
   padding: 0;
 }
 
-#vmlsuauqvv .gt_table {
+#kjsmgbpced .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -616,12 +637,12 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-left-color: #D3D3D3;
 }
 
-#vmlsuauqvv .gt_caption {
+#kjsmgbpced .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vmlsuauqvv .gt_title {
+#kjsmgbpced .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -633,7 +654,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-width: 0;
 }
 
-#vmlsuauqvv .gt_subtitle {
+#kjsmgbpced .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -645,7 +666,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-top-width: 0;
 }
 
-#vmlsuauqvv .gt_heading {
+#kjsmgbpced .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -657,13 +678,13 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#vmlsuauqvv .gt_bottom_border {
+#kjsmgbpced .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vmlsuauqvv .gt_col_headings {
+#kjsmgbpced .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -678,7 +699,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#vmlsuauqvv .gt_col_heading {
+#kjsmgbpced .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -698,7 +719,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   overflow-x: hidden;
 }
 
-#vmlsuauqvv .gt_column_spanner_outer {
+#kjsmgbpced .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -710,15 +731,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 4px;
 }
 
-#vmlsuauqvv .gt_column_spanner_outer:first-child {
+#kjsmgbpced .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vmlsuauqvv .gt_column_spanner_outer:last-child {
+#kjsmgbpced .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vmlsuauqvv .gt_column_spanner {
+#kjsmgbpced .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -730,11 +751,11 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   width: 100%;
 }
 
-#vmlsuauqvv .gt_spanner_row {
+#kjsmgbpced .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vmlsuauqvv .gt_group_heading {
+#kjsmgbpced .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -760,7 +781,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   text-align: left;
 }
 
-#vmlsuauqvv .gt_empty_group_heading {
+#kjsmgbpced .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -775,15 +796,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   vertical-align: middle;
 }
 
-#vmlsuauqvv .gt_from_md > :first-child {
+#kjsmgbpced .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vmlsuauqvv .gt_from_md > :last-child {
+#kjsmgbpced .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vmlsuauqvv .gt_row {
+#kjsmgbpced .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -802,7 +823,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   overflow-x: hidden;
 }
 
-#vmlsuauqvv .gt_stub {
+#kjsmgbpced .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -815,7 +836,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#vmlsuauqvv .gt_stub_row_group {
+#kjsmgbpced .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -829,15 +850,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   vertical-align: top;
 }
 
-#vmlsuauqvv .gt_row_group_first td {
+#kjsmgbpced .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vmlsuauqvv .gt_row_group_first th {
+#kjsmgbpced .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vmlsuauqvv .gt_summary_row {
+#kjsmgbpced .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -847,16 +868,16 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#vmlsuauqvv .gt_first_summary_row {
+#kjsmgbpced .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vmlsuauqvv .gt_first_summary_row.thick {
+#kjsmgbpced .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vmlsuauqvv .gt_last_summary_row {
+#kjsmgbpced .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -866,7 +887,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-color: #D3D3D3;
 }
 
-#vmlsuauqvv .gt_grand_summary_row {
+#kjsmgbpced .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -876,7 +897,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#vmlsuauqvv .gt_first_grand_summary_row {
+#kjsmgbpced .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -886,7 +907,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-top-color: #D3D3D3;
 }
 
-#vmlsuauqvv .gt_last_grand_summary_row_top {
+#kjsmgbpced .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -896,11 +917,11 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-color: #D3D3D3;
 }
 
-#vmlsuauqvv .gt_striped {
+#kjsmgbpced .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vmlsuauqvv .gt_table_body {
+#kjsmgbpced .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -909,7 +930,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-color: #D3D3D3;
 }
 
-#vmlsuauqvv .gt_footnotes {
+#kjsmgbpced .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -923,7 +944,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#vmlsuauqvv .gt_footnote {
+#kjsmgbpced .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -932,7 +953,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#vmlsuauqvv .gt_sourcenotes {
+#kjsmgbpced .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -946,7 +967,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#vmlsuauqvv .gt_sourcenote {
+#kjsmgbpced .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -954,63 +975,63 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#vmlsuauqvv .gt_left {
+#kjsmgbpced .gt_left {
   text-align: left;
 }
 
-#vmlsuauqvv .gt_center {
+#kjsmgbpced .gt_center {
   text-align: center;
 }
 
-#vmlsuauqvv .gt_right {
+#kjsmgbpced .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vmlsuauqvv .gt_font_normal {
+#kjsmgbpced .gt_font_normal {
   font-weight: normal;
 }
 
-#vmlsuauqvv .gt_font_bold {
+#kjsmgbpced .gt_font_bold {
   font-weight: bold;
 }
 
-#vmlsuauqvv .gt_font_italic {
+#kjsmgbpced .gt_font_italic {
   font-style: italic;
 }
 
-#vmlsuauqvv .gt_super {
+#kjsmgbpced .gt_super {
   font-size: 65%;
 }
 
-#vmlsuauqvv .gt_footnote_marks {
+#kjsmgbpced .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vmlsuauqvv .gt_asterisk {
+#kjsmgbpced .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vmlsuauqvv .gt_indent_1 {
+#kjsmgbpced .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vmlsuauqvv .gt_indent_2 {
+#kjsmgbpced .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vmlsuauqvv .gt_indent_3 {
+#kjsmgbpced .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vmlsuauqvv .gt_indent_4 {
+#kjsmgbpced .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vmlsuauqvv .gt_indent_5 {
+#kjsmgbpced .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1108,23 +1129,23 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
 </div><div class="column" style="width:20%;">
 <div class="cell">
 <div class="cell-output-display">
-<div id="fmeeuuqxbi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fmeeuuqxbi table {
+<div id="zhxnzyvpvz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zhxnzyvpvz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fmeeuuqxbi thead, #fmeeuuqxbi tbody, #fmeeuuqxbi tfoot, #fmeeuuqxbi tr, #fmeeuuqxbi td, #fmeeuuqxbi th {
+#zhxnzyvpvz thead, #zhxnzyvpvz tbody, #zhxnzyvpvz tfoot, #zhxnzyvpvz tr, #zhxnzyvpvz td, #zhxnzyvpvz th {
   border-style: none;
 }
 
-#fmeeuuqxbi p {
+#zhxnzyvpvz p {
   margin: 0;
   padding: 0;
 }
 
-#fmeeuuqxbi .gt_table {
+#zhxnzyvpvz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1150,12 +1171,12 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-left-color: #D3D3D3;
 }
 
-#fmeeuuqxbi .gt_caption {
+#zhxnzyvpvz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fmeeuuqxbi .gt_title {
+#zhxnzyvpvz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1167,7 +1188,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-width: 0;
 }
 
-#fmeeuuqxbi .gt_subtitle {
+#zhxnzyvpvz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1179,7 +1200,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-top-width: 0;
 }
 
-#fmeeuuqxbi .gt_heading {
+#zhxnzyvpvz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1191,13 +1212,13 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#fmeeuuqxbi .gt_bottom_border {
+#zhxnzyvpvz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fmeeuuqxbi .gt_col_headings {
+#zhxnzyvpvz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1212,7 +1233,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#fmeeuuqxbi .gt_col_heading {
+#zhxnzyvpvz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1232,7 +1253,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   overflow-x: hidden;
 }
 
-#fmeeuuqxbi .gt_column_spanner_outer {
+#zhxnzyvpvz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1244,15 +1265,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 4px;
 }
 
-#fmeeuuqxbi .gt_column_spanner_outer:first-child {
+#zhxnzyvpvz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fmeeuuqxbi .gt_column_spanner_outer:last-child {
+#zhxnzyvpvz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fmeeuuqxbi .gt_column_spanner {
+#zhxnzyvpvz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1264,11 +1285,11 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   width: 100%;
 }
 
-#fmeeuuqxbi .gt_spanner_row {
+#zhxnzyvpvz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fmeeuuqxbi .gt_group_heading {
+#zhxnzyvpvz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1294,7 +1315,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   text-align: left;
 }
 
-#fmeeuuqxbi .gt_empty_group_heading {
+#zhxnzyvpvz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1309,15 +1330,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   vertical-align: middle;
 }
 
-#fmeeuuqxbi .gt_from_md > :first-child {
+#zhxnzyvpvz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fmeeuuqxbi .gt_from_md > :last-child {
+#zhxnzyvpvz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fmeeuuqxbi .gt_row {
+#zhxnzyvpvz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1336,7 +1357,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   overflow-x: hidden;
 }
 
-#fmeeuuqxbi .gt_stub {
+#zhxnzyvpvz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1349,7 +1370,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#fmeeuuqxbi .gt_stub_row_group {
+#zhxnzyvpvz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1363,15 +1384,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   vertical-align: top;
 }
 
-#fmeeuuqxbi .gt_row_group_first td {
+#zhxnzyvpvz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fmeeuuqxbi .gt_row_group_first th {
+#zhxnzyvpvz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fmeeuuqxbi .gt_summary_row {
+#zhxnzyvpvz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1381,16 +1402,16 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#fmeeuuqxbi .gt_first_summary_row {
+#zhxnzyvpvz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fmeeuuqxbi .gt_first_summary_row.thick {
+#zhxnzyvpvz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fmeeuuqxbi .gt_last_summary_row {
+#zhxnzyvpvz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1400,7 +1421,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-color: #D3D3D3;
 }
 
-#fmeeuuqxbi .gt_grand_summary_row {
+#zhxnzyvpvz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1410,7 +1431,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#fmeeuuqxbi .gt_first_grand_summary_row {
+#zhxnzyvpvz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1420,7 +1441,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-top-color: #D3D3D3;
 }
 
-#fmeeuuqxbi .gt_last_grand_summary_row_top {
+#zhxnzyvpvz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1430,11 +1451,11 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-color: #D3D3D3;
 }
 
-#fmeeuuqxbi .gt_striped {
+#zhxnzyvpvz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fmeeuuqxbi .gt_table_body {
+#zhxnzyvpvz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1443,7 +1464,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-color: #D3D3D3;
 }
 
-#fmeeuuqxbi .gt_footnotes {
+#zhxnzyvpvz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1457,7 +1478,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#fmeeuuqxbi .gt_footnote {
+#zhxnzyvpvz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1466,7 +1487,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#fmeeuuqxbi .gt_sourcenotes {
+#zhxnzyvpvz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1480,7 +1501,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#fmeeuuqxbi .gt_sourcenote {
+#zhxnzyvpvz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1488,63 +1509,63 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#fmeeuuqxbi .gt_left {
+#zhxnzyvpvz .gt_left {
   text-align: left;
 }
 
-#fmeeuuqxbi .gt_center {
+#zhxnzyvpvz .gt_center {
   text-align: center;
 }
 
-#fmeeuuqxbi .gt_right {
+#zhxnzyvpvz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fmeeuuqxbi .gt_font_normal {
+#zhxnzyvpvz .gt_font_normal {
   font-weight: normal;
 }
 
-#fmeeuuqxbi .gt_font_bold {
+#zhxnzyvpvz .gt_font_bold {
   font-weight: bold;
 }
 
-#fmeeuuqxbi .gt_font_italic {
+#zhxnzyvpvz .gt_font_italic {
   font-style: italic;
 }
 
-#fmeeuuqxbi .gt_super {
+#zhxnzyvpvz .gt_super {
   font-size: 65%;
 }
 
-#fmeeuuqxbi .gt_footnote_marks {
+#zhxnzyvpvz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fmeeuuqxbi .gt_asterisk {
+#zhxnzyvpvz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fmeeuuqxbi .gt_indent_1 {
+#zhxnzyvpvz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fmeeuuqxbi .gt_indent_2 {
+#zhxnzyvpvz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fmeeuuqxbi .gt_indent_3 {
+#zhxnzyvpvz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fmeeuuqxbi .gt_indent_4 {
+#zhxnzyvpvz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fmeeuuqxbi .gt_indent_5 {
+#zhxnzyvpvz .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1571,23 +1592,23 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
 <div class="column" style="width:80%;">
 <div class="cell">
 <div class="cell-output-display">
-<div id="wuvwrheuma" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wuvwrheuma table {
+<div id="mpnprnszkf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mpnprnszkf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wuvwrheuma thead, #wuvwrheuma tbody, #wuvwrheuma tfoot, #wuvwrheuma tr, #wuvwrheuma td, #wuvwrheuma th {
+#mpnprnszkf thead, #mpnprnszkf tbody, #mpnprnszkf tfoot, #mpnprnszkf tr, #mpnprnszkf td, #mpnprnszkf th {
   border-style: none;
 }
 
-#wuvwrheuma p {
+#mpnprnszkf p {
   margin: 0;
   padding: 0;
 }
 
-#wuvwrheuma .gt_table {
+#mpnprnszkf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1613,12 +1634,12 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-left-color: #D3D3D3;
 }
 
-#wuvwrheuma .gt_caption {
+#mpnprnszkf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wuvwrheuma .gt_title {
+#mpnprnszkf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1630,7 +1651,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-width: 0;
 }
 
-#wuvwrheuma .gt_subtitle {
+#mpnprnszkf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1642,7 +1663,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-top-width: 0;
 }
 
-#wuvwrheuma .gt_heading {
+#mpnprnszkf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1654,13 +1675,13 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#wuvwrheuma .gt_bottom_border {
+#mpnprnszkf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wuvwrheuma .gt_col_headings {
+#mpnprnszkf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1675,7 +1696,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#wuvwrheuma .gt_col_heading {
+#mpnprnszkf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1695,7 +1716,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   overflow-x: hidden;
 }
 
-#wuvwrheuma .gt_column_spanner_outer {
+#mpnprnszkf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1707,15 +1728,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 4px;
 }
 
-#wuvwrheuma .gt_column_spanner_outer:first-child {
+#mpnprnszkf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wuvwrheuma .gt_column_spanner_outer:last-child {
+#mpnprnszkf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wuvwrheuma .gt_column_spanner {
+#mpnprnszkf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1727,11 +1748,11 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   width: 100%;
 }
 
-#wuvwrheuma .gt_spanner_row {
+#mpnprnszkf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wuvwrheuma .gt_group_heading {
+#mpnprnszkf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1757,7 +1778,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   text-align: left;
 }
 
-#wuvwrheuma .gt_empty_group_heading {
+#mpnprnszkf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1772,15 +1793,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   vertical-align: middle;
 }
 
-#wuvwrheuma .gt_from_md > :first-child {
+#mpnprnszkf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wuvwrheuma .gt_from_md > :last-child {
+#mpnprnszkf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wuvwrheuma .gt_row {
+#mpnprnszkf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1799,7 +1820,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   overflow-x: hidden;
 }
 
-#wuvwrheuma .gt_stub {
+#mpnprnszkf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1812,7 +1833,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#wuvwrheuma .gt_stub_row_group {
+#mpnprnszkf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1826,15 +1847,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   vertical-align: top;
 }
 
-#wuvwrheuma .gt_row_group_first td {
+#mpnprnszkf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wuvwrheuma .gt_row_group_first th {
+#mpnprnszkf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wuvwrheuma .gt_summary_row {
+#mpnprnszkf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1844,16 +1865,16 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#wuvwrheuma .gt_first_summary_row {
+#mpnprnszkf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wuvwrheuma .gt_first_summary_row.thick {
+#mpnprnszkf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wuvwrheuma .gt_last_summary_row {
+#mpnprnszkf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1863,7 +1884,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-color: #D3D3D3;
 }
 
-#wuvwrheuma .gt_grand_summary_row {
+#mpnprnszkf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1873,7 +1894,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#wuvwrheuma .gt_first_grand_summary_row {
+#mpnprnszkf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1883,7 +1904,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-top-color: #D3D3D3;
 }
 
-#wuvwrheuma .gt_last_grand_summary_row_top {
+#mpnprnszkf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1893,11 +1914,11 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-color: #D3D3D3;
 }
 
-#wuvwrheuma .gt_striped {
+#mpnprnszkf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wuvwrheuma .gt_table_body {
+#mpnprnszkf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1906,7 +1927,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-color: #D3D3D3;
 }
 
-#wuvwrheuma .gt_footnotes {
+#mpnprnszkf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1920,7 +1941,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#wuvwrheuma .gt_footnote {
+#mpnprnszkf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1929,7 +1950,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#wuvwrheuma .gt_sourcenotes {
+#mpnprnszkf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1943,7 +1964,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#wuvwrheuma .gt_sourcenote {
+#mpnprnszkf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1951,63 +1972,63 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#wuvwrheuma .gt_left {
+#mpnprnszkf .gt_left {
   text-align: left;
 }
 
-#wuvwrheuma .gt_center {
+#mpnprnszkf .gt_center {
   text-align: center;
 }
 
-#wuvwrheuma .gt_right {
+#mpnprnszkf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wuvwrheuma .gt_font_normal {
+#mpnprnszkf .gt_font_normal {
   font-weight: normal;
 }
 
-#wuvwrheuma .gt_font_bold {
+#mpnprnszkf .gt_font_bold {
   font-weight: bold;
 }
 
-#wuvwrheuma .gt_font_italic {
+#mpnprnszkf .gt_font_italic {
   font-style: italic;
 }
 
-#wuvwrheuma .gt_super {
+#mpnprnszkf .gt_super {
   font-size: 65%;
 }
 
-#wuvwrheuma .gt_footnote_marks {
+#mpnprnszkf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wuvwrheuma .gt_asterisk {
+#mpnprnszkf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wuvwrheuma .gt_indent_1 {
+#mpnprnszkf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wuvwrheuma .gt_indent_2 {
+#mpnprnszkf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wuvwrheuma .gt_indent_3 {
+#mpnprnszkf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wuvwrheuma .gt_indent_4 {
+#mpnprnszkf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wuvwrheuma .gt_indent_5 {
+#mpnprnszkf .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2105,23 +2126,23 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
 </div><div class="column" style="width:20%;">
 <div class="cell">
 <div class="cell-output-display">
-<div id="rijnzqlufs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rijnzqlufs table {
+<div id="bsifgjprkd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bsifgjprkd table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rijnzqlufs thead, #rijnzqlufs tbody, #rijnzqlufs tfoot, #rijnzqlufs tr, #rijnzqlufs td, #rijnzqlufs th {
+#bsifgjprkd thead, #bsifgjprkd tbody, #bsifgjprkd tfoot, #bsifgjprkd tr, #bsifgjprkd td, #bsifgjprkd th {
   border-style: none;
 }
 
-#rijnzqlufs p {
+#bsifgjprkd p {
   margin: 0;
   padding: 0;
 }
 
-#rijnzqlufs .gt_table {
+#bsifgjprkd .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2147,12 +2168,12 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-left-color: #D3D3D3;
 }
 
-#rijnzqlufs .gt_caption {
+#bsifgjprkd .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rijnzqlufs .gt_title {
+#bsifgjprkd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2164,7 +2185,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-width: 0;
 }
 
-#rijnzqlufs .gt_subtitle {
+#bsifgjprkd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2176,7 +2197,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-top-width: 0;
 }
 
-#rijnzqlufs .gt_heading {
+#bsifgjprkd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2188,13 +2209,13 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#rijnzqlufs .gt_bottom_border {
+#bsifgjprkd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rijnzqlufs .gt_col_headings {
+#bsifgjprkd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2209,7 +2230,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#rijnzqlufs .gt_col_heading {
+#bsifgjprkd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2229,7 +2250,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   overflow-x: hidden;
 }
 
-#rijnzqlufs .gt_column_spanner_outer {
+#bsifgjprkd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2241,15 +2262,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 4px;
 }
 
-#rijnzqlufs .gt_column_spanner_outer:first-child {
+#bsifgjprkd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rijnzqlufs .gt_column_spanner_outer:last-child {
+#bsifgjprkd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rijnzqlufs .gt_column_spanner {
+#bsifgjprkd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2261,11 +2282,11 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   width: 100%;
 }
 
-#rijnzqlufs .gt_spanner_row {
+#bsifgjprkd .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rijnzqlufs .gt_group_heading {
+#bsifgjprkd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2291,7 +2312,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   text-align: left;
 }
 
-#rijnzqlufs .gt_empty_group_heading {
+#bsifgjprkd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2306,15 +2327,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   vertical-align: middle;
 }
 
-#rijnzqlufs .gt_from_md > :first-child {
+#bsifgjprkd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rijnzqlufs .gt_from_md > :last-child {
+#bsifgjprkd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rijnzqlufs .gt_row {
+#bsifgjprkd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2333,7 +2354,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   overflow-x: hidden;
 }
 
-#rijnzqlufs .gt_stub {
+#bsifgjprkd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2346,7 +2367,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#rijnzqlufs .gt_stub_row_group {
+#bsifgjprkd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2360,15 +2381,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   vertical-align: top;
 }
 
-#rijnzqlufs .gt_row_group_first td {
+#bsifgjprkd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rijnzqlufs .gt_row_group_first th {
+#bsifgjprkd .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rijnzqlufs .gt_summary_row {
+#bsifgjprkd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2378,16 +2399,16 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#rijnzqlufs .gt_first_summary_row {
+#bsifgjprkd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rijnzqlufs .gt_first_summary_row.thick {
+#bsifgjprkd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rijnzqlufs .gt_last_summary_row {
+#bsifgjprkd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2397,7 +2418,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-color: #D3D3D3;
 }
 
-#rijnzqlufs .gt_grand_summary_row {
+#bsifgjprkd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2407,7 +2428,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#rijnzqlufs .gt_first_grand_summary_row {
+#bsifgjprkd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2417,7 +2438,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-top-color: #D3D3D3;
 }
 
-#rijnzqlufs .gt_last_grand_summary_row_top {
+#bsifgjprkd .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2427,11 +2448,11 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-color: #D3D3D3;
 }
 
-#rijnzqlufs .gt_striped {
+#bsifgjprkd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rijnzqlufs .gt_table_body {
+#bsifgjprkd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2440,7 +2461,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-color: #D3D3D3;
 }
 
-#rijnzqlufs .gt_footnotes {
+#bsifgjprkd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2454,7 +2475,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#rijnzqlufs .gt_footnote {
+#bsifgjprkd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2463,7 +2484,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#rijnzqlufs .gt_sourcenotes {
+#bsifgjprkd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2477,7 +2498,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#rijnzqlufs .gt_sourcenote {
+#bsifgjprkd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2485,63 +2506,63 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#rijnzqlufs .gt_left {
+#bsifgjprkd .gt_left {
   text-align: left;
 }
 
-#rijnzqlufs .gt_center {
+#bsifgjprkd .gt_center {
   text-align: center;
 }
 
-#rijnzqlufs .gt_right {
+#bsifgjprkd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rijnzqlufs .gt_font_normal {
+#bsifgjprkd .gt_font_normal {
   font-weight: normal;
 }
 
-#rijnzqlufs .gt_font_bold {
+#bsifgjprkd .gt_font_bold {
   font-weight: bold;
 }
 
-#rijnzqlufs .gt_font_italic {
+#bsifgjprkd .gt_font_italic {
   font-style: italic;
 }
 
-#rijnzqlufs .gt_super {
+#bsifgjprkd .gt_super {
   font-size: 65%;
 }
 
-#rijnzqlufs .gt_footnote_marks {
+#bsifgjprkd .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rijnzqlufs .gt_asterisk {
+#bsifgjprkd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rijnzqlufs .gt_indent_1 {
+#bsifgjprkd .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rijnzqlufs .gt_indent_2 {
+#bsifgjprkd .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rijnzqlufs .gt_indent_3 {
+#bsifgjprkd .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rijnzqlufs .gt_indent_4 {
+#bsifgjprkd .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rijnzqlufs .gt_indent_5 {
+#bsifgjprkd .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2563,14 +2584,14 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
 </div></div>
 </div>
 <div class="fragment">
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="sc">&gt;</span> <span class="fu">summary</span>(peakVO2[,<span class="fu">c</span>(<span class="st">"bun"</span>,<span class="st">"interval"</span>, <span class="st">"peak.vo2"</span>)])</span>
-<span id="cb10-2"><a href=""></a>      bun             interval         peak.vo2    </span>
-<span id="cb10-3"><a href=""></a> Min.   <span class="sc">:</span>  <span class="fl">4.322</span>   Min.   <span class="sc">:</span>  <span class="fl">21.0</span>   Min.   <span class="sc">:</span> <span class="fl">4.20</span>  </span>
-<span id="cb10-4"><a href=""></a> <span class="dv">1</span>st Qu.<span class="sc">:</span> <span class="fl">17.000</span>   <span class="dv">1</span>st Qu.<span class="sc">:</span> <span class="fl">345.0</span>   <span class="dv">1</span>st Qu.<span class="sc">:</span><span class="fl">12.80</span>  </span>
-<span id="cb10-5"><a href=""></a> Median <span class="sc">:</span> <span class="fl">23.000</span>   Median <span class="sc">:</span> <span class="fl">480.0</span>   Median <span class="sc">:</span><span class="fl">15.70</span>  </span>
-<span id="cb10-6"><a href=""></a> Mean   <span class="sc">:</span> <span class="fl">25.278</span>   Mean   <span class="sc">:</span> <span class="fl">503.3</span>   Mean   <span class="sc">:</span><span class="fl">16.27</span>  </span>
-<span id="cb10-7"><a href=""></a> <span class="dv">3</span>rd Qu.<span class="sc">:</span> <span class="fl">29.334</span>   <span class="dv">3</span>rd Qu.<span class="sc">:</span> <span class="fl">641.0</span>   <span class="dv">3</span>rd Qu.<span class="sc">:</span><span class="fl">19.30</span>  </span>
-<span id="cb10-8"><a href=""></a> Max.   <span class="sc">:</span><span class="fl">129.000</span>   Max.   <span class="sc">:</span><span class="fl">1415.0</span>   Max.   <span class="sc">:</span><span class="fl">43.80</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="sc">&gt;</span> <span class="fu">summary</span>(peakVO2[,<span class="fu">c</span>(<span class="st">"bun"</span>,<span class="st">"interval"</span>, <span class="st">"peak.vo2"</span>)])</span>
+<span id="cb12-2"><a href=""></a>      bun             interval         peak.vo2    </span>
+<span id="cb12-3"><a href=""></a> Min.   <span class="sc">:</span>  <span class="fl">4.322</span>   Min.   <span class="sc">:</span>  <span class="fl">21.0</span>   Min.   <span class="sc">:</span> <span class="fl">4.20</span>  </span>
+<span id="cb12-4"><a href=""></a> <span class="dv">1</span>st Qu.<span class="sc">:</span> <span class="fl">17.000</span>   <span class="dv">1</span>st Qu.<span class="sc">:</span> <span class="fl">345.0</span>   <span class="dv">1</span>st Qu.<span class="sc">:</span><span class="fl">12.80</span>  </span>
+<span id="cb12-5"><a href=""></a> Median <span class="sc">:</span> <span class="fl">23.000</span>   Median <span class="sc">:</span> <span class="fl">480.0</span>   Median <span class="sc">:</span><span class="fl">15.70</span>  </span>
+<span id="cb12-6"><a href=""></a> Mean   <span class="sc">:</span> <span class="fl">25.278</span>   Mean   <span class="sc">:</span> <span class="fl">503.3</span>   Mean   <span class="sc">:</span><span class="fl">16.27</span>  </span>
+<span id="cb12-7"><a href=""></a> <span class="dv">3</span>rd Qu.<span class="sc">:</span> <span class="fl">29.334</span>   <span class="dv">3</span>rd Qu.<span class="sc">:</span> <span class="fl">641.0</span>   <span class="dv">3</span>rd Qu.<span class="sc">:</span><span class="fl">19.30</span>  </span>
+<span id="cb12-8"><a href=""></a> Max.   <span class="sc">:</span><span class="fl">129.000</span>   Max.   <span class="sc">:</span><span class="fl">1415.0</span>   Max.   <span class="sc">:</span><span class="fl">43.80</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr style="margin: 10px; visibility:hidden;">
 <div class="fragment">
@@ -2603,103 +2624,103 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
 <p><img data-src="pic/varpro.png" style="width:100.0%"></p>
 </div>
 </section><section id="varpro-canonical-illustration" class="slide level2 smaller"><h2>VarPro canonical illustration</h2>
-<div class="sourceCode" id="cb11" data-code-line-numbers="1-2|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="do">## varpro canonical call</span></span>
-<span id="cb11-2"><a href=""></a>o <span class="ot">&lt;-</span><span class="fu">varpro</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2)</span>
-<span id="cb11-3"><a href=""></a><span class="fu">importance</span>(o)</span>
-<span id="cb11-4"><a href=""></a></span>
-<span id="cb11-5"><a href=""></a><span class="do">## cv.varpro canonical call</span></span>
-<span id="cb11-6"><a href=""></a>o.cv <span class="ot">&lt;-</span> <span class="fu">cv.varpro</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2)</span>
-<span id="cb11-7"><a href=""></a>o.cv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="sc">&gt;</span> <span class="fu">importance</span>(o)</span>
-<span id="cb12-2"><a href=""></a>                            mean          std          z    zcenter selected</span>
-<span id="cb12-3"><a href=""></a>bun                 <span class="fl">0.4978149504</span> <span class="fl">0.0337152554</span> <span class="fl">14.7652730</span> <span class="fl">12.7652730</span>        <span class="dv">1</span></span>
-<span id="cb12-4"><a href=""></a>interval            <span class="fl">0.3185356007</span> <span class="fl">0.0295842524</span> <span class="fl">10.7670661</span>  <span class="fl">8.7670661</span>        <span class="dv">1</span></span>
-<span id="cb12-5"><a href=""></a>peak.vo2            <span class="fl">0.4312874502</span> <span class="fl">0.0402880827</span> <span class="fl">10.7050875</span>  <span class="fl">8.7050875</span>        <span class="dv">1</span></span>
-<span id="cb12-6"><a href=""></a>male                <span class="fl">0.3505938059</span> <span class="fl">0.0538524448</span>  <span class="fl">6.5102672</span>  <span class="fl">4.5102672</span>        <span class="dv">1</span></span>
-<span id="cb12-7"><a href=""></a>age                 <span class="fl">0.2446044542</span> <span class="fl">0.0396020571</span>  <span class="fl">6.1765593</span>  <span class="fl">4.1765593</span>        <span class="dv">1</span></span>
-<span id="cb12-8"><a href=""></a>betablok            <span class="fl">0.2686558074</span> <span class="fl">0.0479230810</span>  <span class="fl">5.6059794</span>  <span class="fl">3.6059794</span>        <span class="dv">1</span></span>
-<span id="cb12-9"><a href=""></a>sodium              <span class="fl">0.2528347809</span> <span class="fl">0.0512493678</span>  <span class="fl">4.9334224</span>  <span class="fl">2.9334224</span>        <span class="dv">1</span></span>
-<span id="cb12-10"><a href=""></a>crcl                <span class="fl">0.1797879324</span> <span class="fl">0.0437915811</span>  <span class="fl">4.1055365</span>  <span class="fl">2.1055365</span>        <span class="dv">1</span></span>
-<span id="cb12-11"><a href=""></a>lvef.metabl         <span class="fl">0.2381646158</span> <span class="fl">0.0611984740</span>  <span class="fl">3.8916757</span>  <span class="fl">1.8916757</span>        <span class="dv">1</span></span>
-<span id="cb12-12"><a href=""></a>hgb                 <span class="fl">0.1725410259</span> <span class="fl">0.0542089828</span>  <span class="fl">3.1828862</span>  <span class="fl">1.1828862</span>        <span class="dv">1</span></span>
-<span id="cb12-13"><a href=""></a>resting.systolic.bp <span class="fl">0.1968886781</span> <span class="fl">0.0678923150</span>  <span class="fl">2.9000142</span>  <span class="fl">0.9000142</span>        <span class="dv">1</span></span>
-<span id="cb12-14"><a href=""></a>resting.hr          <span class="fl">0.1597187409</span> <span class="fl">0.0691719891</span>  <span class="fl">2.3090089</span>  <span class="fl">0.3090089</span>        <span class="dv">1</span></span>
-<span id="cb12-15"><a href=""></a>digoxin             <span class="fl">0.0775483548</span> <span class="fl">0.1211743434</span>  <span class="fl">0.6399734</span> <span class="sc">-</span><span class="fl">1.3600266</span>        <span class="dv">0</span></span>
-<span id="cb12-16"><a href=""></a>peak.rer            <span class="fl">0.0398680722</span> <span class="fl">0.0692507796</span>  <span class="fl">0.5757058</span> <span class="sc">-</span><span class="fl">1.4242942</span>        <span class="dv">0</span></span>
-<span id="cb12-17"><a href=""></a>glucose             <span class="fl">0.0290473617</span> <span class="fl">0.0652009690</span>  <span class="fl">0.4455051</span> <span class="sc">-</span><span class="fl">1.5544949</span>        <span class="dv">0</span></span>
-<span id="cb12-18"><a href=""></a>diuretic.thiazide   <span class="fl">0.0002443196</span> <span class="fl">0.0007146353</span>  <span class="fl">0.3418801</span> <span class="sc">-</span><span class="fl">1.6581199</span>        <span class="dv">0</span></span>
-<span id="cb12-19"><a href=""></a>aspirin             <span class="fl">0.0000000000</span> <span class="fl">0.0000000000</span>        <span class="cn">NaN</span>        <span class="cn">NaN</span>        <span class="dv">0</span></span>
-<span id="cb12-20"><a href=""></a>bmi                 <span class="fl">0.0000000000</span> <span class="fl">0.0000000000</span>        <span class="cn">NaN</span>        <span class="cn">NaN</span>        <span class="dv">0</span></span>
-<span id="cb12-21"><a href=""></a>cad                 <span class="fl">0.0000000000</span> <span class="fl">0.0000000000</span>        <span class="cn">NaN</span>        <span class="cn">NaN</span>        <span class="dv">0</span></span>
-<span id="cb12-22"><a href=""></a>insulin             <span class="fl">0.0000000000</span> <span class="fl">0.0000000000</span>        <span class="cn">NaN</span>        <span class="cn">NaN</span>        <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13" data-code-line-numbers="1-2|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="do">## varpro canonical call</span></span>
+<span id="cb13-2"><a href=""></a>o <span class="ot">&lt;-</span><span class="fu">varpro</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2)</span>
+<span id="cb13-3"><a href=""></a><span class="fu">importance</span>(o)</span>
+<span id="cb13-4"><a href=""></a></span>
+<span id="cb13-5"><a href=""></a><span class="do">## cv.varpro canonical call</span></span>
+<span id="cb13-6"><a href=""></a>o.cv <span class="ot">&lt;-</span> <span class="fu">cv.varpro</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2)</span>
+<span id="cb13-7"><a href=""></a>o.cv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="sc">&gt;</span> <span class="fu">importance</span>(o)</span>
+<span id="cb14-2"><a href=""></a>                            mean          std          z    zcenter selected</span>
+<span id="cb14-3"><a href=""></a>bun                 <span class="fl">0.4978149504</span> <span class="fl">0.0337152554</span> <span class="fl">14.7652730</span> <span class="fl">12.7652730</span>        <span class="dv">1</span></span>
+<span id="cb14-4"><a href=""></a>interval            <span class="fl">0.3185356007</span> <span class="fl">0.0295842524</span> <span class="fl">10.7670661</span>  <span class="fl">8.7670661</span>        <span class="dv">1</span></span>
+<span id="cb14-5"><a href=""></a>peak.vo2            <span class="fl">0.4312874502</span> <span class="fl">0.0402880827</span> <span class="fl">10.7050875</span>  <span class="fl">8.7050875</span>        <span class="dv">1</span></span>
+<span id="cb14-6"><a href=""></a>male                <span class="fl">0.3505938059</span> <span class="fl">0.0538524448</span>  <span class="fl">6.5102672</span>  <span class="fl">4.5102672</span>        <span class="dv">1</span></span>
+<span id="cb14-7"><a href=""></a>age                 <span class="fl">0.2446044542</span> <span class="fl">0.0396020571</span>  <span class="fl">6.1765593</span>  <span class="fl">4.1765593</span>        <span class="dv">1</span></span>
+<span id="cb14-8"><a href=""></a>betablok            <span class="fl">0.2686558074</span> <span class="fl">0.0479230810</span>  <span class="fl">5.6059794</span>  <span class="fl">3.6059794</span>        <span class="dv">1</span></span>
+<span id="cb14-9"><a href=""></a>sodium              <span class="fl">0.2528347809</span> <span class="fl">0.0512493678</span>  <span class="fl">4.9334224</span>  <span class="fl">2.9334224</span>        <span class="dv">1</span></span>
+<span id="cb14-10"><a href=""></a>crcl                <span class="fl">0.1797879324</span> <span class="fl">0.0437915811</span>  <span class="fl">4.1055365</span>  <span class="fl">2.1055365</span>        <span class="dv">1</span></span>
+<span id="cb14-11"><a href=""></a>lvef.metabl         <span class="fl">0.2381646158</span> <span class="fl">0.0611984740</span>  <span class="fl">3.8916757</span>  <span class="fl">1.8916757</span>        <span class="dv">1</span></span>
+<span id="cb14-12"><a href=""></a>hgb                 <span class="fl">0.1725410259</span> <span class="fl">0.0542089828</span>  <span class="fl">3.1828862</span>  <span class="fl">1.1828862</span>        <span class="dv">1</span></span>
+<span id="cb14-13"><a href=""></a>resting.systolic.bp <span class="fl">0.1968886781</span> <span class="fl">0.0678923150</span>  <span class="fl">2.9000142</span>  <span class="fl">0.9000142</span>        <span class="dv">1</span></span>
+<span id="cb14-14"><a href=""></a>resting.hr          <span class="fl">0.1597187409</span> <span class="fl">0.0691719891</span>  <span class="fl">2.3090089</span>  <span class="fl">0.3090089</span>        <span class="dv">1</span></span>
+<span id="cb14-15"><a href=""></a>digoxin             <span class="fl">0.0775483548</span> <span class="fl">0.1211743434</span>  <span class="fl">0.6399734</span> <span class="sc">-</span><span class="fl">1.3600266</span>        <span class="dv">0</span></span>
+<span id="cb14-16"><a href=""></a>peak.rer            <span class="fl">0.0398680722</span> <span class="fl">0.0692507796</span>  <span class="fl">0.5757058</span> <span class="sc">-</span><span class="fl">1.4242942</span>        <span class="dv">0</span></span>
+<span id="cb14-17"><a href=""></a>glucose             <span class="fl">0.0290473617</span> <span class="fl">0.0652009690</span>  <span class="fl">0.4455051</span> <span class="sc">-</span><span class="fl">1.5544949</span>        <span class="dv">0</span></span>
+<span id="cb14-18"><a href=""></a>diuretic.thiazide   <span class="fl">0.0002443196</span> <span class="fl">0.0007146353</span>  <span class="fl">0.3418801</span> <span class="sc">-</span><span class="fl">1.6581199</span>        <span class="dv">0</span></span>
+<span id="cb14-19"><a href=""></a>aspirin             <span class="fl">0.0000000000</span> <span class="fl">0.0000000000</span>        <span class="cn">NaN</span>        <span class="cn">NaN</span>        <span class="dv">0</span></span>
+<span id="cb14-20"><a href=""></a>bmi                 <span class="fl">0.0000000000</span> <span class="fl">0.0000000000</span>        <span class="cn">NaN</span>        <span class="cn">NaN</span>        <span class="dv">0</span></span>
+<span id="cb14-21"><a href=""></a>cad                 <span class="fl">0.0000000000</span> <span class="fl">0.0000000000</span>        <span class="cn">NaN</span>        <span class="cn">NaN</span>        <span class="dv">0</span></span>
+<span id="cb14-22"><a href=""></a>insulin             <span class="fl">0.0000000000</span> <span class="fl">0.0000000000</span>        <span class="cn">NaN</span>        <span class="cn">NaN</span>        <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="footer">
 
 </div>
 </section><section id="varpro-canonical-illustration-1" class="slide level2 smaller"><h2>VarPro canonical illustration</h2>
-<div class="sourceCode" id="cb13" data-code-line-numbers="1-2|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="do">## cv.varpro canonical call</span></span>
-<span id="cb13-2"><a href=""></a>o.cv <span class="ot">&lt;-</span> <span class="fu">cv.varpro</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2)</span>
-<span id="cb13-3"><a href=""></a>o.cv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb14" data-code-line-numbers="2-14|16-27|29-44|46-61"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="sc">&gt;</span> o.cv</span>
-<span id="cb14-2"><a href=""></a><span class="sc">$</span>imp</span>
-<span id="cb14-3"><a href=""></a>      variable         z</span>
-<span id="cb14-4"><a href=""></a><span class="dv">1</span>          bun <span class="fl">12.765690</span></span>
-<span id="cb14-5"><a href=""></a><span class="dv">2</span>     interval  <span class="fl">9.084990</span></span>
-<span id="cb14-6"><a href=""></a><span class="dv">3</span>     peak.vo2  <span class="fl">8.284743</span></span>
-<span id="cb14-7"><a href=""></a><span class="dv">4</span>         male  <span class="fl">5.918617</span></span>
-<span id="cb14-8"><a href=""></a><span class="dv">5</span>          age  <span class="fl">5.537937</span></span>
-<span id="cb14-9"><a href=""></a><span class="dv">6</span>     betablok  <span class="fl">3.600902</span></span>
-<span id="cb14-10"><a href=""></a><span class="dv">7</span>       sodium  <span class="fl">3.408508</span></span>
-<span id="cb14-11"><a href=""></a><span class="dv">8</span>  lvef.metabl  <span class="fl">2.776717</span></span>
-<span id="cb14-12"><a href=""></a><span class="dv">9</span>   resting.hr  <span class="fl">2.590353</span></span>
-<span id="cb14-13"><a href=""></a><span class="dv">10</span>        crcl  <span class="fl">2.476236</span></span>
-<span id="cb14-14"><a href=""></a><span class="dv">11</span>     digoxin  <span class="fl">1.289895</span></span>
-<span id="cb14-15"><a href=""></a></span>
-<span id="cb14-16"><a href=""></a><span class="sc">$</span>imp.conserve</span>
-<span id="cb14-17"><a href=""></a>      variable         z</span>
-<span id="cb14-18"><a href=""></a><span class="dv">1</span>          bun <span class="fl">12.765690</span></span>
-<span id="cb14-19"><a href=""></a><span class="dv">2</span>     interval  <span class="fl">9.084990</span></span>
-<span id="cb14-20"><a href=""></a><span class="dv">3</span>     peak.vo2  <span class="fl">8.284743</span></span>
-<span id="cb14-21"><a href=""></a><span class="dv">4</span>         male  <span class="fl">5.918617</span></span>
-<span id="cb14-22"><a href=""></a><span class="dv">5</span>          age  <span class="fl">5.537937</span></span>
-<span id="cb14-23"><a href=""></a><span class="dv">6</span>     betablok  <span class="fl">3.600902</span></span>
-<span id="cb14-24"><a href=""></a><span class="dv">7</span>       sodium  <span class="fl">3.408508</span></span>
-<span id="cb14-25"><a href=""></a><span class="dv">8</span>  lvef.metabl  <span class="fl">2.776717</span></span>
-<span id="cb14-26"><a href=""></a><span class="dv">9</span>   resting.hr  <span class="fl">2.590353</span></span>
-<span id="cb14-27"><a href=""></a><span class="dv">10</span>        crcl  <span class="fl">2.476236</span></span>
-<span id="cb14-28"><a href=""></a></span>
-<span id="cb14-29"><a href=""></a><span class="sc">$</span>imp.liberal</span>
-<span id="cb14-30"><a href=""></a>              variable          z</span>
-<span id="cb14-31"><a href=""></a><span class="dv">1</span>                  bun <span class="fl">12.7656902</span></span>
-<span id="cb14-32"><a href=""></a><span class="dv">2</span>             interval  <span class="fl">9.0849901</span></span>
-<span id="cb14-33"><a href=""></a><span class="dv">3</span>             peak.vo2  <span class="fl">8.2847426</span></span>
-<span id="cb14-34"><a href=""></a><span class="dv">4</span>                 male  <span class="fl">5.9186167</span></span>
-<span id="cb14-35"><a href=""></a><span class="dv">5</span>                  age  <span class="fl">5.5379366</span></span>
-<span id="cb14-36"><a href=""></a><span class="dv">6</span>             betablok  <span class="fl">3.6009023</span></span>
-<span id="cb14-37"><a href=""></a><span class="dv">7</span>               sodium  <span class="fl">3.4085085</span></span>
-<span id="cb14-38"><a href=""></a><span class="dv">8</span>          lvef.metabl  <span class="fl">2.7767175</span></span>
-<span id="cb14-39"><a href=""></a><span class="dv">9</span>           resting.hr  <span class="fl">2.5903526</span></span>
-<span id="cb14-40"><a href=""></a><span class="dv">10</span>                crcl  <span class="fl">2.4762361</span></span>
-<span id="cb14-41"><a href=""></a><span class="dv">11</span>             digoxin  <span class="fl">1.2898949</span></span>
-<span id="cb14-42"><a href=""></a><span class="dv">12</span> resting.systolic.bp  <span class="fl">1.2290245</span></span>
-<span id="cb14-43"><a href=""></a><span class="dv">13</span>                 hgb  <span class="fl">0.7475712</span></span>
-<span id="cb14-44"><a href=""></a><span class="dv">14</span>   diuretic.thiazide  <span class="fl">0.4964589</span></span>
-<span id="cb14-45"><a href=""></a></span>
-<span id="cb14-46"><a href=""></a><span class="sc">$</span>err</span>
-<span id="cb14-47"><a href=""></a>          zcut nvar       err          sd</span>
-<span id="cb14-48"><a href=""></a>[<span class="dv">1</span>,] <span class="fl">0.1000000</span>   <span class="dv">14</span> <span class="fl">0.3120663</span> <span class="fl">0.007186951</span></span>
-<span id="cb14-49"><a href=""></a>[<span class="dv">2</span>,] <span class="fl">0.5265306</span>   <span class="dv">13</span> <span class="fl">0.3137940</span> <span class="fl">0.004717065</span></span>
-<span id="cb14-50"><a href=""></a>[<span class="dv">3</span>,] <span class="fl">0.7591837</span>   <span class="dv">12</span> <span class="fl">0.3141295</span> <span class="fl">0.004068593</span></span>
-<span id="cb14-51"><a href=""></a>[<span class="dv">4</span>,] <span class="fl">1.2632653</span>   <span class="dv">11</span> <span class="fl">0.3099739</span> <span class="fl">0.003270832</span></span>
-<span id="cb14-52"><a href=""></a>[<span class="dv">5</span>,] <span class="fl">1.3020408</span>   <span class="dv">10</span> <span class="fl">0.3123732</span> <span class="fl">0.004680203</span></span>
-<span id="cb14-53"><a href=""></a></span>
-<span id="cb14-54"><a href=""></a><span class="sc">$</span>zcut</span>
-<span id="cb14-55"><a href=""></a>[<span class="dv">1</span>] <span class="fl">1.263265</span></span>
-<span id="cb14-56"><a href=""></a></span>
-<span id="cb14-57"><a href=""></a><span class="sc">$</span>zcut.conserve</span>
-<span id="cb14-58"><a href=""></a>[<span class="dv">1</span>] <span class="fl">1.302041</span></span>
-<span id="cb14-59"><a href=""></a></span>
-<span id="cb14-60"><a href=""></a><span class="sc">$</span>zcut.liberal</span>
-<span id="cb14-61"><a href=""></a>[<span class="dv">1</span>] <span class="fl">0.1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15" data-code-line-numbers="1-2|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a><span class="do">## cv.varpro canonical call</span></span>
+<span id="cb15-2"><a href=""></a>o.cv <span class="ot">&lt;-</span> <span class="fu">cv.varpro</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2)</span>
+<span id="cb15-3"><a href=""></a>o.cv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16" data-code-line-numbers="2-14|16-27|29-44|46-61"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a><span class="sc">&gt;</span> o.cv</span>
+<span id="cb16-2"><a href=""></a><span class="sc">$</span>imp</span>
+<span id="cb16-3"><a href=""></a>      variable         z</span>
+<span id="cb16-4"><a href=""></a><span class="dv">1</span>          bun <span class="fl">12.765690</span></span>
+<span id="cb16-5"><a href=""></a><span class="dv">2</span>     interval  <span class="fl">9.084990</span></span>
+<span id="cb16-6"><a href=""></a><span class="dv">3</span>     peak.vo2  <span class="fl">8.284743</span></span>
+<span id="cb16-7"><a href=""></a><span class="dv">4</span>         male  <span class="fl">5.918617</span></span>
+<span id="cb16-8"><a href=""></a><span class="dv">5</span>          age  <span class="fl">5.537937</span></span>
+<span id="cb16-9"><a href=""></a><span class="dv">6</span>     betablok  <span class="fl">3.600902</span></span>
+<span id="cb16-10"><a href=""></a><span class="dv">7</span>       sodium  <span class="fl">3.408508</span></span>
+<span id="cb16-11"><a href=""></a><span class="dv">8</span>  lvef.metabl  <span class="fl">2.776717</span></span>
+<span id="cb16-12"><a href=""></a><span class="dv">9</span>   resting.hr  <span class="fl">2.590353</span></span>
+<span id="cb16-13"><a href=""></a><span class="dv">10</span>        crcl  <span class="fl">2.476236</span></span>
+<span id="cb16-14"><a href=""></a><span class="dv">11</span>     digoxin  <span class="fl">1.289895</span></span>
+<span id="cb16-15"><a href=""></a></span>
+<span id="cb16-16"><a href=""></a><span class="sc">$</span>imp.conserve</span>
+<span id="cb16-17"><a href=""></a>      variable         z</span>
+<span id="cb16-18"><a href=""></a><span class="dv">1</span>          bun <span class="fl">12.765690</span></span>
+<span id="cb16-19"><a href=""></a><span class="dv">2</span>     interval  <span class="fl">9.084990</span></span>
+<span id="cb16-20"><a href=""></a><span class="dv">3</span>     peak.vo2  <span class="fl">8.284743</span></span>
+<span id="cb16-21"><a href=""></a><span class="dv">4</span>         male  <span class="fl">5.918617</span></span>
+<span id="cb16-22"><a href=""></a><span class="dv">5</span>          age  <span class="fl">5.537937</span></span>
+<span id="cb16-23"><a href=""></a><span class="dv">6</span>     betablok  <span class="fl">3.600902</span></span>
+<span id="cb16-24"><a href=""></a><span class="dv">7</span>       sodium  <span class="fl">3.408508</span></span>
+<span id="cb16-25"><a href=""></a><span class="dv">8</span>  lvef.metabl  <span class="fl">2.776717</span></span>
+<span id="cb16-26"><a href=""></a><span class="dv">9</span>   resting.hr  <span class="fl">2.590353</span></span>
+<span id="cb16-27"><a href=""></a><span class="dv">10</span>        crcl  <span class="fl">2.476236</span></span>
+<span id="cb16-28"><a href=""></a></span>
+<span id="cb16-29"><a href=""></a><span class="sc">$</span>imp.liberal</span>
+<span id="cb16-30"><a href=""></a>              variable          z</span>
+<span id="cb16-31"><a href=""></a><span class="dv">1</span>                  bun <span class="fl">12.7656902</span></span>
+<span id="cb16-32"><a href=""></a><span class="dv">2</span>             interval  <span class="fl">9.0849901</span></span>
+<span id="cb16-33"><a href=""></a><span class="dv">3</span>             peak.vo2  <span class="fl">8.2847426</span></span>
+<span id="cb16-34"><a href=""></a><span class="dv">4</span>                 male  <span class="fl">5.9186167</span></span>
+<span id="cb16-35"><a href=""></a><span class="dv">5</span>                  age  <span class="fl">5.5379366</span></span>
+<span id="cb16-36"><a href=""></a><span class="dv">6</span>             betablok  <span class="fl">3.6009023</span></span>
+<span id="cb16-37"><a href=""></a><span class="dv">7</span>               sodium  <span class="fl">3.4085085</span></span>
+<span id="cb16-38"><a href=""></a><span class="dv">8</span>          lvef.metabl  <span class="fl">2.7767175</span></span>
+<span id="cb16-39"><a href=""></a><span class="dv">9</span>           resting.hr  <span class="fl">2.5903526</span></span>
+<span id="cb16-40"><a href=""></a><span class="dv">10</span>                crcl  <span class="fl">2.4762361</span></span>
+<span id="cb16-41"><a href=""></a><span class="dv">11</span>             digoxin  <span class="fl">1.2898949</span></span>
+<span id="cb16-42"><a href=""></a><span class="dv">12</span> resting.systolic.bp  <span class="fl">1.2290245</span></span>
+<span id="cb16-43"><a href=""></a><span class="dv">13</span>                 hgb  <span class="fl">0.7475712</span></span>
+<span id="cb16-44"><a href=""></a><span class="dv">14</span>   diuretic.thiazide  <span class="fl">0.4964589</span></span>
+<span id="cb16-45"><a href=""></a></span>
+<span id="cb16-46"><a href=""></a><span class="sc">$</span>err</span>
+<span id="cb16-47"><a href=""></a>          zcut nvar       err          sd</span>
+<span id="cb16-48"><a href=""></a>[<span class="dv">1</span>,] <span class="fl">0.1000000</span>   <span class="dv">14</span> <span class="fl">0.3120663</span> <span class="fl">0.007186951</span></span>
+<span id="cb16-49"><a href=""></a>[<span class="dv">2</span>,] <span class="fl">0.5265306</span>   <span class="dv">13</span> <span class="fl">0.3137940</span> <span class="fl">0.004717065</span></span>
+<span id="cb16-50"><a href=""></a>[<span class="dv">3</span>,] <span class="fl">0.7591837</span>   <span class="dv">12</span> <span class="fl">0.3141295</span> <span class="fl">0.004068593</span></span>
+<span id="cb16-51"><a href=""></a>[<span class="dv">4</span>,] <span class="fl">1.2632653</span>   <span class="dv">11</span> <span class="fl">0.3099739</span> <span class="fl">0.003270832</span></span>
+<span id="cb16-52"><a href=""></a>[<span class="dv">5</span>,] <span class="fl">1.3020408</span>   <span class="dv">10</span> <span class="fl">0.3123732</span> <span class="fl">0.004680203</span></span>
+<span id="cb16-53"><a href=""></a></span>
+<span id="cb16-54"><a href=""></a><span class="sc">$</span>zcut</span>
+<span id="cb16-55"><a href=""></a>[<span class="dv">1</span>] <span class="fl">1.263265</span></span>
+<span id="cb16-56"><a href=""></a></span>
+<span id="cb16-57"><a href=""></a><span class="sc">$</span>zcut.conserve</span>
+<span id="cb16-58"><a href=""></a>[<span class="dv">1</span>] <span class="fl">1.302041</span></span>
+<span id="cb16-59"><a href=""></a></span>
+<span id="cb16-60"><a href=""></a><span class="sc">$</span>zcut.liberal</span>
+<span id="cb16-61"><a href=""></a>[<span class="dv">1</span>] <span class="fl">0.1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="footer">
 
 </div>
@@ -2707,18 +2728,18 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
 <div class="columns">
 <div class="column" style="width:50%;">
 <h4 id="vimp">VIMP</h4>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2, <span class="at">importance=</span><span class="st">"permute"</span>)</span>
-<span id="cb15-2"><a href=""></a>oo <span class="ot">&lt;-</span> <span class="fu">subsample</span>(o)</span>
-<span id="cb15-3"><a href=""></a><span class="fu">plot.vimp.ci</span>(oo, <span class="at">alpha=</span>.<span class="dv">05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2, <span class="at">importance=</span><span class="st">"permute"</span>)</span>
+<span id="cb17-2"><a href=""></a>oo <span class="ot">&lt;-</span> <span class="fu">subsample</span>(o)</span>
+<span id="cb17-3"><a href=""></a><span class="fu">plot.vimp.ci</span>(oo, <span class="at">alpha=</span>.<span class="dv">05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <center>
 <img data-src="pic/peakVIMP.png" style="width:100.0%">
 </center>
 </div><div class="column fragment fade-left" style="width:50%;">
 <!-- -->
 <h4 id="varpro-3">VarPro</h4>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a>o.cv <span class="ot">&lt;-</span> <span class="fu">cv.varpro</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2)</span>
-<span id="cb16-2"><a href=""></a><span class="fu">barplot</span>(o.cv<span class="sc">$</span>imp.liberal<span class="sc">$</span>z, <span class="at">names.arg=</span>o.cv<span class="sc">$</span>imp.liberal<span class="sc">$</span>variable,</span>
-<span id="cb16-3"><a href=""></a>        <span class="at">las=</span><span class="dv">2</span>, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"coral2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a>o.cv <span class="ot">&lt;-</span> <span class="fu">cv.varpro</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2)</span>
+<span id="cb18-2"><a href=""></a><span class="fu">barplot</span>(o.cv<span class="sc">$</span>imp.liberal<span class="sc">$</span>z, <span class="at">names.arg=</span>o.cv<span class="sc">$</span>imp.liberal<span class="sc">$</span>variable,</span>
+<span id="cb18-3"><a href=""></a>        <span class="at">las=</span><span class="dv">2</span>, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"coral2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <center>
 <img data-src="pic/peakVarPro.png" style="width:80.0%">
 </center>
@@ -2727,17 +2748,17 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
 <div class="columns">
 <div class="column" style="width:50%;">
 <h4 id="vimp-1">VIMP</h4>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2, <span class="at">importance=</span><span class="st">"permute"</span>)</span>
-<span id="cb17-2"><a href=""></a>oo <span class="ot">&lt;-</span> <span class="fu">subsample</span>(o)</span>
-<span id="cb17-3"><a href=""></a><span class="fu">plot.vimp.ci</span>(oo, <span class="at">alpha=</span>.<span class="dv">05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2, <span class="at">importance=</span><span class="st">"permute"</span>)</span>
+<span id="cb19-2"><a href=""></a>oo <span class="ot">&lt;-</span> <span class="fu">subsample</span>(o)</span>
+<span id="cb19-3"><a href=""></a><span class="fu">plot.vimp.ci</span>(oo, <span class="at">alpha=</span>.<span class="dv">05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <br><center>
 <img data-src="pic/peakVIMPzoom.png" style="width:100.0%">
 </center>
 </div><div class="column" style="width:50%;">
 <h4 id="varpro-4">VarPro</h4>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a>o.cv <span class="ot">&lt;-</span> <span class="fu">cv.varpro</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2)</span>
-<span id="cb18-2"><a href=""></a><span class="fu">barplot</span>(o.cv<span class="sc">$</span>imp.liberal<span class="sc">$</span>z, <span class="at">names.arg=</span>o.cv<span class="sc">$</span>imp.liberal<span class="sc">$</span>variable,</span>
-<span id="cb18-3"><a href=""></a>        <span class="at">las=</span><span class="dv">2</span>, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"coral2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a>o.cv <span class="ot">&lt;-</span> <span class="fu">cv.varpro</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2)</span>
+<span id="cb20-2"><a href=""></a><span class="fu">barplot</span>(o.cv<span class="sc">$</span>imp.liberal<span class="sc">$</span>z, <span class="at">names.arg=</span>o.cv<span class="sc">$</span>imp.liberal<span class="sc">$</span>variable,</span>
+<span id="cb20-3"><a href=""></a>        <span class="at">las=</span><span class="dv">2</span>, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"coral2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <center>
 <img data-src="pic/peakVarPro.png" style="width:80.0%">
 </center>
@@ -2747,23 +2768,23 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
 <p>Gene expression profiling for predicting clinical outcome of breast cancer <span class="citation" data-cites="van2002gene">[<a href="#/references" role="doc-biblioref" onclick="">1</a>]</span>. Microarray breast cancer data set of 4707 expression values on 78 patients with survival information</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="lmpqpaidyr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lmpqpaidyr table {
+<div id="qkgtinacuy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qkgtinacuy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lmpqpaidyr thead, #lmpqpaidyr tbody, #lmpqpaidyr tfoot, #lmpqpaidyr tr, #lmpqpaidyr td, #lmpqpaidyr th {
+#qkgtinacuy thead, #qkgtinacuy tbody, #qkgtinacuy tfoot, #qkgtinacuy tr, #qkgtinacuy td, #qkgtinacuy th {
   border-style: none;
 }
 
-#lmpqpaidyr p {
+#qkgtinacuy p {
   margin: 0;
   padding: 0;
 }
 
-#lmpqpaidyr .gt_table {
+#qkgtinacuy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2789,12 +2810,12 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-left-color: #D3D3D3;
 }
 
-#lmpqpaidyr .gt_caption {
+#qkgtinacuy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lmpqpaidyr .gt_title {
+#qkgtinacuy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2806,7 +2827,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-width: 0;
 }
 
-#lmpqpaidyr .gt_subtitle {
+#qkgtinacuy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2818,7 +2839,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-top-width: 0;
 }
 
-#lmpqpaidyr .gt_heading {
+#qkgtinacuy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2830,13 +2851,13 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#lmpqpaidyr .gt_bottom_border {
+#qkgtinacuy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lmpqpaidyr .gt_col_headings {
+#qkgtinacuy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2851,7 +2872,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#lmpqpaidyr .gt_col_heading {
+#qkgtinacuy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2871,7 +2892,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   overflow-x: hidden;
 }
 
-#lmpqpaidyr .gt_column_spanner_outer {
+#qkgtinacuy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2883,15 +2904,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 4px;
 }
 
-#lmpqpaidyr .gt_column_spanner_outer:first-child {
+#qkgtinacuy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lmpqpaidyr .gt_column_spanner_outer:last-child {
+#qkgtinacuy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lmpqpaidyr .gt_column_spanner {
+#qkgtinacuy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2903,11 +2924,11 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   width: 100%;
 }
 
-#lmpqpaidyr .gt_spanner_row {
+#qkgtinacuy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lmpqpaidyr .gt_group_heading {
+#qkgtinacuy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2933,7 +2954,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   text-align: left;
 }
 
-#lmpqpaidyr .gt_empty_group_heading {
+#qkgtinacuy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2948,15 +2969,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   vertical-align: middle;
 }
 
-#lmpqpaidyr .gt_from_md > :first-child {
+#qkgtinacuy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lmpqpaidyr .gt_from_md > :last-child {
+#qkgtinacuy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lmpqpaidyr .gt_row {
+#qkgtinacuy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2975,7 +2996,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   overflow-x: hidden;
 }
 
-#lmpqpaidyr .gt_stub {
+#qkgtinacuy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2988,7 +3009,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#lmpqpaidyr .gt_stub_row_group {
+#qkgtinacuy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3002,15 +3023,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   vertical-align: top;
 }
 
-#lmpqpaidyr .gt_row_group_first td {
+#qkgtinacuy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lmpqpaidyr .gt_row_group_first th {
+#qkgtinacuy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lmpqpaidyr .gt_summary_row {
+#qkgtinacuy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3020,16 +3041,16 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#lmpqpaidyr .gt_first_summary_row {
+#qkgtinacuy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lmpqpaidyr .gt_first_summary_row.thick {
+#qkgtinacuy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lmpqpaidyr .gt_last_summary_row {
+#qkgtinacuy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3039,7 +3060,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-color: #D3D3D3;
 }
 
-#lmpqpaidyr .gt_grand_summary_row {
+#qkgtinacuy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3049,7 +3070,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#lmpqpaidyr .gt_first_grand_summary_row {
+#qkgtinacuy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3059,7 +3080,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-top-color: #D3D3D3;
 }
 
-#lmpqpaidyr .gt_last_grand_summary_row_top {
+#qkgtinacuy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3069,11 +3090,11 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-color: #D3D3D3;
 }
 
-#lmpqpaidyr .gt_striped {
+#qkgtinacuy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lmpqpaidyr .gt_table_body {
+#qkgtinacuy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3082,7 +3103,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-bottom-color: #D3D3D3;
 }
 
-#lmpqpaidyr .gt_footnotes {
+#qkgtinacuy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3096,7 +3117,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#lmpqpaidyr .gt_footnote {
+#qkgtinacuy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3105,7 +3126,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#lmpqpaidyr .gt_sourcenotes {
+#qkgtinacuy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3119,7 +3140,7 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   border-right-color: #D3D3D3;
 }
 
-#lmpqpaidyr .gt_sourcenote {
+#qkgtinacuy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3127,63 +3148,63 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
   padding-right: 5px;
 }
 
-#lmpqpaidyr .gt_left {
+#qkgtinacuy .gt_left {
   text-align: left;
 }
 
-#lmpqpaidyr .gt_center {
+#qkgtinacuy .gt_center {
   text-align: center;
 }
 
-#lmpqpaidyr .gt_right {
+#qkgtinacuy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lmpqpaidyr .gt_font_normal {
+#qkgtinacuy .gt_font_normal {
   font-weight: normal;
 }
 
-#lmpqpaidyr .gt_font_bold {
+#qkgtinacuy .gt_font_bold {
   font-weight: bold;
 }
 
-#lmpqpaidyr .gt_font_italic {
+#qkgtinacuy .gt_font_italic {
   font-style: italic;
 }
 
-#lmpqpaidyr .gt_super {
+#qkgtinacuy .gt_super {
   font-size: 65%;
 }
 
-#lmpqpaidyr .gt_footnote_marks {
+#qkgtinacuy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lmpqpaidyr .gt_asterisk {
+#qkgtinacuy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lmpqpaidyr .gt_indent_1 {
+#qkgtinacuy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lmpqpaidyr .gt_indent_2 {
+#qkgtinacuy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lmpqpaidyr .gt_indent_3 {
+#qkgtinacuy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lmpqpaidyr .gt_indent_4 {
+#qkgtinacuy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lmpqpaidyr .gt_indent_5 {
+#qkgtinacuy .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -3392,106 +3413,106 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
 </div>
 </div>
 </div>
-<div class="sourceCode" id="cb19" data-code-line-numbers="1|2-3"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a><span class="fu">data</span>(vdv, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)  </span>
-<span id="cb19-2"><a href=""></a><span class="fu">dim</span>(vdv)  </span>
-<span id="cb19-3"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">78</span>  <span class="dv">4707</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21" data-code-line-numbers="1|2-3"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a><span class="fu">data</span>(vdv, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)  </span>
+<span id="cb21-2"><a href=""></a><span class="fu">dim</span>(vdv)  </span>
+<span id="cb21-3"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">78</span>  <span class="dv">4707</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section><section id="varpro-high-dimensional-example-1" class="slide level2 smaller"><h2>VarPro high-dimensional example</h2>
-<div class="sourceCode" id="cb20" data-code-line-numbers="1-5|6-29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a><span class="do">## van de Vijver Microarray Breast Cancer</span></span>
-<span id="cb20-2"><a href=""></a><span class="do">## high dimensional survival example using different split-weights</span></span>
-<span id="cb20-3"><a href=""></a><span class="do">## illustrates guided trees </span></span>
-<span id="cb20-4"><a href=""></a></span>
-<span id="cb20-5"><a href=""></a><span class="fu">data</span>(vdv, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
-<span id="cb20-6"><a href=""></a>f <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">Surv</span>(Time, Censoring)<span class="sc">~</span>.)</span>
-<span id="cb20-7"><a href=""></a>     </span>
-<span id="cb20-8"><a href=""></a><span class="do">## lasso only</span></span>
-<span id="cb20-9"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>))</span>
-<span id="cb20-10"><a href=""></a></span>
-<span id="cb20-11"><a href=""></a><span class="do">## lasso and vimp</span></span>
-<span id="cb20-12"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>))</span>
-<span id="cb20-13"><a href=""></a></span>
-<span id="cb20-14"><a href=""></a><span class="do">## lasso, vimp and shallow trees</span></span>
-<span id="cb20-15"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>))</span>
-<span id="cb20-16"><a href=""></a></span>
-<span id="cb20-17"><a href=""></a><span class="do">## store the original vdv 70 gene signature in object nms</span></span>
-<span id="cb20-18"><a href=""></a><span class="do">## compare methods using 25 runs:</span></span>
-<span id="cb20-19"><a href=""></a>rO <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, <span class="cf">function</span>(b) {</span>
-<span id="cb20-20"><a href=""></a>  <span class="fu">cat</span>(<span class="st">"replication:"</span>, b, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb20-21"><a href=""></a>  o1 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>)</span>
-<span id="cb20-22"><a href=""></a>  o2 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>)</span>
-<span id="cb20-23"><a href=""></a>  o3 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>)</span>
-<span id="cb20-24"><a href=""></a>  o4 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>, <span class="at">sparse =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb20-25"><a href=""></a>  <span class="fu">list</span>(<span class="st">"lasso"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o1)<span class="sc">$</span>variable),</span>
-<span id="cb20-26"><a href=""></a>       <span class="st">"lasso.vimp"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o2)<span class="sc">$</span>variable),</span>
-<span id="cb20-27"><a href=""></a>       <span class="st">"lasso.vimp.tree"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o3)<span class="sc">$</span>variable),</span>
-<span id="cb20-28"><a href=""></a>       <span class="st">"lasso.vimp.sparseoff"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o4)<span class="sc">$</span>variable))</span>
-<span id="cb20-29"><a href=""></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22" data-code-line-numbers="1-5|6-29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="do">## van de Vijver Microarray Breast Cancer</span></span>
+<span id="cb22-2"><a href=""></a><span class="do">## high dimensional survival example using different split-weights</span></span>
+<span id="cb22-3"><a href=""></a><span class="do">## illustrates guided trees </span></span>
+<span id="cb22-4"><a href=""></a></span>
+<span id="cb22-5"><a href=""></a><span class="fu">data</span>(vdv, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
+<span id="cb22-6"><a href=""></a>f <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">Surv</span>(Time, Censoring)<span class="sc">~</span>.)</span>
+<span id="cb22-7"><a href=""></a>     </span>
+<span id="cb22-8"><a href=""></a><span class="do">## lasso only</span></span>
+<span id="cb22-9"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>))</span>
+<span id="cb22-10"><a href=""></a></span>
+<span id="cb22-11"><a href=""></a><span class="do">## lasso and vimp</span></span>
+<span id="cb22-12"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>))</span>
+<span id="cb22-13"><a href=""></a></span>
+<span id="cb22-14"><a href=""></a><span class="do">## lasso, vimp and shallow trees</span></span>
+<span id="cb22-15"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>))</span>
+<span id="cb22-16"><a href=""></a></span>
+<span id="cb22-17"><a href=""></a><span class="do">## store the original vdv 70 gene signature in object nms</span></span>
+<span id="cb22-18"><a href=""></a><span class="do">## compare methods using 25 runs:</span></span>
+<span id="cb22-19"><a href=""></a>rO <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, <span class="cf">function</span>(b) {</span>
+<span id="cb22-20"><a href=""></a>  <span class="fu">cat</span>(<span class="st">"replication:"</span>, b, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb22-21"><a href=""></a>  o1 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>)</span>
+<span id="cb22-22"><a href=""></a>  o2 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>)</span>
+<span id="cb22-23"><a href=""></a>  o3 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>)</span>
+<span id="cb22-24"><a href=""></a>  o4 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>, <span class="at">sparse =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb22-25"><a href=""></a>  <span class="fu">list</span>(<span class="st">"lasso"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o1)<span class="sc">$</span>variable),</span>
+<span id="cb22-26"><a href=""></a>       <span class="st">"lasso.vimp"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o2)<span class="sc">$</span>variable),</span>
+<span id="cb22-27"><a href=""></a>       <span class="st">"lasso.vimp.tree"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o3)<span class="sc">$</span>variable),</span>
+<span id="cb22-28"><a href=""></a>       <span class="st">"lasso.vimp.sparseoff"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o4)<span class="sc">$</span>variable))</span>
+<span id="cb22-29"><a href=""></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section><section id="varpro-high-dimensional-example-2" class="slide level2 smaller"><h2>VarPro high-dimensional example</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <hr style="margin: 23px; visibility:hidden;">
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a><span class="fu">data</span>(vdv, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
-<span id="cb21-2"><a href=""></a>f <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">Surv</span>(Time, Censoring)<span class="sc">~</span>.)</span>
-<span id="cb21-3"><a href=""></a>     </span>
-<span id="cb21-4"><a href=""></a><span class="do">## lasso only</span></span>
-<span id="cb21-5"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>))</span>
-<span id="cb21-6"><a href=""></a></span>
-<span id="cb21-7"><a href=""></a><span class="do">## lasso and vimp</span></span>
-<span id="cb21-8"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>))</span>
-<span id="cb21-9"><a href=""></a></span>
-<span id="cb21-10"><a href=""></a><span class="do">## lasso, vimp and shallow trees</span></span>
-<span id="cb21-11"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>))</span>
-<span id="cb21-12"><a href=""></a></span>
-<span id="cb21-13"><a href=""></a><span class="do">## store the original vdv 70 gene signature in object nms</span></span>
-<span id="cb21-14"><a href=""></a><span class="do">## compare methods using 25 runs:</span></span>
-<span id="cb21-15"><a href=""></a>rO <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, <span class="cf">function</span>(b) {</span>
-<span id="cb21-16"><a href=""></a>  <span class="fu">cat</span>(<span class="st">"replication:"</span>, b, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb21-17"><a href=""></a>  o1 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>)</span>
-<span id="cb21-18"><a href=""></a>  o2 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>)</span>
-<span id="cb21-19"><a href=""></a>  o3 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>)</span>
-<span id="cb21-20"><a href=""></a>  o4 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>, <span class="at">sparse =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb21-21"><a href=""></a>  <span class="fu">list</span>(<span class="st">"lasso"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o1)<span class="sc">$</span>variable),</span>
-<span id="cb21-22"><a href=""></a>       <span class="st">"lasso.vimp"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o2)<span class="sc">$</span>variable),</span>
-<span id="cb21-23"><a href=""></a>       <span class="st">"lasso.vimp.tree"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o3)<span class="sc">$</span>variable),</span>
-<span id="cb21-24"><a href=""></a>       <span class="st">"lasso.vimp.sparseoff"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o4)<span class="sc">$</span>variable))</span>
-<span id="cb21-25"><a href=""></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a><span class="fu">data</span>(vdv, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
+<span id="cb23-2"><a href=""></a>f <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">Surv</span>(Time, Censoring)<span class="sc">~</span>.)</span>
+<span id="cb23-3"><a href=""></a>     </span>
+<span id="cb23-4"><a href=""></a><span class="do">## lasso only</span></span>
+<span id="cb23-5"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>))</span>
+<span id="cb23-6"><a href=""></a></span>
+<span id="cb23-7"><a href=""></a><span class="do">## lasso and vimp</span></span>
+<span id="cb23-8"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>))</span>
+<span id="cb23-9"><a href=""></a></span>
+<span id="cb23-10"><a href=""></a><span class="do">## lasso, vimp and shallow trees</span></span>
+<span id="cb23-11"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>))</span>
+<span id="cb23-12"><a href=""></a></span>
+<span id="cb23-13"><a href=""></a><span class="do">## store the original vdv 70 gene signature in object nms</span></span>
+<span id="cb23-14"><a href=""></a><span class="do">## compare methods using 25 runs:</span></span>
+<span id="cb23-15"><a href=""></a>rO <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, <span class="cf">function</span>(b) {</span>
+<span id="cb23-16"><a href=""></a>  <span class="fu">cat</span>(<span class="st">"replication:"</span>, b, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb23-17"><a href=""></a>  o1 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>)</span>
+<span id="cb23-18"><a href=""></a>  o2 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>)</span>
+<span id="cb23-19"><a href=""></a>  o3 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>)</span>
+<span id="cb23-20"><a href=""></a>  o4 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>, <span class="at">sparse =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb23-21"><a href=""></a>  <span class="fu">list</span>(<span class="st">"lasso"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o1)<span class="sc">$</span>variable),</span>
+<span id="cb23-22"><a href=""></a>       <span class="st">"lasso.vimp"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o2)<span class="sc">$</span>variable),</span>
+<span id="cb23-23"><a href=""></a>       <span class="st">"lasso.vimp.tree"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o3)<span class="sc">$</span>variable),</span>
+<span id="cb23-24"><a href=""></a>       <span class="st">"lasso.vimp.sparseoff"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o4)<span class="sc">$</span>variable))</span>
+<span id="cb23-25"><a href=""></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment fade-left" style="width:50%;">
 <!-- -->
 <h4 id="intersection-with-vdv-70-gene-signature">Intersection with VDV 70 gene signature</h4>
-<div class="sourceCode" id="cb22" data-code-line-numbers="1-23|25-35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="sc">$</span>lasso</span>
-<span id="cb22-2"><a href=""></a>[<span class="dv">1</span>] <span class="st">"AF201951"</span>       <span class="st">"AL080059"</span>      </span>
-<span id="cb22-3"><a href=""></a>[<span class="dv">3</span>] <span class="st">"Contig25991"</span>    <span class="st">"Contig28552_RC"</span></span>
-<span id="cb22-4"><a href=""></a>[<span class="dv">5</span>] <span class="st">"NM_000436"</span>      <span class="st">"NM_003748"</span>     </span>
-<span id="cb22-5"><a href=""></a>[<span class="dv">7</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006681"</span>     </span>
-<span id="cb22-6"><a href=""></a>[<span class="dv">9</span>] <span class="st">"NM_020974"</span>     </span>
-<span id="cb22-7"><a href=""></a></span>
-<span id="cb22-8"><a href=""></a><span class="sc">$</span>lasso.vimp</span>
-<span id="cb22-9"><a href=""></a> [<span class="dv">1</span>] <span class="st">"AL137718"</span>       <span class="st">"Contig25991"</span>   </span>
-<span id="cb22-10"><a href=""></a> [<span class="dv">3</span>] <span class="st">"Contig28552_RC"</span> <span class="st">"Contig51464_RC"</span></span>
-<span id="cb22-11"><a href=""></a> [<span class="dv">5</span>] <span class="st">"Contig55377_RC"</span> <span class="st">"NM_000436"</span>     </span>
-<span id="cb22-12"><a href=""></a> [<span class="dv">7</span>] <span class="st">"NM_003239"</span>      <span class="st">"NM_003748"</span>     </span>
-<span id="cb22-13"><a href=""></a> [<span class="dv">9</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006681"</span>     </span>
-<span id="cb22-14"><a href=""></a>[<span class="dv">11</span>] <span class="st">"NM_016448"</span>      <span class="st">"NM_020974"</span>     </span>
-<span id="cb22-15"><a href=""></a></span>
-<span id="cb22-16"><a href=""></a><span class="sc">$</span>lasso.vimp.tree</span>
-<span id="cb22-17"><a href=""></a> [<span class="dv">1</span>] <span class="st">"AA555029_RC"</span>    <span class="st">"AF201951"</span>      </span>
-<span id="cb22-18"><a href=""></a> [<span class="dv">3</span>] <span class="st">"AL080059"</span>       <span class="st">"Contig25991"</span>   </span>
-<span id="cb22-19"><a href=""></a> [<span class="dv">5</span>] <span class="st">"Contig28552_RC"</span> <span class="st">"Contig55377_RC"</span></span>
-<span id="cb22-20"><a href=""></a> [<span class="dv">7</span>] <span class="st">"NM_000436"</span>      <span class="st">"NM_003748"</span>     </span>
-<span id="cb22-21"><a href=""></a> [<span class="dv">9</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006117"</span>     </span>
-<span id="cb22-22"><a href=""></a>[<span class="dv">11</span>] <span class="st">"NM_006681"</span>      <span class="st">"NM_016448"</span>     </span>
-<span id="cb22-23"><a href=""></a>[<span class="dv">13</span>] <span class="st">"NM_020974"</span>     </span>
-<span id="cb22-24"><a href=""></a></span>
-<span id="cb22-25"><a href=""></a><span class="sc">$</span>lasso.vimp.sparseoff</span>
-<span id="cb22-26"><a href=""></a> [<span class="dv">1</span>] <span class="st">"AF201951"</span>       <span class="st">"AF257175"</span>      </span>
-<span id="cb22-27"><a href=""></a> [<span class="dv">3</span>] <span class="st">"AL080059"</span>       <span class="st">"AL137718"</span>      </span>
-<span id="cb22-28"><a href=""></a> [<span class="dv">5</span>] <span class="st">"Contig25991"</span>    <span class="st">"Contig28552_RC"</span></span>
-<span id="cb22-29"><a href=""></a> [<span class="dv">7</span>] <span class="st">"Contig40831_RC"</span> <span class="st">"Contig48328_RC"</span></span>
-<span id="cb22-30"><a href=""></a> [<span class="dv">9</span>] <span class="st">"Contig51464_RC"</span> <span class="st">"Contig55377_RC"</span></span>
-<span id="cb22-31"><a href=""></a>[<span class="dv">11</span>] <span class="st">"Contig63102_RC"</span> <span class="st">"NM_002916"</span>     </span>
-<span id="cb22-32"><a href=""></a>[<span class="dv">13</span>] <span class="st">"NM_003239"</span>      <span class="st">"NM_003748"</span>     </span>
-<span id="cb22-33"><a href=""></a>[<span class="dv">15</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006117"</span>     </span>
-<span id="cb22-34"><a href=""></a>[<span class="dv">17</span>] <span class="st">"NM_006681"</span>      <span class="st">"NM_016448"</span>     </span>
-<span id="cb22-35"><a href=""></a>[<span class="dv">19</span>] <span class="st">"NM_020974"</span>     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24" data-code-line-numbers="1-23|25-35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a><span class="sc">$</span>lasso</span>
+<span id="cb24-2"><a href=""></a>[<span class="dv">1</span>] <span class="st">"AF201951"</span>       <span class="st">"AL080059"</span>      </span>
+<span id="cb24-3"><a href=""></a>[<span class="dv">3</span>] <span class="st">"Contig25991"</span>    <span class="st">"Contig28552_RC"</span></span>
+<span id="cb24-4"><a href=""></a>[<span class="dv">5</span>] <span class="st">"NM_000436"</span>      <span class="st">"NM_003748"</span>     </span>
+<span id="cb24-5"><a href=""></a>[<span class="dv">7</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006681"</span>     </span>
+<span id="cb24-6"><a href=""></a>[<span class="dv">9</span>] <span class="st">"NM_020974"</span>     </span>
+<span id="cb24-7"><a href=""></a></span>
+<span id="cb24-8"><a href=""></a><span class="sc">$</span>lasso.vimp</span>
+<span id="cb24-9"><a href=""></a> [<span class="dv">1</span>] <span class="st">"AL137718"</span>       <span class="st">"Contig25991"</span>   </span>
+<span id="cb24-10"><a href=""></a> [<span class="dv">3</span>] <span class="st">"Contig28552_RC"</span> <span class="st">"Contig51464_RC"</span></span>
+<span id="cb24-11"><a href=""></a> [<span class="dv">5</span>] <span class="st">"Contig55377_RC"</span> <span class="st">"NM_000436"</span>     </span>
+<span id="cb24-12"><a href=""></a> [<span class="dv">7</span>] <span class="st">"NM_003239"</span>      <span class="st">"NM_003748"</span>     </span>
+<span id="cb24-13"><a href=""></a> [<span class="dv">9</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006681"</span>     </span>
+<span id="cb24-14"><a href=""></a>[<span class="dv">11</span>] <span class="st">"NM_016448"</span>      <span class="st">"NM_020974"</span>     </span>
+<span id="cb24-15"><a href=""></a></span>
+<span id="cb24-16"><a href=""></a><span class="sc">$</span>lasso.vimp.tree</span>
+<span id="cb24-17"><a href=""></a> [<span class="dv">1</span>] <span class="st">"AA555029_RC"</span>    <span class="st">"AF201951"</span>      </span>
+<span id="cb24-18"><a href=""></a> [<span class="dv">3</span>] <span class="st">"AL080059"</span>       <span class="st">"Contig25991"</span>   </span>
+<span id="cb24-19"><a href=""></a> [<span class="dv">5</span>] <span class="st">"Contig28552_RC"</span> <span class="st">"Contig55377_RC"</span></span>
+<span id="cb24-20"><a href=""></a> [<span class="dv">7</span>] <span class="st">"NM_000436"</span>      <span class="st">"NM_003748"</span>     </span>
+<span id="cb24-21"><a href=""></a> [<span class="dv">9</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006117"</span>     </span>
+<span id="cb24-22"><a href=""></a>[<span class="dv">11</span>] <span class="st">"NM_006681"</span>      <span class="st">"NM_016448"</span>     </span>
+<span id="cb24-23"><a href=""></a>[<span class="dv">13</span>] <span class="st">"NM_020974"</span>     </span>
+<span id="cb24-24"><a href=""></a></span>
+<span id="cb24-25"><a href=""></a><span class="sc">$</span>lasso.vimp.sparseoff</span>
+<span id="cb24-26"><a href=""></a> [<span class="dv">1</span>] <span class="st">"AF201951"</span>       <span class="st">"AF257175"</span>      </span>
+<span id="cb24-27"><a href=""></a> [<span class="dv">3</span>] <span class="st">"AL080059"</span>       <span class="st">"AL137718"</span>      </span>
+<span id="cb24-28"><a href=""></a> [<span class="dv">5</span>] <span class="st">"Contig25991"</span>    <span class="st">"Contig28552_RC"</span></span>
+<span id="cb24-29"><a href=""></a> [<span class="dv">7</span>] <span class="st">"Contig40831_RC"</span> <span class="st">"Contig48328_RC"</span></span>
+<span id="cb24-30"><a href=""></a> [<span class="dv">9</span>] <span class="st">"Contig51464_RC"</span> <span class="st">"Contig55377_RC"</span></span>
+<span id="cb24-31"><a href=""></a>[<span class="dv">11</span>] <span class="st">"Contig63102_RC"</span> <span class="st">"NM_002916"</span>     </span>
+<span id="cb24-32"><a href=""></a>[<span class="dv">13</span>] <span class="st">"NM_003239"</span>      <span class="st">"NM_003748"</span>     </span>
+<span id="cb24-33"><a href=""></a>[<span class="dv">15</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006117"</span>     </span>
+<span id="cb24-34"><a href=""></a>[<span class="dv">17</span>] <span class="st">"NM_006681"</span>      <span class="st">"NM_016448"</span>     </span>
+<span id="cb24-35"><a href=""></a>[<span class="dv">19</span>] <span class="st">"NM_020974"</span>     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section><section id="outline" class="slide level2 smaller" data-background-color="azure"><h2>Outline</h2>
 <div class="columns">
