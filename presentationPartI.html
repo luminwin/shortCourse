@@ -1195,6 +1195,21 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="math inline">\(\overline{Y}_{t_L}=\frac{1}{n}\sum_{i\in t_L}Y_i\)</span> &nbsp;&nbsp; and &nbsp;&nbsp; <span class="math inline">\(\overline{Y}_{t_R}=\frac{1}{n}\sum_{i\in t_R}Y_i\)</span>
 </center>
 <p>are the sample means for <span class="math inline">\(t_L\)</span> and <span class="math inline">\(t_R\)</span> respectively. The best split for <span class="math inline">\(X\)</span> is the split-point <span class="math inline">\(s\)</span> minimizing <span class="math inline">\(D(s,t)\)</span> <span class="citation" data-cites="Breiman1984">[<a href="#/references" role="doc-biblioref" onclick="">2</a>]</span></p>
+</section><section id="mean-squared-error-mse-splitting-rule-1" class="slide level2 smaller"><h2>Mean-squared error (mse) splitting rule</h2>
+
+<img data-src="pic/citree2.png" style="width:46.0%" class="r-stretch"></section><section id="mean-squared-error-mse-splitting-rule-2" class="slide level2 smaller"><h2>Mean-squared error (mse) splitting rule</h2>
+<div class="hidden">
+
+</div>
+<p>Let <span class="math inline">\(Y_1,\ldots,Y_n\)</span> be the outcomes in <span class="math inline">\(t\)</span>, the mse split-statistic for a proposed split <span class="math inline">\(s\)</span> is <span class="math display">\[D(s,t)=\frac{1}{n}\sum_{i\in t_L}(Y_i-\overline{Y}_{t_L})^2 + \frac{1}{n}\sum_{i\in t_R}(Y_i-\overline{Y}_{t_R})^2\]</span> where</p>
+<center>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="math inline">\(t_L=\{X_i\le s\}\)</span> &nbsp;&nbsp; and &nbsp;&nbsp; <span class="math inline">\(t_R=\{X_i&gt;s\}\)</span>
+</center>
+<p><br> are the left and right daughter nodes and <br><br></p>
+<center>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="math inline">\(\overline{Y}_{t_L}=\frac{1}{n}\sum_{i\in t_L}Y_i\)</span> &nbsp;&nbsp; and &nbsp;&nbsp; <span class="math inline">\(\overline{Y}_{t_R}=\frac{1}{n}\sum_{i\in t_R}Y_i\)</span>
+</center>
+<p>are the sample means for <span class="math inline">\(t_L\)</span> and <span class="math inline">\(t_R\)</span> respectively. The best split for <span class="math inline">\(X\)</span> is the split-point <span class="math inline">\(s\)</span> minimizing <span class="math inline">\(D(s,t)\)</span> <span class="citation" data-cites="Breiman1984">[<a href="#/references" role="doc-biblioref" onclick="">2</a>]</span></p>
 </section><section id="key-quantities" class="slide level2"><h2>Key quantities</h2>
 <p>The key quantities returned by the package are</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb26-1"><a href=""></a>o$predicted       ---&gt;   inbag estimated conditional mean</span>
@@ -1204,23 +1219,23 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
 <p>Data from the Ames Assessor’s Office used in assessing values of individual residential properties sold in Ames, Iowa from 2006 to 2010. This is a regression problem and the goal is to predict “SalePrice” which records the price of a home in thousands of dollars <span class="citation" data-cites="de2011ames">[<a href="#/references" role="doc-biblioref" onclick="">3</a>]</span></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="iklvcvdasa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#iklvcvdasa table {
+<div id="fnrsgnvljv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fnrsgnvljv table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#iklvcvdasa thead, #iklvcvdasa tbody, #iklvcvdasa tfoot, #iklvcvdasa tr, #iklvcvdasa td, #iklvcvdasa th {
+#fnrsgnvljv thead, #fnrsgnvljv tbody, #fnrsgnvljv tfoot, #fnrsgnvljv tr, #fnrsgnvljv td, #fnrsgnvljv th {
   border-style: none;
 }
 
-#iklvcvdasa p {
+#fnrsgnvljv p {
   margin: 0;
   padding: 0;
 }
 
-#iklvcvdasa .gt_table {
+#fnrsgnvljv .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1246,12 +1261,12 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-left-color: #D3D3D3;
 }
 
-#iklvcvdasa .gt_caption {
+#fnrsgnvljv .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#iklvcvdasa .gt_title {
+#fnrsgnvljv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1263,7 +1278,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-bottom-width: 0;
 }
 
-#iklvcvdasa .gt_subtitle {
+#fnrsgnvljv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1275,7 +1290,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-top-width: 0;
 }
 
-#iklvcvdasa .gt_heading {
+#fnrsgnvljv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1287,13 +1302,13 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-right-color: #D3D3D3;
 }
 
-#iklvcvdasa .gt_bottom_border {
+#fnrsgnvljv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#iklvcvdasa .gt_col_headings {
+#fnrsgnvljv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1308,7 +1323,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-right-color: #D3D3D3;
 }
 
-#iklvcvdasa .gt_col_heading {
+#fnrsgnvljv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1328,7 +1343,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   overflow-x: hidden;
 }
 
-#iklvcvdasa .gt_column_spanner_outer {
+#fnrsgnvljv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1340,15 +1355,15 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 4px;
 }
 
-#iklvcvdasa .gt_column_spanner_outer:first-child {
+#fnrsgnvljv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#iklvcvdasa .gt_column_spanner_outer:last-child {
+#fnrsgnvljv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#iklvcvdasa .gt_column_spanner {
+#fnrsgnvljv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1360,11 +1375,11 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   width: 100%;
 }
 
-#iklvcvdasa .gt_spanner_row {
+#fnrsgnvljv .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#iklvcvdasa .gt_group_heading {
+#fnrsgnvljv .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1390,7 +1405,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   text-align: left;
 }
 
-#iklvcvdasa .gt_empty_group_heading {
+#fnrsgnvljv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1405,15 +1420,15 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   vertical-align: middle;
 }
 
-#iklvcvdasa .gt_from_md > :first-child {
+#fnrsgnvljv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#iklvcvdasa .gt_from_md > :last-child {
+#fnrsgnvljv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#iklvcvdasa .gt_row {
+#fnrsgnvljv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1432,7 +1447,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   overflow-x: hidden;
 }
 
-#iklvcvdasa .gt_stub {
+#fnrsgnvljv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1445,7 +1460,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 5px;
 }
 
-#iklvcvdasa .gt_stub_row_group {
+#fnrsgnvljv .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1459,15 +1474,15 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   vertical-align: top;
 }
 
-#iklvcvdasa .gt_row_group_first td {
+#fnrsgnvljv .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#iklvcvdasa .gt_row_group_first th {
+#fnrsgnvljv .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#iklvcvdasa .gt_summary_row {
+#fnrsgnvljv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1477,16 +1492,16 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 5px;
 }
 
-#iklvcvdasa .gt_first_summary_row {
+#fnrsgnvljv .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#iklvcvdasa .gt_first_summary_row.thick {
+#fnrsgnvljv .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#iklvcvdasa .gt_last_summary_row {
+#fnrsgnvljv .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1496,7 +1511,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-bottom-color: #D3D3D3;
 }
 
-#iklvcvdasa .gt_grand_summary_row {
+#fnrsgnvljv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1506,7 +1521,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 5px;
 }
 
-#iklvcvdasa .gt_first_grand_summary_row {
+#fnrsgnvljv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1516,7 +1531,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-top-color: #D3D3D3;
 }
 
-#iklvcvdasa .gt_last_grand_summary_row_top {
+#fnrsgnvljv .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1526,11 +1541,11 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-bottom-color: #D3D3D3;
 }
 
-#iklvcvdasa .gt_striped {
+#fnrsgnvljv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#iklvcvdasa .gt_table_body {
+#fnrsgnvljv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1539,7 +1554,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-bottom-color: #D3D3D3;
 }
 
-#iklvcvdasa .gt_footnotes {
+#fnrsgnvljv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1553,7 +1568,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-right-color: #D3D3D3;
 }
 
-#iklvcvdasa .gt_footnote {
+#fnrsgnvljv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1562,7 +1577,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 5px;
 }
 
-#iklvcvdasa .gt_sourcenotes {
+#fnrsgnvljv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1576,7 +1591,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-right-color: #D3D3D3;
 }
 
-#iklvcvdasa .gt_sourcenote {
+#fnrsgnvljv .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1584,63 +1599,63 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 5px;
 }
 
-#iklvcvdasa .gt_left {
+#fnrsgnvljv .gt_left {
   text-align: left;
 }
 
-#iklvcvdasa .gt_center {
+#fnrsgnvljv .gt_center {
   text-align: center;
 }
 
-#iklvcvdasa .gt_right {
+#fnrsgnvljv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#iklvcvdasa .gt_font_normal {
+#fnrsgnvljv .gt_font_normal {
   font-weight: normal;
 }
 
-#iklvcvdasa .gt_font_bold {
+#fnrsgnvljv .gt_font_bold {
   font-weight: bold;
 }
 
-#iklvcvdasa .gt_font_italic {
+#fnrsgnvljv .gt_font_italic {
   font-style: italic;
 }
 
-#iklvcvdasa .gt_super {
+#fnrsgnvljv .gt_super {
   font-size: 65%;
 }
 
-#iklvcvdasa .gt_footnote_marks {
+#fnrsgnvljv .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#iklvcvdasa .gt_asterisk {
+#fnrsgnvljv .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#iklvcvdasa .gt_indent_1 {
+#fnrsgnvljv .gt_indent_1 {
   text-indent: 5px;
 }
 
-#iklvcvdasa .gt_indent_2 {
+#fnrsgnvljv .gt_indent_2 {
   text-indent: 10px;
 }
 
-#iklvcvdasa .gt_indent_3 {
+#fnrsgnvljv .gt_indent_3 {
   text-indent: 15px;
 }
 
-#iklvcvdasa .gt_indent_4 {
+#fnrsgnvljv .gt_indent_4 {
   text-indent: 20px;
 }
 
-#iklvcvdasa .gt_indent_5 {
+#fnrsgnvljv .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2266,23 +2281,23 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
 <div class="r-stack">
 <div class="cell">
 <div class="cell-output-display">
-<div id="uhyizarlvf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#uhyizarlvf table {
+<div id="kfjjqffurz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kfjjqffurz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#uhyizarlvf thead, #uhyizarlvf tbody, #uhyizarlvf tfoot, #uhyizarlvf tr, #uhyizarlvf td, #uhyizarlvf th {
+#kfjjqffurz thead, #kfjjqffurz tbody, #kfjjqffurz tfoot, #kfjjqffurz tr, #kfjjqffurz td, #kfjjqffurz th {
   border-style: none;
 }
 
-#uhyizarlvf p {
+#kfjjqffurz p {
   margin: 0;
   padding: 0;
 }
 
-#uhyizarlvf .gt_table {
+#kfjjqffurz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2308,12 +2323,12 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-left-color: #D3D3D3;
 }
 
-#uhyizarlvf .gt_caption {
+#kfjjqffurz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#uhyizarlvf .gt_title {
+#kfjjqffurz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2325,7 +2340,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-bottom-width: 0;
 }
 
-#uhyizarlvf .gt_subtitle {
+#kfjjqffurz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2337,7 +2352,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-top-width: 0;
 }
 
-#uhyizarlvf .gt_heading {
+#kfjjqffurz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2349,13 +2364,13 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-right-color: #D3D3D3;
 }
 
-#uhyizarlvf .gt_bottom_border {
+#kfjjqffurz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#uhyizarlvf .gt_col_headings {
+#kfjjqffurz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2370,7 +2385,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-right-color: #D3D3D3;
 }
 
-#uhyizarlvf .gt_col_heading {
+#kfjjqffurz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2390,7 +2405,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   overflow-x: hidden;
 }
 
-#uhyizarlvf .gt_column_spanner_outer {
+#kfjjqffurz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2402,15 +2417,15 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 4px;
 }
 
-#uhyizarlvf .gt_column_spanner_outer:first-child {
+#kfjjqffurz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#uhyizarlvf .gt_column_spanner_outer:last-child {
+#kfjjqffurz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#uhyizarlvf .gt_column_spanner {
+#kfjjqffurz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2422,11 +2437,11 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   width: 100%;
 }
 
-#uhyizarlvf .gt_spanner_row {
+#kfjjqffurz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#uhyizarlvf .gt_group_heading {
+#kfjjqffurz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2452,7 +2467,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   text-align: left;
 }
 
-#uhyizarlvf .gt_empty_group_heading {
+#kfjjqffurz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2467,15 +2482,15 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   vertical-align: middle;
 }
 
-#uhyizarlvf .gt_from_md > :first-child {
+#kfjjqffurz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#uhyizarlvf .gt_from_md > :last-child {
+#kfjjqffurz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#uhyizarlvf .gt_row {
+#kfjjqffurz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2494,7 +2509,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   overflow-x: hidden;
 }
 
-#uhyizarlvf .gt_stub {
+#kfjjqffurz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2507,7 +2522,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 5px;
 }
 
-#uhyizarlvf .gt_stub_row_group {
+#kfjjqffurz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2521,15 +2536,15 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   vertical-align: top;
 }
 
-#uhyizarlvf .gt_row_group_first td {
+#kfjjqffurz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#uhyizarlvf .gt_row_group_first th {
+#kfjjqffurz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#uhyizarlvf .gt_summary_row {
+#kfjjqffurz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2539,16 +2554,16 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 5px;
 }
 
-#uhyizarlvf .gt_first_summary_row {
+#kfjjqffurz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#uhyizarlvf .gt_first_summary_row.thick {
+#kfjjqffurz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#uhyizarlvf .gt_last_summary_row {
+#kfjjqffurz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2558,7 +2573,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-bottom-color: #D3D3D3;
 }
 
-#uhyizarlvf .gt_grand_summary_row {
+#kfjjqffurz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2568,7 +2583,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 5px;
 }
 
-#uhyizarlvf .gt_first_grand_summary_row {
+#kfjjqffurz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2578,7 +2593,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-top-color: #D3D3D3;
 }
 
-#uhyizarlvf .gt_last_grand_summary_row_top {
+#kfjjqffurz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2588,11 +2603,11 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-bottom-color: #D3D3D3;
 }
 
-#uhyizarlvf .gt_striped {
+#kfjjqffurz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#uhyizarlvf .gt_table_body {
+#kfjjqffurz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2601,7 +2616,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-bottom-color: #D3D3D3;
 }
 
-#uhyizarlvf .gt_footnotes {
+#kfjjqffurz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2615,7 +2630,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-right-color: #D3D3D3;
 }
 
-#uhyizarlvf .gt_footnote {
+#kfjjqffurz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2624,7 +2639,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 5px;
 }
 
-#uhyizarlvf .gt_sourcenotes {
+#kfjjqffurz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2638,7 +2653,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-right-color: #D3D3D3;
 }
 
-#uhyizarlvf .gt_sourcenote {
+#kfjjqffurz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2646,63 +2661,63 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 5px;
 }
 
-#uhyizarlvf .gt_left {
+#kfjjqffurz .gt_left {
   text-align: left;
 }
 
-#uhyizarlvf .gt_center {
+#kfjjqffurz .gt_center {
   text-align: center;
 }
 
-#uhyizarlvf .gt_right {
+#kfjjqffurz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#uhyizarlvf .gt_font_normal {
+#kfjjqffurz .gt_font_normal {
   font-weight: normal;
 }
 
-#uhyizarlvf .gt_font_bold {
+#kfjjqffurz .gt_font_bold {
   font-weight: bold;
 }
 
-#uhyizarlvf .gt_font_italic {
+#kfjjqffurz .gt_font_italic {
   font-style: italic;
 }
 
-#uhyizarlvf .gt_super {
+#kfjjqffurz .gt_super {
   font-size: 65%;
 }
 
-#uhyizarlvf .gt_footnote_marks {
+#kfjjqffurz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#uhyizarlvf .gt_asterisk {
+#kfjjqffurz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#uhyizarlvf .gt_indent_1 {
+#kfjjqffurz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#uhyizarlvf .gt_indent_2 {
+#kfjjqffurz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#uhyizarlvf .gt_indent_3 {
+#kfjjqffurz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#uhyizarlvf .gt_indent_4 {
+#kfjjqffurz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#uhyizarlvf .gt_indent_5 {
+#kfjjqffurz .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2874,23 +2889,23 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
 <div class="r-stack">
 <div class="cell">
 <div class="cell-output-display">
-<div id="lcnphazoes" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lcnphazoes table {
+<div id="ioifqfpiya" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ioifqfpiya table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lcnphazoes thead, #lcnphazoes tbody, #lcnphazoes tfoot, #lcnphazoes tr, #lcnphazoes td, #lcnphazoes th {
+#ioifqfpiya thead, #ioifqfpiya tbody, #ioifqfpiya tfoot, #ioifqfpiya tr, #ioifqfpiya td, #ioifqfpiya th {
   border-style: none;
 }
 
-#lcnphazoes p {
+#ioifqfpiya p {
   margin: 0;
   padding: 0;
 }
 
-#lcnphazoes .gt_table {
+#ioifqfpiya .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2916,12 +2931,12 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-left-color: #D3D3D3;
 }
 
-#lcnphazoes .gt_caption {
+#ioifqfpiya .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lcnphazoes .gt_title {
+#ioifqfpiya .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2933,7 +2948,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-bottom-width: 0;
 }
 
-#lcnphazoes .gt_subtitle {
+#ioifqfpiya .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2945,7 +2960,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-top-width: 0;
 }
 
-#lcnphazoes .gt_heading {
+#ioifqfpiya .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2957,13 +2972,13 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-right-color: #D3D3D3;
 }
 
-#lcnphazoes .gt_bottom_border {
+#ioifqfpiya .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lcnphazoes .gt_col_headings {
+#ioifqfpiya .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2978,7 +2993,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-right-color: #D3D3D3;
 }
 
-#lcnphazoes .gt_col_heading {
+#ioifqfpiya .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2998,7 +3013,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   overflow-x: hidden;
 }
 
-#lcnphazoes .gt_column_spanner_outer {
+#ioifqfpiya .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3010,15 +3025,15 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 4px;
 }
 
-#lcnphazoes .gt_column_spanner_outer:first-child {
+#ioifqfpiya .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lcnphazoes .gt_column_spanner_outer:last-child {
+#ioifqfpiya .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lcnphazoes .gt_column_spanner {
+#ioifqfpiya .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3030,11 +3045,11 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   width: 100%;
 }
 
-#lcnphazoes .gt_spanner_row {
+#ioifqfpiya .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lcnphazoes .gt_group_heading {
+#ioifqfpiya .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3060,7 +3075,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   text-align: left;
 }
 
-#lcnphazoes .gt_empty_group_heading {
+#ioifqfpiya .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3075,15 +3090,15 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   vertical-align: middle;
 }
 
-#lcnphazoes .gt_from_md > :first-child {
+#ioifqfpiya .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lcnphazoes .gt_from_md > :last-child {
+#ioifqfpiya .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lcnphazoes .gt_row {
+#ioifqfpiya .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3102,7 +3117,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   overflow-x: hidden;
 }
 
-#lcnphazoes .gt_stub {
+#ioifqfpiya .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3115,7 +3130,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 5px;
 }
 
-#lcnphazoes .gt_stub_row_group {
+#ioifqfpiya .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3129,15 +3144,15 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   vertical-align: top;
 }
 
-#lcnphazoes .gt_row_group_first td {
+#ioifqfpiya .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lcnphazoes .gt_row_group_first th {
+#ioifqfpiya .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lcnphazoes .gt_summary_row {
+#ioifqfpiya .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3147,16 +3162,16 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 5px;
 }
 
-#lcnphazoes .gt_first_summary_row {
+#ioifqfpiya .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lcnphazoes .gt_first_summary_row.thick {
+#ioifqfpiya .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lcnphazoes .gt_last_summary_row {
+#ioifqfpiya .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3166,7 +3181,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-bottom-color: #D3D3D3;
 }
 
-#lcnphazoes .gt_grand_summary_row {
+#ioifqfpiya .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3176,7 +3191,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 5px;
 }
 
-#lcnphazoes .gt_first_grand_summary_row {
+#ioifqfpiya .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3186,7 +3201,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-top-color: #D3D3D3;
 }
 
-#lcnphazoes .gt_last_grand_summary_row_top {
+#ioifqfpiya .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3196,11 +3211,11 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-bottom-color: #D3D3D3;
 }
 
-#lcnphazoes .gt_striped {
+#ioifqfpiya .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lcnphazoes .gt_table_body {
+#ioifqfpiya .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3209,7 +3224,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-bottom-color: #D3D3D3;
 }
 
-#lcnphazoes .gt_footnotes {
+#ioifqfpiya .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3223,7 +3238,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-right-color: #D3D3D3;
 }
 
-#lcnphazoes .gt_footnote {
+#ioifqfpiya .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3232,7 +3247,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 5px;
 }
 
-#lcnphazoes .gt_sourcenotes {
+#ioifqfpiya .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3246,7 +3261,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-right-color: #D3D3D3;
 }
 
-#lcnphazoes .gt_sourcenote {
+#ioifqfpiya .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3254,63 +3269,63 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 5px;
 }
 
-#lcnphazoes .gt_left {
+#ioifqfpiya .gt_left {
   text-align: left;
 }
 
-#lcnphazoes .gt_center {
+#ioifqfpiya .gt_center {
   text-align: center;
 }
 
-#lcnphazoes .gt_right {
+#ioifqfpiya .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lcnphazoes .gt_font_normal {
+#ioifqfpiya .gt_font_normal {
   font-weight: normal;
 }
 
-#lcnphazoes .gt_font_bold {
+#ioifqfpiya .gt_font_bold {
   font-weight: bold;
 }
 
-#lcnphazoes .gt_font_italic {
+#ioifqfpiya .gt_font_italic {
   font-style: italic;
 }
 
-#lcnphazoes .gt_super {
+#ioifqfpiya .gt_super {
   font-size: 65%;
 }
 
-#lcnphazoes .gt_footnote_marks {
+#ioifqfpiya .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lcnphazoes .gt_asterisk {
+#ioifqfpiya .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lcnphazoes .gt_indent_1 {
+#ioifqfpiya .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lcnphazoes .gt_indent_2 {
+#ioifqfpiya .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lcnphazoes .gt_indent_3 {
+#ioifqfpiya .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lcnphazoes .gt_indent_4 {
+#ioifqfpiya .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lcnphazoes .gt_indent_5 {
+#ioifqfpiya .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -3489,23 +3504,23 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
 <div class="r-stack">
 <div class="cell">
 <div class="cell-output-display">
-<div id="vysrvpekqt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vysrvpekqt table {
+<div id="xdffdeekud" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xdffdeekud table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vysrvpekqt thead, #vysrvpekqt tbody, #vysrvpekqt tfoot, #vysrvpekqt tr, #vysrvpekqt td, #vysrvpekqt th {
+#xdffdeekud thead, #xdffdeekud tbody, #xdffdeekud tfoot, #xdffdeekud tr, #xdffdeekud td, #xdffdeekud th {
   border-style: none;
 }
 
-#vysrvpekqt p {
+#xdffdeekud p {
   margin: 0;
   padding: 0;
 }
 
-#vysrvpekqt .gt_table {
+#xdffdeekud .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3531,12 +3546,12 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-left-color: #D3D3D3;
 }
 
-#vysrvpekqt .gt_caption {
+#xdffdeekud .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vysrvpekqt .gt_title {
+#xdffdeekud .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3548,7 +3563,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-bottom-width: 0;
 }
 
-#vysrvpekqt .gt_subtitle {
+#xdffdeekud .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3560,7 +3575,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-top-width: 0;
 }
 
-#vysrvpekqt .gt_heading {
+#xdffdeekud .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3572,13 +3587,13 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-right-color: #D3D3D3;
 }
 
-#vysrvpekqt .gt_bottom_border {
+#xdffdeekud .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vysrvpekqt .gt_col_headings {
+#xdffdeekud .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3593,7 +3608,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-right-color: #D3D3D3;
 }
 
-#vysrvpekqt .gt_col_heading {
+#xdffdeekud .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3613,7 +3628,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   overflow-x: hidden;
 }
 
-#vysrvpekqt .gt_column_spanner_outer {
+#xdffdeekud .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3625,15 +3640,15 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 4px;
 }
 
-#vysrvpekqt .gt_column_spanner_outer:first-child {
+#xdffdeekud .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vysrvpekqt .gt_column_spanner_outer:last-child {
+#xdffdeekud .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vysrvpekqt .gt_column_spanner {
+#xdffdeekud .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3645,11 +3660,11 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   width: 100%;
 }
 
-#vysrvpekqt .gt_spanner_row {
+#xdffdeekud .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vysrvpekqt .gt_group_heading {
+#xdffdeekud .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3675,7 +3690,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   text-align: left;
 }
 
-#vysrvpekqt .gt_empty_group_heading {
+#xdffdeekud .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3690,15 +3705,15 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   vertical-align: middle;
 }
 
-#vysrvpekqt .gt_from_md > :first-child {
+#xdffdeekud .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vysrvpekqt .gt_from_md > :last-child {
+#xdffdeekud .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vysrvpekqt .gt_row {
+#xdffdeekud .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3717,7 +3732,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   overflow-x: hidden;
 }
 
-#vysrvpekqt .gt_stub {
+#xdffdeekud .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3730,7 +3745,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 5px;
 }
 
-#vysrvpekqt .gt_stub_row_group {
+#xdffdeekud .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3744,15 +3759,15 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   vertical-align: top;
 }
 
-#vysrvpekqt .gt_row_group_first td {
+#xdffdeekud .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vysrvpekqt .gt_row_group_first th {
+#xdffdeekud .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vysrvpekqt .gt_summary_row {
+#xdffdeekud .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3762,16 +3777,16 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 5px;
 }
 
-#vysrvpekqt .gt_first_summary_row {
+#xdffdeekud .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vysrvpekqt .gt_first_summary_row.thick {
+#xdffdeekud .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vysrvpekqt .gt_last_summary_row {
+#xdffdeekud .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3781,7 +3796,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-bottom-color: #D3D3D3;
 }
 
-#vysrvpekqt .gt_grand_summary_row {
+#xdffdeekud .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3791,7 +3806,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 5px;
 }
 
-#vysrvpekqt .gt_first_grand_summary_row {
+#xdffdeekud .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3801,7 +3816,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-top-color: #D3D3D3;
 }
 
-#vysrvpekqt .gt_last_grand_summary_row_top {
+#xdffdeekud .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3811,11 +3826,11 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-bottom-color: #D3D3D3;
 }
 
-#vysrvpekqt .gt_striped {
+#xdffdeekud .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vysrvpekqt .gt_table_body {
+#xdffdeekud .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3824,7 +3839,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-bottom-color: #D3D3D3;
 }
 
-#vysrvpekqt .gt_footnotes {
+#xdffdeekud .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3838,7 +3853,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-right-color: #D3D3D3;
 }
 
-#vysrvpekqt .gt_footnote {
+#xdffdeekud .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3847,7 +3862,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 5px;
 }
 
-#vysrvpekqt .gt_sourcenotes {
+#xdffdeekud .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3861,7 +3876,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-right-color: #D3D3D3;
 }
 
-#vysrvpekqt .gt_sourcenote {
+#xdffdeekud .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3869,63 +3884,63 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 5px;
 }
 
-#vysrvpekqt .gt_left {
+#xdffdeekud .gt_left {
   text-align: left;
 }
 
-#vysrvpekqt .gt_center {
+#xdffdeekud .gt_center {
   text-align: center;
 }
 
-#vysrvpekqt .gt_right {
+#xdffdeekud .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vysrvpekqt .gt_font_normal {
+#xdffdeekud .gt_font_normal {
   font-weight: normal;
 }
 
-#vysrvpekqt .gt_font_bold {
+#xdffdeekud .gt_font_bold {
   font-weight: bold;
 }
 
-#vysrvpekqt .gt_font_italic {
+#xdffdeekud .gt_font_italic {
   font-style: italic;
 }
 
-#vysrvpekqt .gt_super {
+#xdffdeekud .gt_super {
   font-size: 65%;
 }
 
-#vysrvpekqt .gt_footnote_marks {
+#xdffdeekud .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vysrvpekqt .gt_asterisk {
+#xdffdeekud .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vysrvpekqt .gt_indent_1 {
+#xdffdeekud .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vysrvpekqt .gt_indent_2 {
+#xdffdeekud .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vysrvpekqt .gt_indent_3 {
+#xdffdeekud .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vysrvpekqt .gt_indent_4 {
+#xdffdeekud .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vysrvpekqt .gt_indent_5 {
+#xdffdeekud .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -4142,23 +4157,23 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
 <div class="r-stack">
 <div class="cell">
 <div class="cell-output-display">
-<div id="ndgdeglbre" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ndgdeglbre table {
+<div id="wsfelatpvc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wsfelatpvc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ndgdeglbre thead, #ndgdeglbre tbody, #ndgdeglbre tfoot, #ndgdeglbre tr, #ndgdeglbre td, #ndgdeglbre th {
+#wsfelatpvc thead, #wsfelatpvc tbody, #wsfelatpvc tfoot, #wsfelatpvc tr, #wsfelatpvc td, #wsfelatpvc th {
   border-style: none;
 }
 
-#ndgdeglbre p {
+#wsfelatpvc p {
   margin: 0;
   padding: 0;
 }
 
-#ndgdeglbre .gt_table {
+#wsfelatpvc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -4184,12 +4199,12 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-left-color: #D3D3D3;
 }
 
-#ndgdeglbre .gt_caption {
+#wsfelatpvc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ndgdeglbre .gt_title {
+#wsfelatpvc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4201,7 +4216,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-bottom-width: 0;
 }
 
-#ndgdeglbre .gt_subtitle {
+#wsfelatpvc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4213,7 +4228,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-top-width: 0;
 }
 
-#ndgdeglbre .gt_heading {
+#wsfelatpvc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4225,13 +4240,13 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-right-color: #D3D3D3;
 }
 
-#ndgdeglbre .gt_bottom_border {
+#wsfelatpvc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ndgdeglbre .gt_col_headings {
+#wsfelatpvc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4246,7 +4261,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-right-color: #D3D3D3;
 }
 
-#ndgdeglbre .gt_col_heading {
+#wsfelatpvc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4266,7 +4281,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   overflow-x: hidden;
 }
 
-#ndgdeglbre .gt_column_spanner_outer {
+#wsfelatpvc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4278,15 +4293,15 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 4px;
 }
 
-#ndgdeglbre .gt_column_spanner_outer:first-child {
+#wsfelatpvc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ndgdeglbre .gt_column_spanner_outer:last-child {
+#wsfelatpvc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ndgdeglbre .gt_column_spanner {
+#wsfelatpvc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4298,11 +4313,11 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   width: 100%;
 }
 
-#ndgdeglbre .gt_spanner_row {
+#wsfelatpvc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ndgdeglbre .gt_group_heading {
+#wsfelatpvc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4328,7 +4343,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   text-align: left;
 }
 
-#ndgdeglbre .gt_empty_group_heading {
+#wsfelatpvc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4343,15 +4358,15 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   vertical-align: middle;
 }
 
-#ndgdeglbre .gt_from_md > :first-child {
+#wsfelatpvc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ndgdeglbre .gt_from_md > :last-child {
+#wsfelatpvc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ndgdeglbre .gt_row {
+#wsfelatpvc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4370,7 +4385,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   overflow-x: hidden;
 }
 
-#ndgdeglbre .gt_stub {
+#wsfelatpvc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4383,7 +4398,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 5px;
 }
 
-#ndgdeglbre .gt_stub_row_group {
+#wsfelatpvc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4397,15 +4412,15 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   vertical-align: top;
 }
 
-#ndgdeglbre .gt_row_group_first td {
+#wsfelatpvc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ndgdeglbre .gt_row_group_first th {
+#wsfelatpvc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ndgdeglbre .gt_summary_row {
+#wsfelatpvc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4415,16 +4430,16 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 5px;
 }
 
-#ndgdeglbre .gt_first_summary_row {
+#wsfelatpvc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ndgdeglbre .gt_first_summary_row.thick {
+#wsfelatpvc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ndgdeglbre .gt_last_summary_row {
+#wsfelatpvc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4434,7 +4449,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-bottom-color: #D3D3D3;
 }
 
-#ndgdeglbre .gt_grand_summary_row {
+#wsfelatpvc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4444,7 +4459,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 5px;
 }
 
-#ndgdeglbre .gt_first_grand_summary_row {
+#wsfelatpvc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4454,7 +4469,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-top-color: #D3D3D3;
 }
 
-#ndgdeglbre .gt_last_grand_summary_row_top {
+#wsfelatpvc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4464,11 +4479,11 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-bottom-color: #D3D3D3;
 }
 
-#ndgdeglbre .gt_striped {
+#wsfelatpvc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ndgdeglbre .gt_table_body {
+#wsfelatpvc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4477,7 +4492,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-bottom-color: #D3D3D3;
 }
 
-#ndgdeglbre .gt_footnotes {
+#wsfelatpvc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4491,7 +4506,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-right-color: #D3D3D3;
 }
 
-#ndgdeglbre .gt_footnote {
+#wsfelatpvc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4500,7 +4515,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 5px;
 }
 
-#ndgdeglbre .gt_sourcenotes {
+#wsfelatpvc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4514,7 +4529,7 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   border-right-color: #D3D3D3;
 }
 
-#ndgdeglbre .gt_sourcenote {
+#wsfelatpvc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4522,63 +4537,63 @@ R_n(F) = \frac{1}{n}\sum_{i=1}^n (Y_i-F({\bf{x}}_i))^2
   padding-right: 5px;
 }
 
-#ndgdeglbre .gt_left {
+#wsfelatpvc .gt_left {
   text-align: left;
 }
 
-#ndgdeglbre .gt_center {
+#wsfelatpvc .gt_center {
   text-align: center;
 }
 
-#ndgdeglbre .gt_right {
+#wsfelatpvc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ndgdeglbre .gt_font_normal {
+#wsfelatpvc .gt_font_normal {
   font-weight: normal;
 }
 
-#ndgdeglbre .gt_font_bold {
+#wsfelatpvc .gt_font_bold {
   font-weight: bold;
 }
 
-#ndgdeglbre .gt_font_italic {
+#wsfelatpvc .gt_font_italic {
   font-style: italic;
 }
 
-#ndgdeglbre .gt_super {
+#wsfelatpvc .gt_super {
   font-size: 65%;
 }
 
-#ndgdeglbre .gt_footnote_marks {
+#wsfelatpvc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ndgdeglbre .gt_asterisk {
+#wsfelatpvc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ndgdeglbre .gt_indent_1 {
+#wsfelatpvc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ndgdeglbre .gt_indent_2 {
+#wsfelatpvc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ndgdeglbre .gt_indent_3 {
+#wsfelatpvc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ndgdeglbre .gt_indent_4 {
+#wsfelatpvc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ndgdeglbre .gt_indent_5 {
+#wsfelatpvc .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -5175,23 +5190,23 @@ P\{Y=j|\mathbf{X}\in t\}
 <p>Subset of the data used in Ceccarelli et al.&nbsp;(2016) for molecular profiling of adult diffuse gliomas. It contains 1206 probes from 880 tissues, clinical data and other molecular data. The outcome has class labels: Classic-like, Codel, G-CIMP-high, G-CIMP-low, LGm6-GBM, Mesenchymal-like and PA-like <span class="citation" data-cites="ceccarelli2016molecular">[<a href="#/references" role="doc-biblioref" onclick="">4</a>]</span></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fppauowyfg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fppauowyfg table {
+<div id="rdbnaxupfm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rdbnaxupfm table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fppauowyfg thead, #fppauowyfg tbody, #fppauowyfg tfoot, #fppauowyfg tr, #fppauowyfg td, #fppauowyfg th {
+#rdbnaxupfm thead, #rdbnaxupfm tbody, #rdbnaxupfm tfoot, #rdbnaxupfm tr, #rdbnaxupfm td, #rdbnaxupfm th {
   border-style: none;
 }
 
-#fppauowyfg p {
+#rdbnaxupfm p {
   margin: 0;
   padding: 0;
 }
 
-#fppauowyfg .gt_table {
+#rdbnaxupfm .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -5217,12 +5232,12 @@ P\{Y=j|\mathbf{X}\in t\}
   border-left-color: #D3D3D3;
 }
 
-#fppauowyfg .gt_caption {
+#rdbnaxupfm .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fppauowyfg .gt_title {
+#rdbnaxupfm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -5234,7 +5249,7 @@ P\{Y=j|\mathbf{X}\in t\}
   border-bottom-width: 0;
 }
 
-#fppauowyfg .gt_subtitle {
+#rdbnaxupfm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -5246,7 +5261,7 @@ P\{Y=j|\mathbf{X}\in t\}
   border-top-width: 0;
 }
 
-#fppauowyfg .gt_heading {
+#rdbnaxupfm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -5258,13 +5273,13 @@ P\{Y=j|\mathbf{X}\in t\}
   border-right-color: #D3D3D3;
 }
 
-#fppauowyfg .gt_bottom_border {
+#rdbnaxupfm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fppauowyfg .gt_col_headings {
+#rdbnaxupfm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5279,7 +5294,7 @@ P\{Y=j|\mathbf{X}\in t\}
   border-right-color: #D3D3D3;
 }
 
-#fppauowyfg .gt_col_heading {
+#rdbnaxupfm .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5299,7 +5314,7 @@ P\{Y=j|\mathbf{X}\in t\}
   overflow-x: hidden;
 }
 
-#fppauowyfg .gt_column_spanner_outer {
+#rdbnaxupfm .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5311,15 +5326,15 @@ P\{Y=j|\mathbf{X}\in t\}
   padding-right: 4px;
 }
 
-#fppauowyfg .gt_column_spanner_outer:first-child {
+#rdbnaxupfm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fppauowyfg .gt_column_spanner_outer:last-child {
+#rdbnaxupfm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fppauowyfg .gt_column_spanner {
+#rdbnaxupfm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -5331,11 +5346,11 @@ P\{Y=j|\mathbf{X}\in t\}
   width: 100%;
 }
 
-#fppauowyfg .gt_spanner_row {
+#rdbnaxupfm .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fppauowyfg .gt_group_heading {
+#rdbnaxupfm .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5361,7 +5376,7 @@ P\{Y=j|\mathbf{X}\in t\}
   text-align: left;
 }
 
-#fppauowyfg .gt_empty_group_heading {
+#rdbnaxupfm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5376,15 +5391,15 @@ P\{Y=j|\mathbf{X}\in t\}
   vertical-align: middle;
 }
 
-#fppauowyfg .gt_from_md > :first-child {
+#rdbnaxupfm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fppauowyfg .gt_from_md > :last-child {
+#rdbnaxupfm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fppauowyfg .gt_row {
+#rdbnaxupfm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5403,7 +5418,7 @@ P\{Y=j|\mathbf{X}\in t\}
   overflow-x: hidden;
 }
 
-#fppauowyfg .gt_stub {
+#rdbnaxupfm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5416,7 +5431,7 @@ P\{Y=j|\mathbf{X}\in t\}
   padding-right: 5px;
 }
 
-#fppauowyfg .gt_stub_row_group {
+#rdbnaxupfm .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5430,15 +5445,15 @@ P\{Y=j|\mathbf{X}\in t\}
   vertical-align: top;
 }
 
-#fppauowyfg .gt_row_group_first td {
+#rdbnaxupfm .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fppauowyfg .gt_row_group_first th {
+#rdbnaxupfm .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fppauowyfg .gt_summary_row {
+#rdbnaxupfm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5448,16 +5463,16 @@ P\{Y=j|\mathbf{X}\in t\}
   padding-right: 5px;
 }
 
-#fppauowyfg .gt_first_summary_row {
+#rdbnaxupfm .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fppauowyfg .gt_first_summary_row.thick {
+#rdbnaxupfm .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fppauowyfg .gt_last_summary_row {
+#rdbnaxupfm .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5467,7 +5482,7 @@ P\{Y=j|\mathbf{X}\in t\}
   border-bottom-color: #D3D3D3;
 }
 
-#fppauowyfg .gt_grand_summary_row {
+#rdbnaxupfm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5477,7 +5492,7 @@ P\{Y=j|\mathbf{X}\in t\}
   padding-right: 5px;
 }
 
-#fppauowyfg .gt_first_grand_summary_row {
+#rdbnaxupfm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5487,7 +5502,7 @@ P\{Y=j|\mathbf{X}\in t\}
   border-top-color: #D3D3D3;
 }
 
-#fppauowyfg .gt_last_grand_summary_row_top {
+#rdbnaxupfm .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5497,11 +5512,11 @@ P\{Y=j|\mathbf{X}\in t\}
   border-bottom-color: #D3D3D3;
 }
 
-#fppauowyfg .gt_striped {
+#rdbnaxupfm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fppauowyfg .gt_table_body {
+#rdbnaxupfm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5510,7 +5525,7 @@ P\{Y=j|\mathbf{X}\in t\}
   border-bottom-color: #D3D3D3;
 }
 
-#fppauowyfg .gt_footnotes {
+#rdbnaxupfm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5524,7 +5539,7 @@ P\{Y=j|\mathbf{X}\in t\}
   border-right-color: #D3D3D3;
 }
 
-#fppauowyfg .gt_footnote {
+#rdbnaxupfm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -5533,7 +5548,7 @@ P\{Y=j|\mathbf{X}\in t\}
   padding-right: 5px;
 }
 
-#fppauowyfg .gt_sourcenotes {
+#rdbnaxupfm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5547,7 +5562,7 @@ P\{Y=j|\mathbf{X}\in t\}
   border-right-color: #D3D3D3;
 }
 
-#fppauowyfg .gt_sourcenote {
+#rdbnaxupfm .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -5555,63 +5570,63 @@ P\{Y=j|\mathbf{X}\in t\}
   padding-right: 5px;
 }
 
-#fppauowyfg .gt_left {
+#rdbnaxupfm .gt_left {
   text-align: left;
 }
 
-#fppauowyfg .gt_center {
+#rdbnaxupfm .gt_center {
   text-align: center;
 }
 
-#fppauowyfg .gt_right {
+#rdbnaxupfm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fppauowyfg .gt_font_normal {
+#rdbnaxupfm .gt_font_normal {
   font-weight: normal;
 }
 
-#fppauowyfg .gt_font_bold {
+#rdbnaxupfm .gt_font_bold {
   font-weight: bold;
 }
 
-#fppauowyfg .gt_font_italic {
+#rdbnaxupfm .gt_font_italic {
   font-style: italic;
 }
 
-#fppauowyfg .gt_super {
+#rdbnaxupfm .gt_super {
   font-size: 65%;
 }
 
-#fppauowyfg .gt_footnote_marks {
+#rdbnaxupfm .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fppauowyfg .gt_asterisk {
+#rdbnaxupfm .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fppauowyfg .gt_indent_1 {
+#rdbnaxupfm .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fppauowyfg .gt_indent_2 {
+#rdbnaxupfm .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fppauowyfg .gt_indent_3 {
+#rdbnaxupfm .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fppauowyfg .gt_indent_4 {
+#rdbnaxupfm .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fppauowyfg .gt_indent_5 {
+#rdbnaxupfm .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -6018,23 +6033,23 @@ S(t_j|t_{j-1}) =
 <p>This data is from the Mayo Clinic trial in Primary Biliary Cirrhosis (PBC) conducted between 1974 and 1984. Among the total 424 PBC patients, the first 312 cases participated in a randomized placebo controlled trial of the drug D-penicillamine with largely complete data. The additional 112 cases did not participate in the clinical trial, but consented to have basic measurements and to be followed for survival <span class="citation" data-cites="Therneau2000modeling">[<a href="#/references" role="doc-biblioref" onclick="">6</a>]</span></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="whioouxqky" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#whioouxqky table {
+<div id="wholdxrxqw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wholdxrxqw table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#whioouxqky thead, #whioouxqky tbody, #whioouxqky tfoot, #whioouxqky tr, #whioouxqky td, #whioouxqky th {
+#wholdxrxqw thead, #wholdxrxqw tbody, #wholdxrxqw tfoot, #wholdxrxqw tr, #wholdxrxqw td, #wholdxrxqw th {
   border-style: none;
 }
 
-#whioouxqky p {
+#wholdxrxqw p {
   margin: 0;
   padding: 0;
 }
 
-#whioouxqky .gt_table {
+#wholdxrxqw .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -6060,12 +6075,12 @@ S(t_j|t_{j-1}) =
   border-left-color: #D3D3D3;
 }
 
-#whioouxqky .gt_caption {
+#wholdxrxqw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#whioouxqky .gt_title {
+#wholdxrxqw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -6077,7 +6092,7 @@ S(t_j|t_{j-1}) =
   border-bottom-width: 0;
 }
 
-#whioouxqky .gt_subtitle {
+#wholdxrxqw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -6089,7 +6104,7 @@ S(t_j|t_{j-1}) =
   border-top-width: 0;
 }
 
-#whioouxqky .gt_heading {
+#wholdxrxqw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -6101,13 +6116,13 @@ S(t_j|t_{j-1}) =
   border-right-color: #D3D3D3;
 }
 
-#whioouxqky .gt_bottom_border {
+#wholdxrxqw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#whioouxqky .gt_col_headings {
+#wholdxrxqw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -6122,7 +6137,7 @@ S(t_j|t_{j-1}) =
   border-right-color: #D3D3D3;
 }
 
-#whioouxqky .gt_col_heading {
+#wholdxrxqw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6142,7 +6157,7 @@ S(t_j|t_{j-1}) =
   overflow-x: hidden;
 }
 
-#whioouxqky .gt_column_spanner_outer {
+#wholdxrxqw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6154,15 +6169,15 @@ S(t_j|t_{j-1}) =
   padding-right: 4px;
 }
 
-#whioouxqky .gt_column_spanner_outer:first-child {
+#wholdxrxqw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#whioouxqky .gt_column_spanner_outer:last-child {
+#wholdxrxqw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#whioouxqky .gt_column_spanner {
+#wholdxrxqw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -6174,11 +6189,11 @@ S(t_j|t_{j-1}) =
   width: 100%;
 }
 
-#whioouxqky .gt_spanner_row {
+#wholdxrxqw .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#whioouxqky .gt_group_heading {
+#wholdxrxqw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6204,7 +6219,7 @@ S(t_j|t_{j-1}) =
   text-align: left;
 }
 
-#whioouxqky .gt_empty_group_heading {
+#wholdxrxqw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -6219,15 +6234,15 @@ S(t_j|t_{j-1}) =
   vertical-align: middle;
 }
 
-#whioouxqky .gt_from_md > :first-child {
+#wholdxrxqw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#whioouxqky .gt_from_md > :last-child {
+#wholdxrxqw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#whioouxqky .gt_row {
+#wholdxrxqw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6246,7 +6261,7 @@ S(t_j|t_{j-1}) =
   overflow-x: hidden;
 }
 
-#whioouxqky .gt_stub {
+#wholdxrxqw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6259,7 +6274,7 @@ S(t_j|t_{j-1}) =
   padding-right: 5px;
 }
 
-#whioouxqky .gt_stub_row_group {
+#wholdxrxqw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -6273,15 +6288,15 @@ S(t_j|t_{j-1}) =
   vertical-align: top;
 }
 
-#whioouxqky .gt_row_group_first td {
+#wholdxrxqw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#whioouxqky .gt_row_group_first th {
+#wholdxrxqw .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#whioouxqky .gt_summary_row {
+#wholdxrxqw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -6291,16 +6306,16 @@ S(t_j|t_{j-1}) =
   padding-right: 5px;
 }
 
-#whioouxqky .gt_first_summary_row {
+#wholdxrxqw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#whioouxqky .gt_first_summary_row.thick {
+#wholdxrxqw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#whioouxqky .gt_last_summary_row {
+#wholdxrxqw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6310,7 +6325,7 @@ S(t_j|t_{j-1}) =
   border-bottom-color: #D3D3D3;
 }
 
-#whioouxqky .gt_grand_summary_row {
+#wholdxrxqw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -6320,7 +6335,7 @@ S(t_j|t_{j-1}) =
   padding-right: 5px;
 }
 
-#whioouxqky .gt_first_grand_summary_row {
+#wholdxrxqw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6330,7 +6345,7 @@ S(t_j|t_{j-1}) =
   border-top-color: #D3D3D3;
 }
 
-#whioouxqky .gt_last_grand_summary_row_top {
+#wholdxrxqw .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -6340,11 +6355,11 @@ S(t_j|t_{j-1}) =
   border-bottom-color: #D3D3D3;
 }
 
-#whioouxqky .gt_striped {
+#wholdxrxqw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#whioouxqky .gt_table_body {
+#wholdxrxqw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -6353,7 +6368,7 @@ S(t_j|t_{j-1}) =
   border-bottom-color: #D3D3D3;
 }
 
-#whioouxqky .gt_footnotes {
+#wholdxrxqw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -6367,7 +6382,7 @@ S(t_j|t_{j-1}) =
   border-right-color: #D3D3D3;
 }
 
-#whioouxqky .gt_footnote {
+#wholdxrxqw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -6376,7 +6391,7 @@ S(t_j|t_{j-1}) =
   padding-right: 5px;
 }
 
-#whioouxqky .gt_sourcenotes {
+#wholdxrxqw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -6390,7 +6405,7 @@ S(t_j|t_{j-1}) =
   border-right-color: #D3D3D3;
 }
 
-#whioouxqky .gt_sourcenote {
+#wholdxrxqw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -6398,63 +6413,63 @@ S(t_j|t_{j-1}) =
   padding-right: 5px;
 }
 
-#whioouxqky .gt_left {
+#wholdxrxqw .gt_left {
   text-align: left;
 }
 
-#whioouxqky .gt_center {
+#wholdxrxqw .gt_center {
   text-align: center;
 }
 
-#whioouxqky .gt_right {
+#wholdxrxqw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#whioouxqky .gt_font_normal {
+#wholdxrxqw .gt_font_normal {
   font-weight: normal;
 }
 
-#whioouxqky .gt_font_bold {
+#wholdxrxqw .gt_font_bold {
   font-weight: bold;
 }
 
-#whioouxqky .gt_font_italic {
+#wholdxrxqw .gt_font_italic {
   font-style: italic;
 }
 
-#whioouxqky .gt_super {
+#wholdxrxqw .gt_super {
   font-size: 65%;
 }
 
-#whioouxqky .gt_footnote_marks {
+#wholdxrxqw .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#whioouxqky .gt_asterisk {
+#wholdxrxqw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#whioouxqky .gt_indent_1 {
+#wholdxrxqw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#whioouxqky .gt_indent_2 {
+#wholdxrxqw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#whioouxqky .gt_indent_3 {
+#wholdxrxqw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#whioouxqky .gt_indent_4 {
+#wholdxrxqw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#whioouxqky .gt_indent_5 {
+#wholdxrxqw .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
