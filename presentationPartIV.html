@@ -484,6 +484,9 @@ Hemant Ishwaran and Min Lu <br> University of Miami
 <li class="fragment">Biomedical data when prevelance of target group is relatively small or event measured over short interval</li>
 </ol>
 </div>
+<div class="footer">
+<p>Learn more <span class="citation" data-cites="HemantRFQv">[<a href="#/references" role="doc-biblioref" onclick="">1</a>]</span>: <a href="https://www.randomforestsrc.org/articles/imbalance.html">https://www.randomforestsrc.org/articles/imbalance.html</a></p>
+</div>
 </section><section id="example-from-causal-analysis" class="slide level2 smaller"><h2>Example from causal analysis</h2>
 <p>An investigator studying the value of adjuvant treatment versus surgery in esophageal patients needed to apply causal techniques for their analysis. This required predicting the treatment group using patient features (treatment overlap analysis). There are <span class="math inline">\(N_0=6649\)</span> surgery patients and <span class="math inline">\(N_1=988\)</span> adjuvant treatment patients, giving an imbalanced ratio of <span class="math inline">\(6649/988 \approx 6.8\)</span>.</p>
 <p>Running a RF classifier on the data, they obtained the following confusion matrix (from the OOB ensemble): <br></p>
@@ -845,7 +848,11 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 <li>In competing risk the individual is subject to more than one event.</li>
 <li>For example, a patient listed to receive a heart transplant can die while on the waitlist, or they can receive the heart. The patient is subject to two competing risks “death” and “transplant”</li>
 <li>Right-censoring also occurs just like in standard survival analysis</li>
-</ol></section><section id="competing-risk-quantities-of-interest" class="slide level2 smaller"><h2>Competing risk quantities of interest</h2>
+</ol>
+<div class="footer">
+<p>Learn more <span class="citation" data-cites="HemantCompeting">[<a href="#/references" role="doc-biblioref" onclick="">2</a>]</span>: <a href="https://www.randomforestsrc.org/articles/competing.html">https://www.randomforestsrc.org/articles/competing.html</a></p>
+</div>
+</section><section id="competing-risk-quantities-of-interest" class="slide level2 smaller"><h2>Competing risk quantities of interest</h2>
 <p>There are two primary quantities of interest:</p>
 <h4 id="the-cumulative-incidence-function-cif-equal-to-the-probability-of-observing-an-event-of-interest-by-time-t">1. The cumulative incidence function (CIF) equal to the probability of observing an event of interest by time <span class="math inline">\(t\)</span>
 </h4>
@@ -869,23 +876,23 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 </section><section id="competing-risk-example-pbc-mayo-clinic" class="slide level2 smaller"><h2>Competing risk example: PBC Mayo Clinic</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div id="dueeptnejn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#dueeptnejn table {
+<div id="pybpeszqgo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pybpeszqgo table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dueeptnejn thead, #dueeptnejn tbody, #dueeptnejn tfoot, #dueeptnejn tr, #dueeptnejn td, #dueeptnejn th {
+#pybpeszqgo thead, #pybpeszqgo tbody, #pybpeszqgo tfoot, #pybpeszqgo tr, #pybpeszqgo td, #pybpeszqgo th {
   border-style: none;
 }
 
-#dueeptnejn p {
+#pybpeszqgo p {
   margin: 0;
   padding: 0;
 }
 
-#dueeptnejn .gt_table {
+#pybpeszqgo .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -911,12 +918,12 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-left-color: #D3D3D3;
 }
 
-#dueeptnejn .gt_caption {
+#pybpeszqgo .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dueeptnejn .gt_title {
+#pybpeszqgo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -928,7 +935,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-width: 0;
 }
 
-#dueeptnejn .gt_subtitle {
+#pybpeszqgo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -940,7 +947,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-top-width: 0;
 }
 
-#dueeptnejn .gt_heading {
+#pybpeszqgo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -952,13 +959,13 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#dueeptnejn .gt_bottom_border {
+#pybpeszqgo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dueeptnejn .gt_col_headings {
+#pybpeszqgo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -973,7 +980,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#dueeptnejn .gt_col_heading {
+#pybpeszqgo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -993,7 +1000,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   overflow-x: hidden;
 }
 
-#dueeptnejn .gt_column_spanner_outer {
+#pybpeszqgo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1005,15 +1012,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 4px;
 }
 
-#dueeptnejn .gt_column_spanner_outer:first-child {
+#pybpeszqgo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dueeptnejn .gt_column_spanner_outer:last-child {
+#pybpeszqgo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dueeptnejn .gt_column_spanner {
+#pybpeszqgo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1025,11 +1032,11 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   width: 100%;
 }
 
-#dueeptnejn .gt_spanner_row {
+#pybpeszqgo .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dueeptnejn .gt_group_heading {
+#pybpeszqgo .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1055,7 +1062,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   text-align: left;
 }
 
-#dueeptnejn .gt_empty_group_heading {
+#pybpeszqgo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1070,15 +1077,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   vertical-align: middle;
 }
 
-#dueeptnejn .gt_from_md > :first-child {
+#pybpeszqgo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dueeptnejn .gt_from_md > :last-child {
+#pybpeszqgo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dueeptnejn .gt_row {
+#pybpeszqgo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1097,7 +1104,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   overflow-x: hidden;
 }
 
-#dueeptnejn .gt_stub {
+#pybpeszqgo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1110,7 +1117,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#dueeptnejn .gt_stub_row_group {
+#pybpeszqgo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1124,15 +1131,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   vertical-align: top;
 }
 
-#dueeptnejn .gt_row_group_first td {
+#pybpeszqgo .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dueeptnejn .gt_row_group_first th {
+#pybpeszqgo .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dueeptnejn .gt_summary_row {
+#pybpeszqgo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1142,16 +1149,16 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#dueeptnejn .gt_first_summary_row {
+#pybpeszqgo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dueeptnejn .gt_first_summary_row.thick {
+#pybpeszqgo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dueeptnejn .gt_last_summary_row {
+#pybpeszqgo .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1161,7 +1168,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#dueeptnejn .gt_grand_summary_row {
+#pybpeszqgo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1171,7 +1178,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#dueeptnejn .gt_first_grand_summary_row {
+#pybpeszqgo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1181,7 +1188,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-top-color: #D3D3D3;
 }
 
-#dueeptnejn .gt_last_grand_summary_row_top {
+#pybpeszqgo .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1191,11 +1198,11 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#dueeptnejn .gt_striped {
+#pybpeszqgo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dueeptnejn .gt_table_body {
+#pybpeszqgo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1204,7 +1211,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#dueeptnejn .gt_footnotes {
+#pybpeszqgo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1218,7 +1225,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#dueeptnejn .gt_footnote {
+#pybpeszqgo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1227,7 +1234,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#dueeptnejn .gt_sourcenotes {
+#pybpeszqgo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1241,7 +1248,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#dueeptnejn .gt_sourcenote {
+#pybpeszqgo .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1249,63 +1256,63 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#dueeptnejn .gt_left {
+#pybpeszqgo .gt_left {
   text-align: left;
 }
 
-#dueeptnejn .gt_center {
+#pybpeszqgo .gt_center {
   text-align: center;
 }
 
-#dueeptnejn .gt_right {
+#pybpeszqgo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dueeptnejn .gt_font_normal {
+#pybpeszqgo .gt_font_normal {
   font-weight: normal;
 }
 
-#dueeptnejn .gt_font_bold {
+#pybpeszqgo .gt_font_bold {
   font-weight: bold;
 }
 
-#dueeptnejn .gt_font_italic {
+#pybpeszqgo .gt_font_italic {
   font-style: italic;
 }
 
-#dueeptnejn .gt_super {
+#pybpeszqgo .gt_super {
   font-size: 65%;
 }
 
-#dueeptnejn .gt_footnote_marks {
+#pybpeszqgo .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dueeptnejn .gt_asterisk {
+#pybpeszqgo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dueeptnejn .gt_indent_1 {
+#pybpeszqgo .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dueeptnejn .gt_indent_2 {
+#pybpeszqgo .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dueeptnejn .gt_indent_3 {
+#pybpeszqgo .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dueeptnejn .gt_indent_4 {
+#pybpeszqgo .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dueeptnejn .gt_indent_5 {
+#pybpeszqgo .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1739,27 +1746,31 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 </td>
 </tr>
 </tbody>
-</table></section><section id="multivariate-example-nutrigenomic-study" class="slide level2 smaller"><h2>Multivariate example: Nutrigenomic Study</h2>
-<p>Study the effects of five diet treatments on 21 liver lipids and 120 hepatic gene expression in wild-type and PPAR-alpha deficient mice. We regress gene expression, diet and genotype (x-variables) on lipid expressions (multivariate y-responses) <span class="citation" data-cites="martin2007novel">[<a href="#/references" role="doc-biblioref" onclick="">1</a>]</span></p>
+</table>
+<div class="footer">
+<p>Learn more <span class="citation" data-cites="HemantMultiv">[<a href="#/references" role="doc-biblioref" onclick="">3</a>]</span>: <a href="https://www.randomforestsrc.org/articles/mvsplit.html">https://www.randomforestsrc.org/articles/mvsplit.html</a></p>
+</div>
+</section><section id="multivariate-example-nutrigenomic-study" class="slide level2 smaller"><h2>Multivariate example: Nutrigenomic Study</h2>
+<p>Study the effects of five diet treatments on 21 liver lipids and 120 hepatic gene expression in wild-type and PPAR-alpha deficient mice. We regress gene expression, diet and genotype (x-variables) on lipid expressions (multivariate y-responses) <span class="citation" data-cites="martin2007novel">[<a href="#/references" role="doc-biblioref" onclick="">4</a>]</span></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="dmauxbogyw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#dmauxbogyw table {
+<div id="rzustxvvwv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rzustxvvwv table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dmauxbogyw thead, #dmauxbogyw tbody, #dmauxbogyw tfoot, #dmauxbogyw tr, #dmauxbogyw td, #dmauxbogyw th {
+#rzustxvvwv thead, #rzustxvvwv tbody, #rzustxvvwv tfoot, #rzustxvvwv tr, #rzustxvvwv td, #rzustxvvwv th {
   border-style: none;
 }
 
-#dmauxbogyw p {
+#rzustxvvwv p {
   margin: 0;
   padding: 0;
 }
 
-#dmauxbogyw .gt_table {
+#rzustxvvwv .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1785,12 +1796,12 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-left-color: #D3D3D3;
 }
 
-#dmauxbogyw .gt_caption {
+#rzustxvvwv .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dmauxbogyw .gt_title {
+#rzustxvvwv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1802,7 +1813,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-width: 0;
 }
 
-#dmauxbogyw .gt_subtitle {
+#rzustxvvwv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1814,7 +1825,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-top-width: 0;
 }
 
-#dmauxbogyw .gt_heading {
+#rzustxvvwv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1826,13 +1837,13 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#dmauxbogyw .gt_bottom_border {
+#rzustxvvwv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dmauxbogyw .gt_col_headings {
+#rzustxvvwv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1847,7 +1858,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#dmauxbogyw .gt_col_heading {
+#rzustxvvwv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1867,7 +1878,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   overflow-x: hidden;
 }
 
-#dmauxbogyw .gt_column_spanner_outer {
+#rzustxvvwv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1879,15 +1890,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 4px;
 }
 
-#dmauxbogyw .gt_column_spanner_outer:first-child {
+#rzustxvvwv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dmauxbogyw .gt_column_spanner_outer:last-child {
+#rzustxvvwv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dmauxbogyw .gt_column_spanner {
+#rzustxvvwv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1899,11 +1910,11 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   width: 100%;
 }
 
-#dmauxbogyw .gt_spanner_row {
+#rzustxvvwv .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dmauxbogyw .gt_group_heading {
+#rzustxvvwv .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1929,7 +1940,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   text-align: left;
 }
 
-#dmauxbogyw .gt_empty_group_heading {
+#rzustxvvwv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1944,15 +1955,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   vertical-align: middle;
 }
 
-#dmauxbogyw .gt_from_md > :first-child {
+#rzustxvvwv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dmauxbogyw .gt_from_md > :last-child {
+#rzustxvvwv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dmauxbogyw .gt_row {
+#rzustxvvwv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1971,7 +1982,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   overflow-x: hidden;
 }
 
-#dmauxbogyw .gt_stub {
+#rzustxvvwv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1984,7 +1995,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#dmauxbogyw .gt_stub_row_group {
+#rzustxvvwv .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1998,15 +2009,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   vertical-align: top;
 }
 
-#dmauxbogyw .gt_row_group_first td {
+#rzustxvvwv .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dmauxbogyw .gt_row_group_first th {
+#rzustxvvwv .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dmauxbogyw .gt_summary_row {
+#rzustxvvwv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2016,16 +2027,16 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#dmauxbogyw .gt_first_summary_row {
+#rzustxvvwv .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dmauxbogyw .gt_first_summary_row.thick {
+#rzustxvvwv .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dmauxbogyw .gt_last_summary_row {
+#rzustxvvwv .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2035,7 +2046,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#dmauxbogyw .gt_grand_summary_row {
+#rzustxvvwv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2045,7 +2056,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#dmauxbogyw .gt_first_grand_summary_row {
+#rzustxvvwv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2055,7 +2066,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-top-color: #D3D3D3;
 }
 
-#dmauxbogyw .gt_last_grand_summary_row_top {
+#rzustxvvwv .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2065,11 +2076,11 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#dmauxbogyw .gt_striped {
+#rzustxvvwv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dmauxbogyw .gt_table_body {
+#rzustxvvwv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2078,7 +2089,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#dmauxbogyw .gt_footnotes {
+#rzustxvvwv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2092,7 +2103,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#dmauxbogyw .gt_footnote {
+#rzustxvvwv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2101,7 +2112,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#dmauxbogyw .gt_sourcenotes {
+#rzustxvvwv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2115,7 +2126,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#dmauxbogyw .gt_sourcenote {
+#rzustxvvwv .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2123,63 +2134,63 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#dmauxbogyw .gt_left {
+#rzustxvvwv .gt_left {
   text-align: left;
 }
 
-#dmauxbogyw .gt_center {
+#rzustxvvwv .gt_center {
   text-align: center;
 }
 
-#dmauxbogyw .gt_right {
+#rzustxvvwv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dmauxbogyw .gt_font_normal {
+#rzustxvvwv .gt_font_normal {
   font-weight: normal;
 }
 
-#dmauxbogyw .gt_font_bold {
+#rzustxvvwv .gt_font_bold {
   font-weight: bold;
 }
 
-#dmauxbogyw .gt_font_italic {
+#rzustxvvwv .gt_font_italic {
   font-style: italic;
 }
 
-#dmauxbogyw .gt_super {
+#rzustxvvwv .gt_super {
   font-size: 65%;
 }
 
-#dmauxbogyw .gt_footnote_marks {
+#rzustxvvwv .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dmauxbogyw .gt_asterisk {
+#rzustxvvwv .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dmauxbogyw .gt_indent_1 {
+#rzustxvvwv .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dmauxbogyw .gt_indent_2 {
+#rzustxvvwv .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dmauxbogyw .gt_indent_3 {
+#rzustxvvwv .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dmauxbogyw .gt_indent_4 {
+#rzustxvvwv .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dmauxbogyw .gt_indent_5 {
+#rzustxvvwv .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -2343,7 +2354,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 <span id="cb19-4"><a href=""></a>                   <span class="at">diet =</span> nutrigenomic<span class="sc">$</span>diet,</span>
 <span id="cb19-5"><a href=""></a>                   <span class="at">genotype =</span> nutrigenomic<span class="sc">$</span>genotype)</span>
 <span id="cb19-6"><a href=""></a></span>
-<span id="cb19-7"><a href=""></a><span class="do">## multivariate mixed forest call</span></span>
+<span id="cb19-7"><a href=""></a><span class="do">## multivariate regression forest call</span></span>
 <span id="cb19-8"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">get.mv.formula</span>(<span class="fu">colnames</span>(ydta)),</span>
 <span id="cb19-9"><a href=""></a>            <span class="fu">data.frame</span>(ydta, xdta),</span>
 <span id="cb19-10"><a href=""></a>            <span class="at">importance=</span><span class="cn">TRUE</span>, <span class="at">nsplit =</span> <span class="dv">10</span>,</span>
@@ -2586,8 +2597,17 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 </div>
 </div>
 <div id="refs" class="references csl-bib-body" role="list">
+<div id="ref-HemantRFQv" class="csl-entry" role="listitem">
+1. Ishwaran H, O’Brien R, Lu M, Kogalur UB. <span class="nocase">randomForestSRC</span>: Random forests quantile classifier <span>(RFQ)</span> vignette. 2021. <a href="http://randomforestsrc.org/articles/imbalance.html">http://randomforestsrc.org/articles/imbalance.html</a>.
+</div>
+<div id="ref-HemantCompeting" class="csl-entry" role="listitem">
+2. Ishwaran H, Gerds TA, Lau BM, Lu M, Kogalur UB. <span class="nocase">randomForestSRC</span>: Competing risks vignette. 2021. <a href="http://randomforestsrc.org/articles/competing.html">http://randomforestsrc.org/articles/competing.html</a>.
+</div>
+<div id="ref-HemantMultiv" class="csl-entry" role="listitem">
+3. Ishwaran H, Tang F, Lu M, Kogalur UB. <span class="nocase">randomForestSRC</span>: Multivariate splitting rule vignette. 2021. <a href="http://randomforestsrc.org/articles/mvsplit.html">http://randomforestsrc.org/articles/mvsplit.html</a>.
+</div>
 <div id="ref-martin2007novel" class="csl-entry" role="listitem">
-1. Martin PG, Guillou H, Lasserre F, Déjean S, Lan A, Pascussi J-M, et al. Novel aspects of PPAR<span class="math inline">\(\alpha\)</span>-mediated regulation of lipid and xenobiotic metabolism revealed through a nutrigenomic study. Hepatology. 2007;45:767–77.
+4. Martin PG, Guillou H, Lasserre F, Déjean S, Lan A, Pascussi J-M, et al. Novel aspects of PPAR<span class="math inline">\(\alpha\)</span>-mediated regulation of lipid and xenobiotic metabolism revealed through a nutrigenomic study. Hepatology. 2007;45:767–77.
 </div>
 </div>
 </section>
